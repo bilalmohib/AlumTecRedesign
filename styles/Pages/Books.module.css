@@ -1,0 +1,37 @@
+.header {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)),
+    url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGlicmFyeXxlbnwwfHwwfHw%3D&w=1000&q=80');
+  background-size: cover;
+  height: 500px;
+  margin-top: 90px;
+  /* border: 2px solid red; */
+}
+
+.header .title {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.header .title h1 {
+  text-transform: none;
+  margin: 0;
+  font-size: 3rem;
+  white-space: nowrap;
+}
+
+.header .title p {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}

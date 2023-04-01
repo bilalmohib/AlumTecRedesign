@@ -1,0 +1,110 @@
+.FeaturedBookContainer {
+    border: 1px solid #008288;
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+/* Left Side */
+.left {
+    /* border: 2px solid red; */
+    background-color: #008288;
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    /* Please display a border radius towards inner side rounded towards right side using clip path */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftFeaturedBookImage{
+    width:300px;
+    height: 300px;
+    /* border: 1px solid red; */
+    background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGlicmFyeXxlbnwwfHwwfHw%3D&w=1000&q=80');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+/* Left Side */
+
+/* Right Side */
+.right {
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+}
+
+.headingBook{
+    font-size: 2rem;
+    color: #171919;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.headingBook:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.headingBookUrdu{
+    font-size: 1.5rem;
+    color: #171919;
+    font-weight: 400;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    direction: rtl;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.buttons{
+    display: flex;
+flex-basis: auto;
+    margin-top: 20px;
+}
+.buttonDownload{
+    background-color: #008288;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    font-weight: 300;
+    border: none;
+    text-transform: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.buttonDownload:hover{
+    background-color: #006666;
+    transition: all 0.3s ease-in-out;
+}
+
+.buttonRead{
+    background-color: #cbb513;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    font-weight: 300;
+    border: none;
+    text-transform: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-left: 10px;
+}
+.buttonRead:hover{
+    background-color: #cbb513;
+    transition: all 0.3s ease-in-out;
+}
+/* Right Side */

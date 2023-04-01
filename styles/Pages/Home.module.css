@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@font-face {
+    font-family: SharpGroteskLight05;
+    src: url(/public/Fonts/SharpGroteskLight05.ttf);
+}
+
+.image {
+    width: 600px;
+    height: 600px;
+    /* border: 1px solid red; */
+}
+
+.paragraph {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #050505;
+    margin-top: 1rem;
+}
+
+/* Frame Image */
+.frameImage {
+    width: 822.07px;
+    height: 638.66px;
+    background: linear-gradient(90.39deg, #ffffff46 -7.71%, #708bd468 54.46%, #f5f5f54e 103.16%);
+    /* background: linear-gradient(157.51deg, #E1E7FF -14.3%, #DBE2FC 49.95%, #FAFBFF 102.59%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06); */
+    border-radius: 0px;
+    transform: rotate(180deg);
+    margin-left: 2%;
+}
+
+.leftImage {
+    width: 201.3px;
+    height: 212.22px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -20px;
+    margin-top: 400px;
+    border-radius: 10px;
+}
+
+.middleImage {
+    width: 618.96px;
+    height: 482.44px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top: 80px;
+    border-radius: 10px;
+}
+
+.rightImage {
+    width: 180.44px;
+    height: 190.72px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 590px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+/* Animations for images */
+.leftImage,
+.middleImage,
+.rightImage {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Set up the keyframe animation */
+@keyframes opacity {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to the images */
+.leftImage.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.middleImage.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.rightImage.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Animations for images */
+
+/* Services Image */
+
+.containerTlPatternImage {
+    padding-left: 0px;
+    padding-top: 0px;
+}
+
+.tlPatternImage {}
+
+.containerBrPatternImage {
+    padding-left: 450px;
+    padding-top: 280px;
+}
+
+.brPatternImage {}
+
+/* Border Image */
+.borderServicesImage {
+    margin-top: 70px;
+    margin-left: 70px;
+    width:431px;
+    height:476px;
+}
+
+.ServicesImage{
+    margin-top: 80px;
+    margin-left: 0px;
+    /* width: 500px;
+    height: 530px; */
+    width: 500px;
+    height:520px;
+    border: 1px solid red;
+}
+
+/* Services Image */

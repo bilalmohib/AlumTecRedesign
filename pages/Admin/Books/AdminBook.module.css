@@ -1,0 +1,68 @@
+.header {
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.9)),
+      url('/Images/Admin/EditData/books.png');
+    background-size: cover;
+    height: 300px;
+    padding-top: 100px;
+    margin-top: 90px;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: optimizeQuality;
+    /* border: 2px solid red; */
+  }
+  
+  .header .title {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+  }
+  
+  .header .title h1 {
+    text-transform: none;
+    margin: 0;
+    font-size: 3rem;
+    white-space: nowrap;
+  }
+  
+  .header .title p {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .heading {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+
+  .footer{
+    margin-top: 50px !important;
+    /* border: 1px solid red; */
+  }
+
+  .Box{
+    width: 98%;
+    margin: auto;
+    height: 100%;
+    /* border: 1px solid rgb(255, 255, 255); */
+    padding-left: 40px;
+    padding-right: 40px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding-top: 40px;
+  }
+
+  .leftTab{
+    /* border: 1px solid rgb(255, 0, 0); */
+    width: 10%;
+    height: 100vw;
+  }
+  .rightTab{
+    /* border: 1px solid red; */
+    width: 90%;
+}

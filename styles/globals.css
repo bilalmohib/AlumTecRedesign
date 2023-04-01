@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.customContainer {
+  font-family: 'Montserrat', sans-serif !important;
+  padding-left: 6%;
+  padding-right: 0%;
+  width: 100%;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  /* border: 1px solid red; */
+  width: 60px !important;
+  height: 60px !important;
+  color: #06989e !important;
+  background-color: rgba(255, 255, 255, 0.48) !important;
+  border-radius: 50px;
+  transition: 0.2s linear;
+}
+
+.swiper-button-prev:hover, .swiper-button-next:hover {
+  background-color: #06989e !important;
+  color: white !important;
+  transition: 0.2s linear;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+  font-size: 30px !important;
+  text-align: center !important;
+}
+
+.swiper-button-next {
+  padding-left: 8px !important;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-left: -150px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
