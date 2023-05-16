@@ -19,7 +19,7 @@ const Home = () => {
         <HomeBlogsBlock />
       </section>
 
-      <div style={{ marginTop: 560,position:"relative" }}>
+      <div style={{ marginTop: 550,position:"relative" }}>
         <Footer />
       </div>
     </div>
