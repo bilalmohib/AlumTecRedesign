@@ -16,7 +16,7 @@ const Home = () => {
         <HomeBanner />
         <HomeServicesBlock />
         <HomeProjectsBlock />
-        {/* <HomeBlogsBlock /> */}
+        <HomeBlogsBlock />
       </section>
 
       <div style={{ marginTop: 550,position:"relative" }}>
