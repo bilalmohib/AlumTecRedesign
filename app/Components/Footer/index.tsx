@@ -7,11 +7,12 @@ export const Footer: FC = (): ReactElement => {
       sx={{
         width: "100%",
         height: "auto",
-        backgroundColor: "#06989e",
+        backgroundColor: "#2c3296",
         color: "white",
         marginTop: "3rem",
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        position:"relative"
       }}
     >
       <Container maxWidth="lg">
