@@ -18,12 +18,12 @@ export const Footer: FC = (): ReactElement => {
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
             <Typography color="white" variant="h5">
-              Idara Sirate Mustaqeem (ISM)
+              Alum Tec Reshaping the future with Glass and Aluminiums
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography color="white" variant="subtitle1">
-              {`${new Date().getFullYear()} | ISLAMIC | PAKISTANI | IDIOLOGY`}
+              {`${new Date().getFullYear()} | Aluminium | Glass | Doors`}
             </Typography>
           </Grid>
         </Grid>

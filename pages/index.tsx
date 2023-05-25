@@ -16,10 +16,10 @@ const Home = () => {
         <HomeBanner />
         <HomeServicesBlock />
         <HomeProjectsBlock />
-        <HomeBlogsBlock />
+        {/* <HomeBlogsBlock /> */}
       </section>
 
-      <div>
+      <div style={{ marginTop: 100,position:"relative" }}>
         <Footer />
       </div>
     </div>
