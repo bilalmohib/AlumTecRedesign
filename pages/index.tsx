@@ -18,9 +18,9 @@ const Home = () => {
         <HomeBlogsBlock />
       </section>
 
-      {/* <Box className={styles.footer}>
+      <Box className={styles.footer}>
         <Footer />
-      </Box> */}
+      </Box>
     </div>
   );
 };
