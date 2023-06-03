@@ -34,6 +34,8 @@ const Home = () => {
   const [currentMiddleImage, setCurrentMiddleImage] = useState(1);
   const [currentRightImage, setCurrentRightImage] = useState(2);
 
+  const [isActiveSliderArrow, setIsActiveSliderArrow] = useState<string>("");
+
   useEffect(() => {
     const timer = setInterval(() => {
       const nextLeftImageIndex = getNextImageIndex(currentLeftImage, -1);
@@ -189,18 +191,71 @@ const Home = () => {
       "marginTop": "2rem"
     },
     servicesSliderArrowContainer: {
-      // border: "1px solid black",
+      border: "1px solid red",
       marginTop: "40px",
       width: "220px",
-      height: "44px"
+      height: "44px",
+      display: "flex",
+      justifyContent: "space-between"
     },
-    servicesSliderLeftArrow: {
-      borderTop: "1.5px solid #1C1C1C",
-      borderLeft: "1.5px solid #1C1C1C",
-      borderBottom: "1.5px solid #1C1C1C",
+    // When Its DeActive
+    servicesSliderDeActiveArrow: {
+      borderTop: "1.5px solid #a4a4a4",
+      borderLeft: "1.5px solid #a4a4a4",
+      borderBottom: "1.5px solid #a4a4a4",
       width: "39.25px",
       height: "44px",
       boxSizing: "border-box",
+    },
+    sliderArrow: {
+      opacity: "0.5",
+      marginTop: "5px",
+      color: "#a4a4a4"
+    },
+    sliderArrowDeActive: {
+      color: "#a4a4a4",
+      opacity: "0.5"
+    },
+    // When Its Active
+    servicesSliderActiveArrow: {
+      borderTop: "1.5px solid #10146E",
+      borderLeft: "1.5px solid #10146E",
+      borderBottom: "1.5px solid #10146E",
+      width: "39.25px",
+      height: "44px",
+      paddingLeft: "5px",
+      boxSizing: "border-box",
+    },
+    sliderArrowActive: {
+      color: "#10146E",
+      opacity: "1"
+    },
+    // When Its Hover
+    servicesSliderHoverArrow: {
+      borderTop: "1.5px solid #10146E",
+      borderLeft: "1.5px solid #10146E",
+      borderBottom: "1.5px solid #10146E",
+      width: "39.25px",
+      height: "44px",
+      boxSizing: "border-box",
+    },
+    sliderArrowHover: {
+      color: "#10146E",
+      opacity: "1"
+    },
+    // When Its Focus
+    servicesSliderFocusArrow: {
+      borderTop: "1.5px solid #10146E",
+
+      borderLeft: "1.5px solid #10146E",
+      borderBottom: "1.5px solid #10146E",
+      width: "39.25px",
+      height: "44px",
+      boxSizing: "border-box",
+    },
+    sliderArrowFocus: {
+      color: "#10146E",
+      opacity: "1"
     }
   }
 
@@ -398,9 +453,35 @@ const Home = () => {
                 sx={mstyles.servicesSliderArrowContainer}
               >
                 <Box
-                  sx={mstyles.servicesSliderLeftArrow}
+                  sx={mstyles.servicesSliderDeActiveArrow}
                 >
+                  <Image
+                    priority
+                    src="/Images/Home/Services/ServicesSlider/Left.svg"
+                    width={11.25}
+                    height={17.5}
+                    style={{
+                      ...mstyles.sliderArrow,
+                      ...(isActiveSliderArrow === "left" ? mstyles.sliderArrowActive : mstyles.sliderArrowDeActive)
+                    }}
+                    alt="Left"
+                  />
+                </Box>
 
+                <Box
+                  sx={mstyles.servicesSliderActiveArrow}
+                >
+                  <Image
+                    priority
+                    src="/Images/Home/Services/ServicesSlider/Right.svg"
+                    width={11.25}
+                    height={17.5}
+                    style={{
+                      ...mstyles.sliderArrow,
+                      ...(isActiveSliderArrow === "right" ? mstyles.sliderArrowActive : mstyles.sliderArrowDeActive)
+                    }}
+                    alt="Right"
+                  />
                 </Box>
               </Box>
             </Box>
