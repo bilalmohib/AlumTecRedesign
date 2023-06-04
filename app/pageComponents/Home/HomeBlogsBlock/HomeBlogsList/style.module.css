@@ -1,0 +1,227 @@
+.blogsChild {
+  position: absolute;
+  top: 667.5px;
+  left: 608px;
+  background-color: var(--color-darkslateblue-200);
+  width: 25px;
+  height: 3px;
+}
+.previous3 {
+  position: absolute;
+  top: 657px;
+  left: 535px;
+  line-height: 24px;
+  opacity: 0.4;
+}
+.blogsItem {
+  position: absolute;
+  top: 667.5px;
+  left: 608px;
+  background-color: var(--color-darkslateblue-200);
+  width: 100px;
+  height: 3px;
+  opacity: 0.2;
+}
+.blogs2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 77px;
+  background: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)), #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  width: 330px;
+  height: 96px;
+}
+.blogsParent,
+.ourBlogs {
+  position: absolute;
+  width: 538px;
+}
+.ourBlogs {
+  top: 48px;
+  left: 0;
+  font-size: var(--font-size-40xl);
+  line-height: 77px;
+  background: linear-gradient(#000, #000), #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  height: 96px;
+}
+.blogsParent {
+  top: 0;
+  left: 478px;
+  height: 144px;
+  text-align: left;
+  font-size: var(--font-size-80xl);
+  font-family: var(--font-sharp-grotesk);
+}
+.patternsIcon4,
+.patternsIcon5 {
+  position: absolute;
+  top: 485px;
+  left: 557px;
+  width: 112px;
+  height: 152px;
+  opacity: 0.5;
+}
+.patternsIcon5 {
+  top: 144px;
+  left: 0;
+}
+.blogsInner,
+.rectangleDiv {
+  position: absolute;
+  top: 175px;
+  left: 96px;
+  border: 1px solid var(--color-midnightblue-100);
+  box-sizing: border-box;
+  width: 553px;
+  height: 389px;
+}
+.rectangleDiv {
+  left: 808px;
+  width: 546px;
+}
+.blogsChild1,
+.maskGroupIcon3 {
+  position: absolute;
+  top: 209px;
+  left: 25px;
+  height: 400px;
+}
+.blogsChild1 {
+  background-color: var(--color-darkslateblue-100);
+  box-shadow: 0 6px 12px 3px rgba(0, 0, 0, 0.25);
+  width: 600px;
+}
+.maskGroupIcon3 {
+  width: 270px;
+  object-fit: cover;
+}
+.theStartupUltimateContainer {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  font-size: var(--font-size-5xl);
+  line-height: 32px;
+  text-align: left;
+}
+.byAdmin,
+.div {
+  top: 0;
+  left: 0;
+  line-height: 24px;
+}
+.byAdmin {
+  position: absolute;
+  font-weight: 500;
+  opacity: 0.4;
+}
+.div {
+  font-weight: 300;
+}
+.div,
+.july,
+.parent {
+  position: absolute;
+}
+.july {
+  top: 1px;
+  left: 31px;
+  font-size: var(--font-size-sm);
+  line-height: 24px;
+  font-weight: 500;
+}
+.parent {
+  top: 0;
+  left: 175px;
+  width: 53px;
+  height: 25px;
+}
+.learnMore1 {
+  position: relative;
+  text-decoration: underline;
+  line-height: 24px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.button {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-5xs) 0;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+}
+.rightContent {
+  position: absolute;
+  top: 299px;
+  left: 327px;
+  width: 229px;
+  height: 220px;
+}
+.blogsChild2,
+.maskGroupIcon4 {
+  position: absolute;
+  top: 209px;
+  left: 729px;
+  height: 400px;
+}
+.blogsChild2 {
+  background-color: var(--color-darkslateblue-100);
+  box-shadow: 0 12px 18px 3px rgba(0, 0, 0, 0.25);
+  width: 600px;
+}
+.maskGroupIcon4 {
+  width: 270px;
+  object-fit: cover;
+}
+.july1 {
+  position: absolute;
+  top: 1px;
+  left: 30px;
+  font-size: var(--font-size-sm);
+  line-height: 24px;
+  font-weight: 500;
+}
+.group,
+.rightContent1 {
+  position: absolute;
+  top: 0;
+  left: 176px;
+  width: 52px;
+  height: 25px;
+}
+.rightContent1 {
+  top: 299px;
+  left: 1031px;
+  width: 229px;
+  height: 220px;
+}
+.blogs,
+.blogs1 {
+  position: absolute;
+  width: 1354px;
+}
+.blogs1 {
+  top: 0;
+  left: 0;
+  height: 637px;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-white);
+}
+.blogs {
+  top: 2742px;
+  left: 205px;
+  height: 681px;
+  font-size: var(--font-size-base);
+  color: var(--color-darkslateblue-200);
+  font-family: var(--font-jost);
+}

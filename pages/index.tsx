@@ -4,9 +4,9 @@ import Navbar from "@/app/Components/Navbar";
 import HomeBanner from "@/app/pageComponents/Home/HomeBanner";
 import HomeServicesBlock from "@/app/pageComponents/Home/HomeServicesBlock";
 import HomeProjectsBlock from "@/app/pageComponents/Home/HomeProjectsBlock";
+import HomeBlogsBlock from "@/app/pageComponents/Home/HomeBlogsBlock";
 
 const Home = () => {
-
   return (
     <div>
       <Navbar />
@@ -15,6 +15,7 @@ const Home = () => {
         <HomeBanner />
         <HomeServicesBlock />
         <HomeProjectsBlock />
+        <HomeBlogsBlock />
       </section>
 
       {/* <Box className={styles.footer}>
@@ -22,5 +23,5 @@ const Home = () => {
       </Box> */}
     </div>
   );
-}
+};
 export default Home;
