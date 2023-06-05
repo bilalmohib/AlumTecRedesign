@@ -21,6 +21,6 @@ const Home = () => {
         <Footer />
       </Box> */}
     </div>
-  )
+  );
 }
 export default Home;

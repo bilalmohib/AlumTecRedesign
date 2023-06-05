@@ -1,14 +1,10 @@
-.rightSideContainer{
-    width: 70%;
-    border: 5px solid red;
-}
-
 /* Services Card */
 .servicesCardContainer {
-    border: 0.1px solid #10146E;
+    /* border: 0.1px solid #10146E; */
     padding-left: 3.75rem;
     margin-top: 4.2rem;
     padding-right: 24%;
+    width: 100%;
 }
 
 /* Services Cards */

@@ -6,9 +6,7 @@ import styles from "./style.module.css";
 import HSBBodyRSControls from "./HSBBodyRSControls";
 
 const HSBBodyRightSide = () => {
-
     return (
-        <div>
             <div className={styles.servicesCardContainer}>
                 <h2
                     className={styles.servicesTitle}
@@ -28,7 +26,6 @@ const HSBBodyRightSide = () => {
 
                 <HSBBodyRSControls />
             </div>
-        </div>
     )
 }
 export default HSBBodyRightSide;

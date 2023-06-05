@@ -40,7 +40,7 @@ const HSBBodyRSControls = () => {
             >
                 <p className={
                     `${styles.sliderArrowTextRight}
-                    ${(isActiveSliderArrow === "left" ? styles.sliderArrowTextActive : styles.sliderArrowTextDeActive)}
+                    ${(isActiveSliderArrow === "right" ? styles.sliderArrowTextActive : styles.sliderArrowTextDeActive)}
                     `
                 }
                 >

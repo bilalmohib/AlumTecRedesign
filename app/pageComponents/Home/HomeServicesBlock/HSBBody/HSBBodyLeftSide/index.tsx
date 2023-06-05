@@ -4,7 +4,6 @@ import styles from "./style.module.css";
 
 const HSBBodyLeftSide = () => {
     return (
-        <div>
             <div className={styles.sliderOuterContainer}>
                 <div className={styles.box}>
                     <div className={styles.containerTlPatternImage}>
@@ -60,7 +59,6 @@ const HSBBodyLeftSide = () => {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 export default HSBBodyLeftSide;

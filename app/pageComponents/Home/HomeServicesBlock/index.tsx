@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 
-import {
-    Box,
-    Typography,
-    Button,
-    Grid
-} from "@mui/material";
+import { Box, Typography, Button, Grid } from "@mui/material";
 
 import Image from "next/image";
 
@@ -13,23 +8,22 @@ import Image from "next/image";
 import HSBHeader from "./HSBHeader";
 import HSBBody from "./HSBBody";
 
-// Importing styles 
+// Importing styles
 import styles from "./style.module.css";
 
 const HomeServicesBlock = () => {
+  return (
+    <div className={styles.container}>
+      <Grid container spacing={0}>
+        <Grid xs={12} md={12} sm={12}>
+          <HSBHeader />
+        </Grid>
+      </Grid>
 
-    return (
-        <div className={styles.container}>
-            <Grid container spacing={0}>
-                <Grid xs={12} md={12} sm={12}>
-                    <HSBHeader />
-                </Grid>
-
-                <section>
-                    <HSBBody />
-                </section>
-            </Grid>
-        </div>
-    )
-}
+      <section>
+        <HSBBody />
+      </section>
+    </div>
+  );
+};
 export default HomeServicesBlock;

@@ -1,15 +1,20 @@
-.container{
-    width: 100%;
-    display: flex;
+.container {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  height: 500px;
 }
 
-.leftSideContainer{
-    width: 38%;
-    border: 3px solid green;
-    display: block;
+.leftContainer {
+  width: 40%;
+  height: 100%;
+  display: block;
+  /* border: 3px solid green; */
 }
 
-.rightSideContainer{
-    width: 62%;
-    border: 3px solid rgb(228, 5, 5);
+.rightContainer {
+  width: 60%;
+  height: 100%;
+  display: block;
+  /* border: 3px solid blue; */
 }
