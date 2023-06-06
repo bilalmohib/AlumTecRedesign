@@ -1,37 +1,56 @@
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import styles from "./style.module.css";
+import { imageList } from "./data";
+import { imageListType } from "./types";
+import Image from "next/image";
 
 const HomeProductsList = () => {
-    return (
-        <div className={styles.container}>
-            <h1>Home Products List</h1>
+  return (
+    <div className={styles.container}>
+      <div className={styles.boxContainer}>
+        <Grid container spacing={2}>
+          {imageList.map((item: imageListType, index: number) => (
+            <Grid key={index} item xs={12} sm={6} md={4}>
+              <Image
+                src={item.imageUrl}
+                alt={`Image ${item.id}`}
+                className={styles.image}
+                title={`Image ${item.id}`}
+                width={372}
+                height={486}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
 
-            <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                    "color": "#FFF",
-                    "fontFamily": "Sharp Grotesk",
-                    "fontSize": "16px",
-                    "fontStyle": "normal",
-                    "fontWeight": "400",
-                    "lineHeight": "77px",
-                    borderRadius: "0px",
-                    backgroundColor: "#123E95",
-                    width: "127px",
-                    height: "36px",
-                    '&:hover': {
-                        backgroundColor: "#123E95",
-                        color: "#FFFFFF",
-                    },
-                }}
-                onClick={() => {
-                    console.log("Button clicked");
-                }}
-            >
-                View All
-            </Button>
-        </div>
-    )
-}
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{
+          color: "#FFFFFF",
+          fontFamily: "Sharp Grotesk",
+          fontSize: "18px",
+          marginTop: "60px",
+          fontStyle: "normal",
+          fontWeight: "400",
+          lineHeight: "77px",
+          borderRadius: "0px",
+          backgroundColor: "#123E95",
+          width: "160px",
+          height: "50px",
+          "&:hover": {
+            backgroundColor: "#123E95",
+            color: "#FFFFFF",
+          },
+        }}
+        onClick={() => {
+          console.log("Button clicked");
+        }}
+      >
+        View All
+      </Button>
+    </div>
+  );
+};
 export default HomeProductsList;

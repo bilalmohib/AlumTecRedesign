@@ -1,6 +1,6 @@
-.servicesHeadingContainer {
+.headingContainer {
     box-sizing: border-box;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     height: 140px;
     margin-top: 42px;
 }
@@ -28,7 +28,7 @@
 }
 
 /* Services Styles */
-.servicesHeadingOverlay {
+.headingOverlay {
     font-style: normal;
     font-weight: 500;
     font-size: 112px;
@@ -43,7 +43,7 @@
     -moz-text-fill-color: transparent;
 }
 
-.servicesHeading {
+.heading {
     margin-left: 2rem;
     margin-top: 2.5rem;
     text-align: left;
