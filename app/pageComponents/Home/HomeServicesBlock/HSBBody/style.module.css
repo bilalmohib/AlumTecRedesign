@@ -1,0 +1,15 @@
+.container{
+    width: 100%;
+    display: flex;
+}
+
+.leftSideContainer{
+    width: 38%;
+    border: 3px solid green;
+    display: block;
+}
+
+.rightSideContainer{
+    width: 62%;
+    border: 3px solid rgb(228, 5, 5);
+}

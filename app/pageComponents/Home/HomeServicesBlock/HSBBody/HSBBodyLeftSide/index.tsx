@@ -4,7 +4,7 @@ import styles from "./style.module.css";
 
 const HSBBodyLeftSide = () => {
     return (
-        <div className={styles.leftSideContainer}>
+        <div>
             <div className={styles.sliderOuterContainer}>
                 <div className={styles.box}>
                     <div className={styles.containerTlPatternImage}>

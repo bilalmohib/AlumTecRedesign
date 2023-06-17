@@ -1,0 +1,11 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    border: 2px solid red;
+    height: auto;
+    margin-top: 60px;
+}

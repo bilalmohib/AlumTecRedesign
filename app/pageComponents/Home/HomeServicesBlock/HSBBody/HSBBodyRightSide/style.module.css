@@ -1,4 +1,7 @@
-
+.rightSideContainer{
+    width: 70%;
+    border: 5px solid red;
+}
 
 /* Services Card */
 .servicesCardContainer {

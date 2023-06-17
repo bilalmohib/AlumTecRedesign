@@ -8,7 +8,7 @@ import HSBBodyRSControls from "./HSBBodyRSControls";
 const HSBBodyRightSide = () => {
 
     return (
-        <div className={styles.rightSideContainer}>
+        <div>
             <div className={styles.servicesCardContainer}>
                 <h2
                     className={styles.servicesTitle}

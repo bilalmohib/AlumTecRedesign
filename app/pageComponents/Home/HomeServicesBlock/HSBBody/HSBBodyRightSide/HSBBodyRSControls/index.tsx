@@ -20,13 +20,13 @@ const HSBBodyRSControls = () => {
                     width={20}
                     height={20}
                     className={
-                        `${styles.sliderArrow} ${(isActiveSliderArrow === "left" ? styles.sliderArrowActive : styles.sliderArrowDeActive)}`
+                        `${styles.sliderArrowLeft} ${(isActiveSliderArrow === "left" ? styles.sliderArrowActive : styles.sliderArrowDeActive)}`
                     }
                     alt="Left"
                 />
 
                 <p className={
-                    `${styles.sliderArrowText}
+                    `${styles.sliderArrowTextLeft}
                     ${(isActiveSliderArrow === "left" ? styles.sliderArrowTextActive : styles.sliderArrowTextDeActive)}
                     `
                 }
@@ -39,7 +39,7 @@ const HSBBodyRSControls = () => {
                 className={styles.rightAC}
             >
                 <p className={
-                    `${styles.sliderArrowText}
+                    `${styles.sliderArrowTextRight}
                     ${(isActiveSliderArrow === "left" ? styles.sliderArrowTextActive : styles.sliderArrowTextDeActive)}
                     `
                 }
@@ -53,7 +53,7 @@ const HSBBodyRSControls = () => {
                     width={20}
                     height={20}
                     className={
-                        `${styles.sliderArrow} ${(isActiveSliderArrow === "right" ? styles.sliderArrowActive : styles.sliderArrowDeActive)}`
+                        `${styles.sliderArrowRight} ${(isActiveSliderArrow === "right" ? styles.sliderArrowActive : styles.sliderArrowDeActive)}`
                     }
                     alt="Right"
                 />

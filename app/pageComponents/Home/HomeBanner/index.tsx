@@ -15,7 +15,6 @@ import LeftContainerHB from "./LeftContainerHB";
 import RightContainerHB from "./RightContainerHB";
 
 import styles from "./style.module.css";
-import HomeServicesBlock from "../HomeServicesBlock";
 
 const HomeBanner = () => {
     const [isActiveSliderArrow, setIsActiveSliderArrow] = useState<string>("");
@@ -29,8 +28,6 @@ const HomeBanner = () => {
                 <Grid xs={6} md={6} sm={12}>
                     <RightContainerHB />
                 </Grid>
-
-                <HomeServicesBlock />
             </Grid>
         </div >
     )
