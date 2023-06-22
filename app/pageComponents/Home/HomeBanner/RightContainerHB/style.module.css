@@ -7,7 +7,7 @@
     background: linear-gradient(157.51deg, #E1E7FF -14.3%, #DBE2FC 49.95%, #FAFBFF 102.59%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
     border-radius: 0px;
-    /* border: 2px solid green; */
+    border: 2px solid green;
 }
 
 /* Slider Styles */
@@ -34,7 +34,7 @@
 
 /* Frame Image */
 .frameImage {
-    width: 822.07px;
+    width: 90%;
     height: 638.66px;
     background: linear-gradient(90.39deg, #ffffff46 -7.71%, #708bd468 54.46%, #f5f5f54e 103.16%);
     /* background: linear-gradient(157.51deg, #E1E7FF -14.3%, #DBE2FC 49.95%, #FAFBFF 102.59%);
@@ -56,12 +56,12 @@
 }
 
 .middleImage {
-    width: 618.96px;
+    width: 80%;
     height: 482.44px;
     text-align: center;
     display: flex;
     justify-content: center;
-    margin-left: 100px;
+    margin-left: 5rem;
     margin-top: 80px;
     border-radius: 10px;
 }
@@ -72,7 +72,7 @@
     text-align: right;
     display: flex;
     justify-content: flex-end;
-    margin-left: 590px;
+    margin-left: 72%;
     margin-top: 30px;
     border-radius: 10px;
 }

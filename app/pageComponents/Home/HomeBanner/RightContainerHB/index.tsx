@@ -35,7 +35,7 @@ const RightContainerHB = () => {
 
     return (
         <div className={styles.rightContainer}>
-            <div style={{ paddingTop: "134px", marginLeft: "26.85px" }}></div>
+            <div style={{ paddingTop: "8rem", marginLeft: "26.85px" }}></div>
             <div className={styles.sliderOuterContainer}>
                 <div className={styles.box}>
                     <Image
