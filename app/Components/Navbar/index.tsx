@@ -139,7 +139,7 @@ function Navbar() {
       display: "flex",
       flexDirection: "row",
       width: "35%",
-      marginLeft: "3%",
+      paddingLeft: "4rem",
       height: "100%"
     }
   };
@@ -175,7 +175,7 @@ function Navbar() {
             />
           </Box>
 
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, color: "#332D2D", marginLeft: "4%", paddingTop: "8px" }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, color: "#332D2D", marginLeft: "0rem", paddingTop: "8px" }}>
             {navItems.map((item: any, index: number) => (
               <Link
                 key={index}
