@@ -9,12 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/base": "^5.0.0-alpha.116",
-    "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.7",
-    "@mui/styles": "^5.11.7",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/material": "^5.13.7",
     "@next/font": "13.1.6",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",

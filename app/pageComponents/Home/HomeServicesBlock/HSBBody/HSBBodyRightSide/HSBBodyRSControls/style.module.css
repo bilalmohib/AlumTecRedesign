@@ -1,0 +1,95 @@
+.servicesSliderArrowContainer {
+    border: 1px solid red;
+    margin-top: 40px;
+    width: 220px;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* When It's Deactive */
+.rightAC {
+    /* border: 1px solid red; */
+    border-top: 1.5px solid #a4a4a4;
+    border-left: 1.5px solid #a4a4a4;
+    border-bottom: 1.5px solid #a4a4a4;
+    width: 39.25px;
+    height: 44px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.sliderArrow {
+    opacity: 0.5;
+    margin-top: 5px;
+    color: #a4a4a4;
+}
+
+.sliderArrowDeActive {
+    color: #a4a4a4;
+    opacity: 0.5;
+}
+
+/* When It's Active */
+.leftAC {
+    border-top: 1.5px solid #10146E;
+    border-left: 1.5px solid #10146E;
+    border-bottom: 1.5px solid #10146E;
+    width: 39.25px;
+    height: 44px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.sliderArrowActive {
+    color: #10146E;
+    opacity: 1;
+}
+
+/* When It's Hover */
+.servicesSliderHoverArrow {
+    border-top: 1.5px solid #10146E;
+    border-left: 1.5px solid #10146E;
+    border-bottom: 1.5px solid #10146E;
+    width: 39.25px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.sliderArrowHover {
+    color: #10146E;
+    opacity: 1;
+}
+
+/* When It's Focus */
+.servicesSliderFocusArrow {
+    border-top: 1.5px solid #10146E;
+    border-left: 1.5px solid #10146E;
+    border-bottom: 1.5px solid #10146E;
+    width: 39.25px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.sliderArrowFocus {
+    color: #10146E;
+    opacity: 1;
+}
+
+/* Sider Arrow Text */
+.sliderArrowText {
+    font-family: Jost;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.sliderArrowTextActive {
+    color: #1C1C1C;
+}
+
+.sliderArrowTextDeActive {
+    color: #a4a4a4;
+}

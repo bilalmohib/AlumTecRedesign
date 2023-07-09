@@ -1,0 +1,54 @@
+/* Left Container */
+.leftContainer {
+    /* width: 100%; */
+    /* border: 2px solid red; */
+}
+
+.insideLeftContainer {
+    padding-left: 6rem;
+}
+
+/* Heading */
+.heading {
+    text-align: left;
+    margin-top: 169px;
+    font-style: normal;
+    color: #000000;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 65px;
+    padding-right: 10rem;
+}
+
+/* Sub Heading */
+.subHeading {
+    color: #777777;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    margin-top: 40px;
+}
+
+/* Read More Button */
+.readMoreButton {
+    width: 202.2px;
+    height: 55px;
+    background: #10146F;
+    box-shadow: 0px 14px 40px rgba(32, 63, 123, 0.22);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    color: #F2F2F2;
+    margin-top: 143px;
+}
+
+.readMoreButton:hover {
+    background-color: #F2F2F2;
+    color: #10146F;
+    border: 0.1px solid #10146F;
+}

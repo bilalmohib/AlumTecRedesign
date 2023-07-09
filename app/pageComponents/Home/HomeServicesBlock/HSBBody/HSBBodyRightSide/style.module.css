@@ -1,0 +1,43 @@
+
+
+/* Services Card */
+.servicesCardContainer {
+    border: 0.1px solid #10146E;
+    padding-left: 3.75rem;
+    margin-top: 4.2rem;
+    padding-right: 24%;
+}
+
+/* Services Cards */
+.servicesTitle {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 43px;
+    line-height: 77px;
+    background-image: linear-gradient(0deg, #10146E, #10146E), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.servicesDescription {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 40px;
+    color: rgba(0, 0, 0, 0.64);
+    margin-top: 2rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@font-face {
+    font-family: SharpGroteskLight05;
+    src: url(/public/Fonts/SharpGroteskLight05.ttf);
+}

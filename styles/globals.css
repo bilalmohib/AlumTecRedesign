@@ -12,15 +12,7 @@ body {
   font-family: 'Montserrat', sans-serif !important;
 }
 
-.customContainer {
-  font-family: 'Montserrat', sans-serif !important;
-  padding-left: 6%;
-  padding-right: 0%;
-  width: 100%;
-}
-
-.swiper-button-prev, .swiper-button-next {
-  /* border: 1px solid red; */
+/* .swiper-button-prev, .swiper-button-next {
   width: 60px !important;
   height: 60px !important;
   color: #06989e !important;
@@ -64,4 +56,4 @@ body {
 .swiper-slide img {
   display: block;
   width: 100%;
-}
+} */
