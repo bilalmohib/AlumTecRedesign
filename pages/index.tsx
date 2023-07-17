@@ -17,11 +17,12 @@ const Home = () => {
         <HomeServicesBlock />
         <HomeProjectsBlock />
         <HomeBlogsBlock />
+        <br /><br />
       </section>
 
-      <div style={{ marginTop: 560,position:"relative" }}>
+      {/* <div style={{ marginTop: 560,position:"relative" }}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

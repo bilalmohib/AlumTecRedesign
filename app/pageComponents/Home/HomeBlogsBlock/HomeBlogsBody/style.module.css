@@ -1,0 +1,9 @@
+.container {
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid rgb(0, 255, 115); */
+}

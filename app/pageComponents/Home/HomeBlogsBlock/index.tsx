@@ -1,5 +1,5 @@
 import HBBHeader from "../HomeBlogsBlock/HBBHeader";
-import HomeBlogsList from "./HomeBlogsList";
+import HomeBlogsBody from "./HomeBlogsBody";
 
 import styles from "./style.module.css";
 
@@ -8,7 +8,7 @@ const HomeBlogsBlock = () => {
     <div className={styles.container}>
       <HBBHeader />
 
-      <HomeBlogsList />
+      <HomeBlogsBody />
     </div>
   );
 };

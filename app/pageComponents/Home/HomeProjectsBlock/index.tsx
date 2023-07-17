@@ -7,7 +7,6 @@ const HomeProjectsBlock = () => {
   return (
     <div className={styles.container}>
       <HPBHeader />
-
       <HomeProductsList />
     </div>
   );
