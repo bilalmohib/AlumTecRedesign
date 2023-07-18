@@ -1,0 +1,12 @@
+.container {
+  /* border: 4px solid rgb(221, 45, 174); */
+}
+
+.blog_image {
+  height: 400px;
+  /* left: 25px; */
+  position: relative;
+  /* top: 65px;
+  width: 270px; */
+  /* border: 5px solid rgb(247, 0, 255); */
+}

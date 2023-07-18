@@ -1,0 +1,15 @@
+.container {
+  /* border: 5px solid rgb(0, 187, 255); */
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.leftSideContainer{
+    /* border: 1px solid yellow; */
+}
+
+.rightSideContainer{
+    /* border: 1px solid blueviolet; */
+    /* margin-left: 25px; */
+}

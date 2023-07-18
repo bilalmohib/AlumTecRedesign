@@ -3,11 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
-      'bookslibrary.net',
-      'images.unsplash.com',
-      's.yimg.com',
+      "bookslibrary.net",
+      "images.unsplash.com",
+      "s.yimg.com",
+      "generation-sessions.s3.amazonaws.com"
     ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
