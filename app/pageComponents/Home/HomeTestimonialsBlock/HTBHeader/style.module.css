@@ -1,12 +1,12 @@
-.servicesHeadingContainer {
+.container {
   box-sizing: border-box;
   border: 1px solid red;
-  height: 144px;
+  height: 140px;
   margin-top: 42px;
 }
 
-/* Slider Styles */
-.sliderOuterContainer {
+/* Inside Container Styles */
+.insideContainer {
   width: 100%;
   height: auto;
   position: relative;
@@ -27,11 +27,11 @@
   /* margin: 40px; */
 }
 
-/* Services Styles */
-.servicesHeadingOverlay {
+/* heading overlay Styles */
+.heading_overlay_text {
   font-style: normal;
   font-weight: 500;
-  font-size: 112px;
+  font-size: 99px;
   font-family: "Sharp Grotesk-Medium20", Helvetica;
   line-height: 77px;
   background-image: linear-gradient(0deg,
@@ -45,11 +45,10 @@
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
-  top: 10px;
   user-select: none;
 }
 
-.servicesHeading {
+.heading_text {
   margin-left: 50px;
   margin-top: 40px;
   text-align: left;

@@ -1,0 +1,44 @@
+.container {
+    border: 1px solid red;
+    display: flex;
+}
+
+.left_container {
+    /* border: 1px solid blue; */
+}
+
+.testimonial_by_image{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(3px 4px 7px rgba(0, 0, 0, 0.25));
+}
+
+.right_container {
+    /* border: 1px solid green; */
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.postedBy_text {
+    color: #0E2674;
+    font-family: "Poppins Grotesk-Medium20", Helvetica;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-top: 5px;
+}
+
+.designation_text {
+    color: #000;
+    font-family: "Poppins Grotesk-Medium20", Helvetica;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -10px;
+}

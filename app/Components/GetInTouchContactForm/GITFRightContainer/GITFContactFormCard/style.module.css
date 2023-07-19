@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    border: 2px solid blue;
+}
+
+.formContainer {
+    width: 453.706px;
+    height: 582px;
+    background-color: hsl(220, 78%, 33%);
+    padding-left: 2.8rem;
+    padding-right: 2.8rem;
+    padding-top: 1.7rem;
+}
+
+.form_header {
+    color: hsl(0, 0%, 100%);
+    font-family: "Sharp Grotesk-Medium20", Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 23px;
+}

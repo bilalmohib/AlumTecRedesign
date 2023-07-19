@@ -6,6 +6,8 @@ import HomeServicesBlock from "@/app/pageComponents/Home/HomeServicesBlock";
 import HomeProjectsBlock from "@/app/pageComponents/Home/HomeProjectsBlock";
 import HomeBlogsBlock from "@/app/pageComponents/Home/HomeBlogsBlock";
 import Footer from "@/app/Components/Footer";
+import HomeTestimonialsBlock from "@/app/pageComponents/Home/HomeTestimonialsBlock";
+import GetInTouchContactForm from "@/app/Components/GetInTouchContactForm";
 
 const Home = () => {
   return (
@@ -17,6 +19,8 @@ const Home = () => {
         <HomeServicesBlock />
         <HomeProjectsBlock />
         <HomeBlogsBlock />
+        <HomeTestimonialsBlock />
+        <GetInTouchContactForm />
         <br /><br />
       </section>
 

@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    height: 422px;
+    background-color: hsla(228, 73%, 61%, 0.122);
+    filter: drop-shadow(3px 4px 7px rgba(0, 0, 0, 0.25));
+    padding: 100px 67px;
+}
+
+.testimonial_title {
+    color: #163E82;
+    font-family: "Sharp Grotesk-Medium20", Helvetica;
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.testimonial_description {
+    color: rgba(0, 0, 0, 0.47);
+    font-family: 'Poppins Grotesk-Medium20', Helvetica;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+}
+
+.testimonial_posted_by_block{
+    margin-top: 40px;
+}
