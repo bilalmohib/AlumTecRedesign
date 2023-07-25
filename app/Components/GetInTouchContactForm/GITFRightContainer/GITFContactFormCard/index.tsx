@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField';
 
 import styles from "./style.module.css";
+import FormInput from '@/app/Components/FormInput';
 
 const GITFContactFormCard = () => {
     return (
@@ -8,27 +9,15 @@ const GITFContactFormCard = () => {
             <h1>Form</h1>
             <div className={styles.formContainer}>
                 <h3 className={styles.form_header}>Get in Touch</h3>
-                <TextField
-                    id="outlined-basic"
-                    label=""
-                    placeholder='Name'
-                    type='text'
-                    value={''}
-                    variant="outlined"
-                    className={styles.form_input}
-                    sx={{
-                        borderRadius: "5px",
-                        background: "#FFFFFF",
-                        width: "100%",
-                        height: "54px",
-                        "color": "rgba(0, 0, 0, 0.56)",
-                        "fontFamily": '"Sharp Grotesk-Medium20", Helvetica',
-                        "fontSize": "16px",
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "lineHeight": "normal"
-                    }}
-                />
+                {[1, 2, 3, 4, 5].map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <FormInput
+                                
+                            />
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
