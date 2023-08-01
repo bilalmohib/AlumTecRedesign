@@ -48,14 +48,14 @@ html:not([data-scroll="0"]) .navContainer {
 /* Nav Item Container */
 .navItemContainer {
     display: flex;
-    color: #332D2D;
+    color: #332D2D !important;
     margin-left: 0rem;
     padding-top: 8px;
 }
 
 /* Nav Links */
 .navItem {
-    color: #332D2D;
+    color: #332D2D !important;
     font-size: 20;
     text-transform: none;
     display: block;
