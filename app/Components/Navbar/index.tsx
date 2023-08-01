@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 import {
   AppBar,
@@ -12,28 +12,54 @@ import {
   ListItemText,
   Toolbar,
   Link,
-  Typography
+  Typography,
 } from "@mui/material";
-import { useRouter } from 'next/router';
-import styles from './style.module.css';
-import { DesktopNavbar, NavItemContainer, menuClick } from './methods';
-import { NavItemContainerProps } from './types';
-import { type } from 'os';
+import { useRouter } from "next/router";
+import styles from "./style.module.css";
+import { DesktopNavbar, NavItemContainer, menuClick } from "./methods";
+import { DesktopNavbarProps, NavItemContainerProps } from "./types";
+import { type } from "os";
 
 const drawerWidth = 240;
 
 const navItems = [
-  { name: 'Home', link: '/' },
-  { name: 'About Us', link: '/about' },
-  { name: 'Services', link: '/services' },
-  { name: 'Our Products', link: '/products' },
-  { name: 'Career', link: '/career' },
-  { name: 'Contact us', link: '/contact' },
-  { name: 'Blog', link: '/blog' },
-  { name: 'Call us', link: '/call' },
+  { name: "Home", link: "/" },
+  { name: "About Us", link: "/about" },
+  { name: "Services", link: "/services" },
+  { name: "Our Products", link: "/products" },
+  { name: "Career", link: "/career" },
+  { name: "Contact us", link: "/contact" },
+  { name: "Blog", link: "/blog" },
+  { name: "Call us", link: "/call" },
 ];
 
-const MobileNavbar = ({ navItems, router, handleDrawerToggle }: DesktopNavbarProps) => {
+const MobileNavbar = ({
+  navItems,
+  router,
+  handleDrawerToggle,
+}: DesktopNavbarProps) => {
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        ALUM TEC
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item, index) => (
+          <ListItemButton
+            key={index}
+            onClick={() => console.log(item)}
+            sx={{ textAlign: "center" }}
+          >
+            <ListItemText primary={item.name} />
+          </ListItemButton>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
     <Box component="nav">
       <Drawer
@@ -44,8 +70,8 @@ const MobileNavbar = ({ navItems, router, handleDrawerToggle }: DesktopNavbarPro
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
       >
         {drawer}
@@ -56,6 +82,7 @@ const MobileNavbar = ({ navItems, router, handleDrawerToggle }: DesktopNavbarPro
 
 function Navbar() {
   const router = useRouter();
+
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   const handleDrawerToggle = () => {
@@ -66,7 +93,8 @@ function Navbar() {
     // The debounce function receives our function as a parameter
     const debounce = (
       // @ts-ignore
-      fn) => {
+      fn
+    ) => {
       // This holds the requestAnimationFrame reference, so we can cancel it if we wish
       // @ts-ignore
       let frame;
@@ -85,7 +113,7 @@ function Navbar() {
           // Call our function and pass any params we received
           fn(...params);
         });
-      }
+      };
     };
 
     // Reads out the scroll position and stores it in the data attribute
@@ -93,33 +121,19 @@ function Navbar() {
     const storeScroll = () => {
       // @ts-ignore
       document.documentElement.dataset.scroll = window.scrollY;
-    }
+    };
 
     // Listen for new scroll events, here we debounce our `storeScroll` function
-    document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+    document.addEventListener("scroll", debounce(storeScroll), {
+      passive: true,
+    });
 
     // Update scroll position for first time
     storeScroll();
   });
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        ALUM TEC
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item, index) => (
-          <ListItemButton key={index} onClick={() => console.log(item)} sx={{ textAlign: 'center' }}>
-            <ListItemText primary={item.name} />
-          </ListItemButton>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
-    <div className='flex'>
+    <div className="flex">
       <CssBaseline />
       <DesktopNavbar
         navItems={navItems}
