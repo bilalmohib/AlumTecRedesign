@@ -1,17 +1,23 @@
 import { TextField } from "@mui/material";
+import { FormInputType } from "../GetInTouchContactForm/GITFRightContainer/GITFContactFormCard/types";
 
-interface IFormInput {
-    item: number
-}
+const FormInput = (props: FormInputType) => {
+    const {
+        type,
+        placeholder,
+        value,
+        handleValueChange,
+        className
+    } = props;
 
-const FormInput = () => {
     return (
         <TextField
-            id="outlined-basic"
             label=""
-            placeholder='Name'
-            type='text'
-            value={''}
+            placeholder={(placeholder ? placeholder : "")}
+            type={type}
+            value={value}
+            onChange={handleValueChange}
+            className={(className ? className : "")}
             variant="outlined"
             sx={{
                 borderRadius: "5px",
@@ -23,7 +29,7 @@ const FormInput = () => {
                 "fontSize": "16px",
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": "normal"
+                "lineHeight": "normal",
             }}
         />
     )

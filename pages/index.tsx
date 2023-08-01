@@ -16,11 +16,11 @@ const Home = () => {
 
       <section>
         <HomeBanner />
-        <HomeServicesBlock />
-        <HomeProjectsBlock />
+        {/*<HomeServicesBlock />
+          <HomeProjectsBlock />
         <HomeBlogsBlock />
         <HomeTestimonialsBlock />
-        <GetInTouchContactForm />
+        <GetInTouchContactForm /> */}
         <br /><br />
       </section>
 

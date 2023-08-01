@@ -1,5 +1,23 @@
-.container{
+.container {
     width: 100%;
     height: 100%;
-    border: 1px solid red;
+    /* border: 2px solid rgb(99, 15, 129); */
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* background: #0057e3; */
+}
+
+.overlay {
+    z-index: 9;
+    width: 418.418px;
+    height: 610px;
+    margin-top: 11px;
+    padding-top: 3%;
+    padding-left: 3%;
+    /* background: #009938; */
+    border: 1px solid blue;
 }

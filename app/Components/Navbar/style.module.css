@@ -27,6 +27,15 @@ html:not([data-scroll="0"]) .navContainer {
     transition: 0.1s linear !important;
 }
 
+/* Logo Container */
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    padding-left: 4rem;
+    height: 100%;
+}
+
 /* Logo Styles */
 .logo {
     margin-left: 2%;
@@ -36,3 +45,35 @@ html:not([data-scroll="0"]) .navContainer {
     display: block;
 }
 
+/* Nav Item Container */
+.navItemContainer {
+    display: flex;
+    color: #332D2D;
+    margin-left: 0rem;
+    padding-top: 8px;
+}
+
+/* Nav Links */
+.navItem {
+    color: #332D2D;
+    font-size: 20;
+    text-transform: none;
+    display: block;
+
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.navItem:hover {
+    color: #10146F;
+    text-decoration: underline;
+    transition: 0.2s linear;
+}
+
+@media all and (max-width:700px) {
+    .navItemContainer {
+        display: none;
+    }
+}

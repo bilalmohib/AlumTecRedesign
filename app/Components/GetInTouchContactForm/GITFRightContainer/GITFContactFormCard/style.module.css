@@ -1,6 +1,6 @@
 .container {
-    width: 100%;
-    border: 2px solid blue;
+    width: fit-content;
+    /* border: 2px solid rgb(255, 0, 0); */
 }
 
 .formContainer {
@@ -10,6 +10,7 @@
     padding-left: 2.8rem;
     padding-right: 2.8rem;
     padding-top: 1.7rem;
+    border-radius: 3px;
 }
 
 .form_header {
