@@ -16,12 +16,14 @@ const Home = () => {
 
       <section>
         <HomeBanner />
-        {/*<HomeServicesBlock />
-          <HomeProjectsBlock />
+        <HomeServicesBlock />
+        <HomeProjectsBlock />
+        {/* 
         <HomeBlogsBlock />
         <HomeTestimonialsBlock />
         <GetInTouchContactForm /> */}
-        <br /><br />
+        <br />
+        <br />
       </section>
 
       {/* <div style={{ marginTop: 560,position:"relative" }}>

@@ -6,6 +6,7 @@ const LeftContainerHB = () => {
     return (
         <div className={styles.leftContainer}>
             <div className={styles.insideLeftContainer}>
+                <div className={styles.dash_line}></div>
                 <h3
                     className={styles.heading}
                 >

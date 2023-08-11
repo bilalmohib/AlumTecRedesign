@@ -9,10 +9,10 @@ const HomeBanner = () => {
   return (
     <div className={styles.customContainer}>
       <Grid container spacing={0}>
-        <Grid item xs={6} md={6} sm={12}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <LeftContainerHB />
         </Grid>
-        <Grid item xs={6} md={6} sm={12}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <RightContainerHB />
         </Grid>
       </Grid>

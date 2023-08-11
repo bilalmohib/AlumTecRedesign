@@ -8,20 +8,23 @@ const HomeProductsList = () => {
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
-        <Grid container spacing={2}>
+        {/* <Grid container spacing={2}> */}
           {imageList.map((item: imageListType, index: number) => (
-            <Grid key={index} item xs={12} sm={6} md={4}>
-              <Image
-                src={item.imageUrl}
-                alt={`Image ${item.id}`}
-                className={styles.image}
-                title={`Image ${item.id}`}
-                width={372}
-                height={486}
-              />
-            </Grid>
+            // <Grid key={index} item xs={12} sm={6} md={4}>
+              <div className={styles.imageContainer}>
+                <Image
+                  src={item.imageUrl}
+                  alt={`Image ${item.id}`}
+                  className={styles.image}
+                  title={`Image ${item.id}`}
+                  width={372}
+                  height={486}
+                />
+                <div className={styles.borderOverlay}></div>
+              </div>
+            // </Grid>
           ))}
-        </Grid>
+        {/* </Grid> */}
       </div>
 
       <Button
@@ -35,7 +38,7 @@ const HomeProductsList = () => {
           fontStyle: "normal",
           fontWeight: "400",
           lineHeight: "77px",
-          borderRadius: "0px",
+          borderRadius: "2px",
           backgroundColor: "#123E95",
           width: "160px",
           height: "50px",

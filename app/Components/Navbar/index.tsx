@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
-  AppBar,
   Box,
   CssBaseline,
   Divider,
   Drawer,
-  IconButton,
   List,
   ListItemButton,
   ListItemText,
-  Toolbar,
-  Link,
   Typography,
 } from "@mui/material";
 import { useRouter } from "next/router";
+import { DesktopNavbar } from "./methods";
+import { DesktopNavbarProps } from "./types";
 import styles from "./style.module.css";
-import { DesktopNavbar, NavItemContainer, menuClick } from "./methods";
-import { DesktopNavbarProps, NavItemContainerProps } from "./types";
-import { type } from "os";
 
 const drawerWidth = 240;
 
@@ -37,9 +32,8 @@ const MobileNavbar = ({
   navItems,
   router,
   handleDrawerToggle,
+  mobileOpen,
 }: DesktopNavbarProps) => {
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -69,8 +63,8 @@ const MobileNavbar = ({
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
+        className={styles.menuButton}
         sx={{
-          display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
       >
@@ -133,17 +127,19 @@ function Navbar() {
   });
 
   return (
-    <div className="flex">
+    <div>
       <CssBaseline />
       <DesktopNavbar
         navItems={navItems}
         router={router}
         handleDrawerToggle={handleDrawerToggle}
+        mobileOpen={mobileOpen}
       />
       <MobileNavbar
         navItems={navItems}
         router={router}
         handleDrawerToggle={handleDrawerToggle}
+        mobileOpen={mobileOpen}
       />
     </div>
   );

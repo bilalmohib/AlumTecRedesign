@@ -1,13 +1,49 @@
-.container{
+/* .container{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: aliceblue;
-    /* border: 2px solid red; */
     height: auto;
     margin-top: 60px;
 }
 
-.boxContainer{}
+.boxContainer{} */
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  /* border: 2px solid red; */
+  height: auto;
+  margin-top: 60px;
+}
+
+.boxContainer {
+  border: 1px solid red;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.image {
+  width: 372px;
+  height: 486px;
+}
+
+.borderOverlay {
+  position: absolute;
+  top: -20px; /* Adjust as needed */
+  bottom: 25px;
+  right: -10px; /* Adjust as needed */
+  border: 2px solid #123e95;
+  z-index: -1;
+  width: 312px; /* Adjust as needed */
+  height: 446px; /* Adjust as needed */
+  pointer-events: none; /* Ensure the overlay doesn't interfere with interactions */
+}

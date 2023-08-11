@@ -7,4 +7,5 @@ export type DesktopNavbarProps = {
     navItems: NavItemContainerProps['navItems'];
     router: any;
     handleDrawerToggle: () => void;
+    mobileOpen: boolean;
 };

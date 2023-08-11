@@ -1,115 +1,417 @@
 /* Right Container */
 .rightContainer {
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 887px;
-    height: auto;
-    background: linear-gradient(157.51deg, #E1E7FF -14.3%, #DBE2FC 49.95%, #FAFBFF 102.59%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
-    border-radius: 0px;
-    /* border: 2px solid green; */
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 887px;
+  height: auto;
+  background: linear-gradient(
+    157.51deg,
+    #e1e7ff -14.3%,
+    #dbe2fc 49.95%,
+    #fafbff 102.59%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 0px;
+  /* border: 2px solid green; */
 }
 
 /* Slider Styles */
 .sliderOuterContainer {
-    width: 100%;
-    height: auto;
-    position: relative;
+  width: 100%;
+  height: auto;
+  position: relative;
 }
 
 .box {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    /* background: #0057e3; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
 }
 
 .overlay {
-    z-index: 9;
-    /* margin: 40px; */
+  z-index: 9;
 }
 
 /* Frame Image */
-.frameImage {
-    width: 90%;
-    height: 638.66px;
-    background: linear-gradient(90.39deg, #ffffff46 -7.71%, #708bd468 54.46%, #f5f5f54e 103.16%);
-    /* background: linear-gradient(157.51deg, #E1E7FF -14.3%, #DBE2FC 49.95%, #FAFBFF 102.59%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06); */
-    border-radius: 0px;
-    transform: rotate(180deg);
-    margin-left: 2%;
+.frameImageDesktop {
+  max-width: 90%;
+  min-height: 638.66px;
+  background: linear-gradient(
+    90.39deg,
+    #ffffff46 -7.71%,
+    #98aadb2d 54.46%,
+    #f5f5f54e 103.16%
+  );
+  border-radius: 0px;
+  transform: rotate(180deg);
+}
+
+.frameImageMobile {
+  max-width: 90%;
+  min-height: 638.66px;
+  background: linear-gradient(
+    90.39deg,
+    #ffffff46 -7.71%,
+    #98aadb2d 54.46%,
+    #f5f5f54e 103.16%
+  );
+  border-radius: 0px;
+  transform: rotate(180deg);
+  padding-left: 20px;
+  padding-right: 20px;
+  background-image: url(../../../../../public/Images/Home/Slider/Frame.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
 }
 
 .leftImage {
-    width: 201.3px;
-    height: 212.22px;
-    text-align: left;
-    display: flex;
-    justify-content: flex-start;
-    margin-left: -20px;
-    margin-top: 400px;
-    border-radius: 10px;
+  width: 201.3px;
+  height: 212.22px;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -20px;
+  margin-top: 400px;
+  border-radius: 10px;
 }
 
 .middleImage {
-    width: 80%;
-    height: 482.44px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-left: 5rem;
-    margin-top: 80px;
-    border-radius: 10px;
+  width: 70%;
+  height: 482.44px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-left: 5rem;
+  margin-top: 80px;
+  border-radius: 10px;
 }
 
 .rightImage {
-    width: 180.44px;
-    height: 190.72px;
-    text-align: right;
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 72%;
-    margin-top: 30px;
-    border-radius: 10px;
+  width: 180.44px;
+  height: 190.72px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 68%;
+  margin-top: 30px;
+  border-radius: 10px;
 }
 
 /* Animations for images */
 .leftImage,
 .middleImage,
 .rightImage {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* Set up the keyframe animation */
 @keyframes opacity {
-    from {
-        opacity: 0.5;
-    }
+  from {
+    opacity: 0.5;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Apply the animation to the images */
 .leftImage.active {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .middleImage.active {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .rightImage.active {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* Animations for images */
+
+.spaceUpPattern {
+  padding-top: 8rem;
+  margin-left: 26.85px;
+}
+
+/* Tab View Styles */
+@media all and (max-width: 1500px) {
+  .middleImage {
+    width: 70%;
+  }
+  .rightImage {
+    margin-left: 62%;
+  }
+}
+
+@media all and (max-width: 1350px) {
+  .middleImage {
+    width: 70%;
+  }
+  .rightImage {
+    margin-left: 58%;
+  }
+}
+
+@media all and (max-width: 1100px) {
+  .rightImage {
+    margin-left: 57%;
+  }
+}
+
+@media all and (max-width: 1015px) {
+  .rightImage {
+    margin-left: 56%;
+  }
+}
+
+@media all and (max-width: 980px) {
+  .rightImage {
+    margin-left: 55%;
+  }
+}
+
+@media all and (max-width: 899px) {
+  .rightImage {
+    margin-left: 76%;
+  }
+  .spaceUpPattern {
+    padding-top: 8rem;
+    margin-left: 0px;
+  }
+  .leftImage {
+    margin-left: 40px;
+  }
+  .middleImage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+  }
+  .frameImage {
+    max-width: 90%;
+    margin-left: initial;
+    margin-right: initial;
+    min-height: 638.66px;
+  }
+}
+
+@media all and (max-width: 880px) {
+  .rightImage {
+    margin-left: 75%;
+  }
+  .frameImage {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media all and (max-width: 860px) {
+  .rightImage {
+    margin-left: 74.5%;
+  }
+}
+
+@media all and (max-width: 840px) {
+  .rightImage {
+    margin-left: 74%;
+  }
+}
+
+@media all and (max-width: 820px) {
+  .rightImage {
+    margin-left: 73.5%;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .rightImage {
+    margin-left: 73%;
+  }
+}
+
+@media all and (max-width: 780px) {
+  .rightImage {
+    margin-left: 72%;
+  }
+
+  .frameImageDesktop {
+    display: none;
+  }
+  .frameImageMobile {
+    display: block;
+    max-width: 90%;
+    margin-left: 5%;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .rightImage {
+    margin-left: 71%;
+  }
+}
+
+@media all and (max-width: 730px) {
+  .rightImage {
+    margin-left: 70%;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .rightImage {
+    margin-left: 69%;
+  }
+}
+
+@media all and (max-width: 680px) {
+  .rightImage {
+    margin-left: 67.5%;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .rightImage {
+    margin-left: 67.5%;
+  }
+}
+
+@media all and (max-width: 620px) {
+  .rightImage {
+    margin-left: 65%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .rightContainer {
+    min-height: 730px;
+  }
+  .rightImage {
+    margin-left: 63%;
+  }
+  .middleImage {
+    margin-top: 95px;
+    height: 450px;
+  }
+  .spaceUpPattern {
+    padding-top: 43px;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .rightImage {
+    margin-left: 62%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .rightImage {
+    margin-top: 35px;
+    margin-left: 60%;
+    width: 160px;
+    height: 160px;
+  }
+  .middleImage {
+    margin-top: 65px;
+    height: 400px;
+  }
+  .leftImage {
+    margin-top: 320px;
+    width: 160px;
+    height: 160px;
+    margin-left: 20px;
+  }
+  .frameImageMobile {
+    width: 90%;
+    min-height: 520px;
+  }
+  .rightContainer {
+    min-height: 610px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .middleImage {
+    margin-top: 65px;
+    height: 380px;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .middleImage {
+    margin-top: 3px;
+    width: 199.652px;
+    height: 178.196px;
+  }
+  .frameImageMobile {
+    max-width: 90%;
+    width: 90%;
+    min-height: initial;
+    height: 206.682px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../../../../../public/Images/Home/Slider/FrameMobile.png);
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: -10px;
+  }
+  .rightImage {
+    width: 58.2px;
+    height: 61.52px;
+    margin-left: 65%;
+    margin-top: -5px;
+  }
+  .leftImage {
+    width: 64.3px;
+    height: 67.96px;
+    margin-top: 120px;
+    margin-left: 80px;
+  }
+  .rightContainer {
+    min-height: 286px;
+    padding-top: 0px;
+  }
+}
+
+@media all and (max-width: 350px) {
+  .rightImage {
+    margin-left: 70%;
+  }
+  .leftImage {
+    margin-left: 50px;
+  }
+}
+
+@media all and (max-width: 330px) {
+  .rightImage {
+    margin-left: 70%;
+  }
+  .leftImage {
+    margin-left: 30px;
+  }
+}
+
+@media all and (max-width: 300px) {
+  .rightImage {
+    margin-left: 72%;
+  }
+  .leftImage {
+    margin-left: 20px;
+  }
+}
+
+@media all and (max-width: 270px) {
+  .rightImage {
+    margin-left: 72%;
+  }
+  .leftImage {
+    margin-left: 10px;
+  }
+}
