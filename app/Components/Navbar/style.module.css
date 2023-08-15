@@ -12,6 +12,10 @@
   padding-top: 10px;
 }
 
+.bgWhite{
+  background-color: white;
+}
+
 .phone_logo {
   display: none;
 }

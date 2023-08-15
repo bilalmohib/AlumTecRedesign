@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 import { DesktopNavbar } from "./methods";
-import { DesktopNavbarProps } from "./types";
+import { DesktopNavbarProps, NavbarProps } from "./types";
 import styles from "./style.module.css";
 
 const drawerWidth = 240;
@@ -74,7 +74,9 @@ const MobileNavbar = ({
   );
 };
 
-function Navbar() {
+function Navbar({
+  bgWhite
+}: NavbarProps) {
   const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -134,6 +136,7 @@ function Navbar() {
         router={router}
         handleDrawerToggle={handleDrawerToggle}
         mobileOpen={mobileOpen}
+        bgWhite={bgWhite}
       />
       <MobileNavbar
         navItems={navItems}

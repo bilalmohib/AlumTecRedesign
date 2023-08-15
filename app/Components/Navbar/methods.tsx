@@ -2,7 +2,7 @@ import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import Router from "next/router";
-import { DesktopNavbarProps, NavItemContainerProps } from "./types";
+import { DesktopNavbarProps, NavItemContainerProps, NavbarProps } from "./types";
 
 import { AppBar, IconButton, Link, Toolbar } from "@mui/material";
 
@@ -40,9 +40,10 @@ export const DesktopNavbar = ({
   navItems,
   router,
   handleDrawerToggle,
+  bgWhite
 }: DesktopNavbarProps) => {
   return (
-    <AppBar component="nav" position="fixed" className={styles.navContainer}>
+    <AppBar component="nav" position="fixed" className={`${styles.navContainer} ${(bgWhite) ? (styles.bgWhite) : ("")}`}>
       <Toolbar className={styles.insideContainer}>
         <div className={styles.logoContainer}>
           <Image

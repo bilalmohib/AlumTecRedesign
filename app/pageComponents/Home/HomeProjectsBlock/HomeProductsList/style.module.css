@@ -24,7 +24,7 @@
 }
 
 .boxContainer {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .imageContainer {
@@ -32,18 +32,18 @@
 }
 
 .image {
-  width: 372px;
-  height: 486px;
+  width: 320px;
+  height: auto;
 }
 
 .borderOverlay {
   position: absolute;
-  top: -20px; /* Adjust as needed */
-  bottom: 25px;
-  right: -10px; /* Adjust as needed */
+  top: -10px; /* Adjust as needed */
+  bottom: 10px;
+  right: 0px; /* Adjust as needed */
   border: 2px solid #123e95;
   z-index: -1;
-  width: 312px; /* Adjust as needed */
-  height: 446px; /* Adjust as needed */
+  width: 270px; /* Adjust as needed */
+  height: 92%; /* Adjust as needed */
   pointer-events: none; /* Ensure the overlay doesn't interfere with interactions */
 }

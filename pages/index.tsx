@@ -18,17 +18,17 @@ const Home = () => {
         <HomeBanner />
         <HomeServicesBlock />
         <HomeProjectsBlock />
-        {/* 
-        <HomeBlogsBlock />
-        <HomeTestimonialsBlock />
-        <GetInTouchContactForm /> */}
+
+        {/* <HomeBlogsBlock /> */}
+        {/* <HomeTestimonialsBlock /> */}
+        {/* <GetInTouchContactForm /> */}
         <br />
         <br />
       </section>
 
-      {/* <div style={{ marginTop: 560,position:"relative" }}>
+      <div style={{ marginTop: 560,position:"relative" }}>
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };

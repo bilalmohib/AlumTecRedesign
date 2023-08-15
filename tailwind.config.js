@@ -9,10 +9,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      theme: {
+        fontFamily: {
+          sharp: ['Sharp Grotesk'],
+          serif: ["ui-serif", "Georgia"],
+        },
+      },
+    },
   },
   plugins: [],
   corePlugins: {
     preflight: false,
-  }
+  },
 };
