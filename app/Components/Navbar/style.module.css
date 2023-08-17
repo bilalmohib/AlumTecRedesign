@@ -12,7 +12,7 @@
   padding-top: 10px;
 }
 
-.bgWhite{
+.bgWhite {
   background-color: white;
 }
 
@@ -52,9 +52,14 @@ html:not([data-scroll="0"]) .navContainer {
 .logo {
   margin-left: 2%;
   margin-top: 10px;
-  width: 200px;
-  height: 68px;
+  /* width: 200px;
+  height: 68px; */
   display: block;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+
+  /* Safari seems to support, but seems deprecated and does the same thing as the others. */
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Nav Item Container */

@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import styles from "./style.module.css";
 import HSBBodyRSControls from "./HSBBodyRSControls";
+import HSBHeader from "../../HSBHeader";
 
 const HSBBodyRightSide = () => {
   return (
@@ -11,7 +12,9 @@ const HSBBodyRightSide = () => {
       <div className={styles.mobileControls}>
         <HSBBodyRSControls />
       </div>
-      <h2 className={styles.servicesTitle}>Design and Construct</h2>
+      <div className="mt-0">
+        <HSBHeader />
+      </div>
       <div className={styles.servicesDescription}>
         Alumtec Glazing solution Inc. offer a complete range of engineering
         services to our client include the initial design that offering most
@@ -23,7 +26,7 @@ const HSBBodyRightSide = () => {
       </div>
 
       <div className={styles.desktopControls}>
-        <HSBBodyRSControls />
+        {/* <HSBBodyRSControls /> */}
       </div>
     </div>
   );

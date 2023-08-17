@@ -6,18 +6,18 @@ const HSBHeader = () => {
             <div className={styles.sliderOuterContainer}>
                 <div className={styles.box}>
                     <h2
-                        className={styles.servicesHeadingOverlay}
+                        className={`${styles.servicesHeadingOverlay} font-sharp`}
                     >
-                        Services
+                       Our Story
                     </h2>
                 </div>
                 <div className={
                     `${styles.box} ${styles.overlay}`
                 }>
                     <h2
-                        className={styles.servicesHeading}
+                        className={`${styles.servicesHeading} font-sharp`}
                     >
-                        OUR SERVICES
+                        Our Story
                     </h2>
                 </div>
             </div>

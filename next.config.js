@@ -6,7 +6,8 @@ const nextConfig = {
       "bookslibrary.net",
       "images.unsplash.com",
       "s.yimg.com",
-      "generation-sessions.s3.amazonaws.com"
+      "generation-sessions.s3.amazonaws.com",
+      "alumtec.ca",
     ],
   },
 };

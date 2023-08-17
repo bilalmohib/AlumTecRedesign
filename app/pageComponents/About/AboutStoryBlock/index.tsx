@@ -5,21 +5,20 @@ import { Box, Typography, Button, Grid } from "@mui/material";
 import Image from "next/image";
 
 // Importing components
-import HSBHeader from "./HSBHeader";
 import HSBBody from "./HSBBody";
 
 // Importing styles
 import styles from "./style.module.css";
+import GetInTouchContactForm from "@/app/Components/GetInTouchContactForm";
 
-const HomeServicesBlock = () => {
+const AboutStoryBlock = () => {
   return (
     <div className={styles.container}>
-      <HSBHeader />
-
       <section>
         <HSBBody />
+        <GetInTouchContactForm />
       </section>
     </div>
   );
 };
-export default HomeServicesBlock;
+export default AboutStoryBlock;

@@ -29,7 +29,7 @@
   /* border: 1px solid red; */
 }
 .containerBrPatternImage {
-  top: 460px;
+  top: 410px;
   right: 0px;
   position: absolute;
 }
@@ -43,7 +43,7 @@
   margin-top: 70px;
   margin-left: 70px;
   width: 431px;
-  height: 476px;
+  height: 426px;
 }
 
 /* Services Image */
@@ -51,8 +51,8 @@
 .ServicesImage {
   margin-top: 80px;
   margin-left: 0px;
-  max-width: 500px;
-  height: 520px;
+  max-width: 459px;
+  height: 475px;
   /* border: 1px solid red; */
 }
 
