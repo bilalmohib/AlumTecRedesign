@@ -1,14 +1,15 @@
-import Navbar from "@/app/Components/Navbar"
+import Navbar from "@/app/Components/Navbar";
+import ServicesBanner from "@/app/pageComponents/Services/ServicesBanner";
 
 const ServicesPage = () => {
-    return (
-        <>
-            <Navbar />
+  return (
+    <>
+      <Navbar bgWhite={true} />
 
-            <section>
-                <h1>Services Page</h1>
-            </section>
-        </>
-    )
-}
+      <section>
+        <ServicesBanner />
+      </section>
+    </>
+  );
+};
 export default ServicesPage;

@@ -4,18 +4,16 @@ import AboutMissionBlock from "@/app/pageComponents/About/AboutMissionBlock";
 import AboutStoryBlock from "@/app/pageComponents/About/AboutStoryBlock";
 
 const AboutPage = () => {
-    return (
-        <>
-            <Navbar
-                bgWhite={true}
-            />
+  return (
+    <>
+      <Navbar bgWhite={true} />
 
-            <section>
-                <AboutBanner />
-                <AboutMissionBlock />
-                <AboutStoryBlock />
-            </section>
-        </>
-    )
-}
+      <section>
+        <AboutBanner />
+        <AboutMissionBlock />
+        {/* <AboutStoryBlock /> */}
+      </section>
+    </>
+  );
+};
 export default AboutPage;
