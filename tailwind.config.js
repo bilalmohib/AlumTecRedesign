@@ -12,8 +12,9 @@ module.exports = {
     extend: {
       theme: {
         fontFamily: {
-          sharp: ['Sharp Grotesk'],
+          sharp: ["Sharp Grotesk"],
           serif: ["ui-serif", "Georgia"],
+          lato: ["Lato", 'sans-serif'],
         },
       },
     },
