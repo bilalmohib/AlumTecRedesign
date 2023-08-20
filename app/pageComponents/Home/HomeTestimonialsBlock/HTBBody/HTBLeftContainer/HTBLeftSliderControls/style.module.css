@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
 }
 
 .left_arrow_svg {}

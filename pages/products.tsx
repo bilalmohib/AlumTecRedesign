@@ -1,5 +1,7 @@
 import Navbar from "@/app/Components/Navbar";
 import ProductsBanner from "@/app/pageComponents/Products/ProductsBanner";
+import ProductItem from "@/app/pageComponents/Products/ProductItem";
+import { productsList } from "@/app/data/Products";
 
 const ProductsPage = () => {
   return (
@@ -8,19 +10,21 @@ const ProductsPage = () => {
 
       <section>
         <ProductsBanner />
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia
-          commodi, eveniet expedita obcaecati consequuntur doloremque veritatis
-          ut, officiis nesciunt officia id eaque voluptatem animi minima
-          aliquid. Eius assumenda distinctio earum? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Eligendi voluptate quae maiores
-          nesciunt! Nemo incidunt quae autem modi doloribus, itaque mollitia
-          sapiente, quia magni assumenda aut quod reiciendis, commodi
-          perferendis? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Inventore illo autem recusandae doloribus omnis molestiae totam vel ea
-          amet libero, laudantium molestias. Quaerat ipsum natus voluptates
-          laboriosam? Cum, vel laudantium?
-        </p>
+        <div className="overflow-hidden">
+          {productsList.map((item, index) => {
+            return (
+              <div key={index}>
+                <ProductItem
+                  background={item.background}
+                  direction={item.direction}
+                  title={item.title}
+                  descriptionList={item.descriptionList}
+                  image={item.image}
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
