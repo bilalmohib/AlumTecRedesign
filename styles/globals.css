@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 body {
   padding: 0;
@@ -13,53 +13,25 @@ body {
   font-family: "Montserrat", sans-serif !important;
 }
 
-/* @font-face {
-  font-family: "Sharp Grotesk";
-  src: url("/Fonts/SharpGroteskLight05.ttf");
-} */
-
-/* .swiper-button-prev, .swiper-button-next {
-  width: 60px !important;
-  height: 60px !important;
-  color: #06989e !important;
-  background-color: rgba(255, 255, 255, 0.48) !important;
-  border-radius: 50px;
-  transition: 0.2s linear;
-}
-
-.swiper-button-prev:hover, .swiper-button-next:hover {
-  background-color: #06989e !important;
-  color: white !important;
-  transition: 0.2s linear;
-}
-
-.swiper-button-prev::after, .swiper-button-next::after {
-  font-size: 30px !important;
-  text-align: center !important;
-}
-
-.swiper-button-next {
-  padding-left: 8px !important;
-}
-
-.mySwiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper {
-  width: 100%;
-  height: auto;
+.hover-underline-animation {
+  display: inline-block;
   position: relative;
-  margin-left: -150px;
 }
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-}
-
-.swiper-slide img {
-  display: block;
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
   width: 100%;
-} */
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0e4a83;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

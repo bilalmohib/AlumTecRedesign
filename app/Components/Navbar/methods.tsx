@@ -25,18 +25,27 @@ export const NavItemContainer = ({
       {navItems.map((item, index) => (
         <Link
           key={index}
-          className={styles.navItem}
+          className={`${styles.navItem} no-underline hover:no-underline`}
           onClick={() => menuClick(item.link)}
         >
           {item.name === "Call us" ? (
             <div className="flex">
-              <div>{item.name}</div>
+              <div className="uppercase hover-underline-animation">
+                {item.name}
+              </div>
               <CallIcon
-                sx={{ fontSize: 30, marginLeft: "5px", color: "#10146F" ,marginTop:"-3px" }}
+                sx={{
+                  fontSize: 30,
+                  marginLeft: "5px",
+                  color: "#10146F",
+                  marginTop: "-3px",
+                }}
               />
             </div>
           ) : (
-            <div>{item.name}</div>
+            <div className="uppercase hover-underline-animation">
+              {item.name}
+            </div>
           )}
         </Link>
       ))}
