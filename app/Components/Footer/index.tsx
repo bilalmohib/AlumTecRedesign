@@ -26,7 +26,7 @@ export const Footer: FC = (): ReactElement => {
           Get started
         </Button>
       </div>
-      <div className="border-r-0 border-l-0 border-b-1 border-t-2 border-solid border-gray-500 w-full mt-10 grid grid-cols-1 sm:grid-cols-4 py-6">
+      <div className="border-r-0 border-l-0 border-b-2 border-t-2 border-solid border-gray-400 w-full mt-10 grid grid-cols-1 sm:grid-cols-4 py-6">
         <div className="m-0">
           <Image
             src="/Images/Navbar/logo.jxr"

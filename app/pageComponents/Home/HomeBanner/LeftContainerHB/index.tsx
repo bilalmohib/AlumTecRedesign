@@ -14,11 +14,11 @@ const LeftContainerHB = () => {
                     windows and doors are our
                     speciality.
                 </h3>
-                <h5
+                <h3
                     className={styles.subHeading}
                 >
                     Glazing solutions are our passion.
-                </h5>
+                </h3>
                 <Button
                     className={styles.readMoreButton}
                 >

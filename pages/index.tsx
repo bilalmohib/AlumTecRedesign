@@ -10,10 +10,14 @@ import HomeTestimonialsBlock from "@/app/pageComponents/Home/HomeTestimonialsBlo
 import GetInTouchContactForm from "@/app/Components/GetInTouchContactForm";
 
 import styles from "../styles/Home.module.css";
+import Head from "next/head";
 
 const Home = () => {
   return (
     <div>
+      <Head>
+        <title>Home | AlumTec, Glazing solutions are our passion</title>
+      </Head>
       <Navbar />
 
       <section>
@@ -21,8 +25,10 @@ const Home = () => {
         <HomeServicesBlock />
         <HomeProjectsBlock />
 
-        <div className={`mt-[72rem] sm:mt-[70rem] lg:mt-auto ${styles.projectsBottomMargin}`}></div>
-        
+        <div
+          className={`mt-[72rem] sm:mt-[70rem] lg:mt-auto ${styles.projectsBottomMargin}`}
+        ></div>
+
         {/* <HomeBlogsBlock /> */}
         {/* <HomeTestimonialsBlock /> */}
         {/* <GetInTouchContactForm /> */}
@@ -30,7 +36,7 @@ const Home = () => {
         <br />
       </section>
 
-      <div style={{ marginTop: 560,position:"relative" }}>
+      <div style={{ marginTop: 560, position: "relative" }}>
         <Footer />
       </div>
     </div>
