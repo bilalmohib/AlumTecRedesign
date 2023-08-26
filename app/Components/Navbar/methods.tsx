@@ -28,11 +28,15 @@ export const NavItemContainer = ({
           className={styles.navItem}
           onClick={() => menuClick(item.link)}
         >
-          {item.name}
-          {item.name === "Call us" && (
-            <CallIcon
-              sx={{ fontSize: 30, marginLeft: "5px", color: "#10146F" }}
-            />
+          {item.name === "Call us" ? (
+            <div className="flex">
+              <div>{item.name}</div>
+              <CallIcon
+                sx={{ fontSize: 30, marginLeft: "5px", color: "#10146F" ,marginTop:"-3px" }}
+              />
+            </div>
+          ) : (
+            <div>{item.name}</div>
           )}
         </Link>
       ))}
@@ -72,6 +76,7 @@ export const DesktopNavbar = ({
           aria-label="open drawer"
           edge="start"
           className={styles.menuButton}
+          onClick={handleDrawerToggle}
         >
           <Image
             className={styles.phone_logo}
@@ -81,7 +86,7 @@ export const DesktopNavbar = ({
             width={17}
             height={20}
           />
-          <div onClick={handleDrawerToggle}>
+          <div>
             <MenuIcon className={styles.menuButtonIcon} />
           </div>
         </IconButton>
