@@ -1,11 +1,17 @@
 .container {
   height: 420px;
-  margin-bottom: 500px;
+  /* margin-bottom: 500px; */
   width: 100%;
   background-color: rgba(16, 20, 110, 0.84);
   margin-top: 140px;
   padding-top: 50px;
   background-image: url(../../../../public/Images/Home/Products/Patterns.png);
+}
+
+@media all and (max-width: 900px) {
+  .container {
+    margin-top: 60px;
+  }
 }
 
 @media all and (max-width: 600px) {
@@ -24,7 +30,7 @@
 
 @media all and (max-width: 440px) {
   .container {
-    height: auto;
+    height: 270px;
     padding-top: 10px;
     padding-bottom: 30px;
   }

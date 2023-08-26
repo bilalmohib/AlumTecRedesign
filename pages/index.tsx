@@ -9,6 +9,8 @@ import Footer from "@/app/Components/Footer";
 import HomeTestimonialsBlock from "@/app/pageComponents/Home/HomeTestimonialsBlock";
 import GetInTouchContactForm from "@/app/Components/GetInTouchContactForm";
 
+import styles from "../styles/Home.module.css";
+
 const Home = () => {
   return (
     <div>
@@ -19,6 +21,8 @@ const Home = () => {
         <HomeServicesBlock />
         <HomeProjectsBlock />
 
+        <div className={`mt-[72rem] sm:mt-[70rem] lg:mt-auto ${styles.projectsBottomMargin}`}></div>
+        
         {/* <HomeBlogsBlock /> */}
         {/* <HomeTestimonialsBlock /> */}
         {/* <GetInTouchContactForm /> */}

@@ -11,50 +11,36 @@ const HomeProductsList = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
   return (
-    <div className={styles.container}>
+    <div
+      className={`w-full flex flex-col justify-center items-center text-[aliceblue] h-auto mt-14 ${styles.container}`}
+    >
       <div className={styles.boxContainer}>
-        <Grid container spacing={0}>
+        <div className="grid grid-cols-1 lg:grid-cols-3">
           {imageList.map((item: imageListType, index: number) => (
-            <Grid key={index} item xs={12} sm={6} md={4}>
-              <div className={styles.imageContainer}>
+            <div key={index}>
+              <div className="relative">
                 <Image
                   src={item.imageUrl}
                   alt={`Image ${item.id}`}
-                  className={styles.image}
+                  className={`w-[280px] h-auto sm:w-[25rem] lg:w-[20rem] xl:w-[20rem] 2xl:w-96 lg:h-auto ${styles.image}`}
                   title={`Image ${item.id}`}
                   width={372}
                   height={486}
                 />
-                <div className={styles.borderOverlay}></div>
+                <div className="absolute top-[-10px] bottom-[10px] right-0 border-2 border-[#123e95] z-[-1px] w-[270px] h-[92%] pointer-events-none"></div>
               </div>
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
       </div>
 
       <Button
         variant="contained"
         color="primary"
-        sx={{
-          color: "#FFFFFF",
-          fontFamily: "Sharp Grotesk",
-          fontSize: "18px",
-          marginTop: "60px",
-          fontStyle: "normal",
-          fontWeight: "400",
-          lineHeight: "77px",
-          borderRadius: "2px",
-          backgroundColor: "#123E95",
-          width: "160px",
-          height: "50px",
-          "&:hover": {
-            backgroundColor: "#123E95",
-            color: "#FFFFFF",
-          },
-        }}
+        className="font-[Sharp Grotesk] text-lg mt-16 font-normal leading-[77px] rounded-sm bg-[#123E95] hover:bg-[#0b46bb] hover:text-white w-40 h-[50px]"
         onClick={() => {
           console.log("Button clicked");
         }}

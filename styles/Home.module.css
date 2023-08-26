@@ -1,0 +1,23 @@
+@media all and (max-width: 500px) {
+  .projectsBottomMargin {
+    margin-top: 50rem;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .projectsBottomMargin {
+    margin-top: 45rem;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .projectsBottomMargin {
+    margin-top: 10rem;
+  }
+}
+
+@media all and (max-width: 270px) {
+  .projectsBottomMargin {
+    margin-top: 12rem;
+  }
+}

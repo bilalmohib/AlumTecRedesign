@@ -26,8 +26,8 @@ export const Footer: FC = (): ReactElement => {
           Get started
         </Button>
       </div>
-      <div className="border-r-0 border-l-0 border-b-1 border-t-2 border-solid border-red-500 w-full mt-10 grid grid-cols-1 sm:grid-cols-4">
-        <div className="border-2 border-solid border-green-500 m-0">
+      <div className="border-r-0 border-l-0 border-b-1 border-t-2 border-solid border-gray-500 w-full mt-10 grid grid-cols-1 sm:grid-cols-4 py-6">
+        <div className="m-0">
           <Image
             src="/Images/Navbar/logo.jxr"
             width={150}
@@ -48,7 +48,7 @@ export const Footer: FC = (): ReactElement => {
             Concord ON. L4K 0G2
           </div>
         </div>
-        <div className="border-2 border-solid border-yellow-500 m-0">
+        <div className="m-0">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
             Company
           </h2>
@@ -63,7 +63,7 @@ export const Footer: FC = (): ReactElement => {
             );
           })}
         </div>
-        <div className="border-2 border-solid border-purple-500 m-0">
+        <div className="m-0">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
             Support
           </h2>
@@ -78,7 +78,7 @@ export const Footer: FC = (): ReactElement => {
             );
           })}
         </div>
-        <div className="border-2 border-solid border-grey-500 m-0">
+        <div className="m-0">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide mt-2">
             Follow us
           </h2>
@@ -119,7 +119,7 @@ export const Footer: FC = (): ReactElement => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between mt-2 pb-2">
+      <div className="flex flex-col sm:flex-row justify-between mt-2 pb-2">
         <p className="text-black font-poppins text-[14px] font-normal tracking-wider">
           © 2021 Alumtec Glazing Solutions Inc. All rights reserved.
         </p>
