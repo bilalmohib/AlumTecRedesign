@@ -17,6 +17,17 @@ const Home = () => {
     <div>
       <Head>
         <title>Home | AlumTec, Glazing solutions are our passion</title>
+        <meta
+          name="description"
+          content="AlumTec, Glazing solutions are our passion"
+        />
+        <meta
+          name="keywords"
+          content="AlumTec, Glazing solutions, Aluminium curtain wall, windows and doors, Glass and Aluminium, Dubai Green Building Regulations, Dubai Civil Defense, Abu Dhabi Estidama Regulations, Canada, Dubai, UAE, United Arab Emirates, AlumTec, Glazing solutions are our passion"
+        />
+        <meta name="author" content="Muhammad-Bilal-7896" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
 
