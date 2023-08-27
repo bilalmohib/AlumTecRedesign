@@ -3,7 +3,9 @@ import styles from "./style.module.css";
 const HPBHeader = () => {
   return (
     <>
-      <h2 className="text-white font-sharp text-6xl font-semibold leading-5 xl:leading-[77px] text-center">
+      <h2
+        className={`${styles.heading} text-white font-sharp text-6xl font-semibold leading-5 xl:leading-[77px] text-center`}
+      >
         OUR PRODUCTS
       </h2>
       <p

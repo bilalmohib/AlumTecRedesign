@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  important: true,
+  // important: true,
   purge: [
     "./app/Components/**/*.{js,ts,jsx,tsx}",
     "./app/pageComponents/**/*.{js,ts,jsx,tsx}",
@@ -31,6 +31,6 @@ module.exports = {
   plugins: [],
   corePlugins: {
     preflight: false,
-    
+
   },
 };
