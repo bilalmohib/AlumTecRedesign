@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.leftContainer {
+  width: 50%;
+  height: 100%;
+  display: block;
+  /* border: 3px solid green; */
+}
+
+.rightContainer {
+  width: 50%;
+  height: 100%;
+  display: block;
+  /* border: 3px solid blue; */
+}
+
+@media all and (max-width: 970px) {
+  .container {
+    height: 100%;
+    flex-direction: column;
+  }
+  .leftContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* border: 5px solid red; */
+  }
+  .rightContainer {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* border: 4px solid red; */
+  }
+}
+
+@media all and (max-width: 900px) {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

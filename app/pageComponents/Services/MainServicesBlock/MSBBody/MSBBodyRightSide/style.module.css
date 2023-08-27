@@ -1,0 +1,173 @@
+/* Services Card */
+.servicesCardContainer {
+  /* border: 0.1px solid #10146e; */
+  margin-top: 4.2rem;
+  padding-right: 0%;
+  width: 100%;
+}
+
+/* Services Cards */
+.servicesTitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 43px;
+  line-height: 77px;
+  background-image: linear-gradient(0deg, #10146e, #10146e),
+    linear-gradient(0deg, #ffffff, #ffffff);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.servicesDescription {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 40px;
+  color: rgba(0, 0, 0, 0.64);
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.mobileControls {
+  display: none;
+  margin-top: 20px;
+}
+
+.desktopControls {
+  display: block;
+  margin-top: 40px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+@font-face {
+  font-family: SharpGroteskLight05;
+  src: url(/public/Fonts/SharpGroteskLight05.ttf);
+}
+
+@media all and (max-width: 1110px) {
+  .servicesTitle {
+    font-size: 40px;
+  }
+}
+
+@media all and (max-width: 1041px) {
+  .servicesTitle {
+    font-size: 38px;
+  }
+}
+
+@media all and (max-width: 997px) {
+  .servicesTitle {
+    font-size: 36px;
+  }
+}
+
+@media all and (max-width: 970px) {
+  .servicesTitle {
+    font-size: 43px;
+    text-align: center;
+  }
+  .servicesDescription {
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 910px) {
+  .servicesCardContainer {
+    padding-left: 30px;
+  }
+}
+
+@media all and (max-width: 899px) {
+  .servicesTitle {
+    font-size: 40px;
+    margin-top: 1rem;
+    /* border: 1px solid green; */
+  }
+  .servicesCardContainer {
+    margin-top: 0.5rem;
+    padding-top: 0rem;
+    padding-left: initial;
+  }
+  .mobileControls {
+    display: block;
+  }
+  .desktopControls {
+    display: none;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .servicesTitle {
+    font-size: 40px;
+    margin-top: 1rem;
+    /* border: 1px solid green; */
+  }
+  .servicesDescription {
+    /* border: 1px solid red; */
+    margin-top: 0px;
+  }
+  .servicesCardContainer {
+    /* border: 0.1px solid #10146e; */
+    margin-top: 0rem;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .servicesTitle {
+    font-size: 38px;
+    line-height: 77px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .servicesTitle {
+    font-size: 35px;
+  }
+}
+
+@media all and (max-width: 470px) {
+  .servicesTitle {
+    font-size: 30px;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .servicesTitle {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 15px;
+  }
+  .servicesDescription {
+    color: rgba(0, 0, 0, 0.66);
+    font-family: "Sharp Grotesk-Medium20", Helvetica;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px; /* 207.692% */
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    /* border: 1px solid rgb(4, 0, 255); */
+  }
+}
+
+@media all and (max-width: 360px) {
+  .servicesTitle {
+    font-size: 21px;
+  }
+}
+
+@media all and (max-width: 285px) {
+  .servicesTitle {
+    font-size: 19px;
+  }
+}

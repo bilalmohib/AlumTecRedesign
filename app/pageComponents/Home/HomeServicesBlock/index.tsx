@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 
 import { Box, Typography, Button, Grid } from "@mui/material";
 

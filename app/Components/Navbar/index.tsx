@@ -44,7 +44,7 @@ const MobileNavbar = ({
         {navItems.map((item, index) => (
           <ListItemButton
             key={index}
-            onClick={() => console.log(item)}
+            onClick={() => router.push(item.link)}
             sx={{ textAlign: "center" }}
           >
             <ListItemText primary={item.name} />
@@ -74,9 +74,7 @@ const MobileNavbar = ({
   );
 };
 
-function Navbar({
-  bgWhite
-}: NavbarProps) {
+function Navbar({ bgWhite }: NavbarProps) {
   const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);

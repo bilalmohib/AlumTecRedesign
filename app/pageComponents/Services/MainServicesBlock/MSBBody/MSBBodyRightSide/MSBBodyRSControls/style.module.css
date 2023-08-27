@@ -1,0 +1,134 @@
+.servicesSliderArrowContainer {
+  /* border: 1px solid red; */
+  width: 220px;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* When It's Deactive */
+.rightAC {
+  /* border: 1px solid red; */
+  border-top: 1.5px solid #a4a4a4;
+  border-right: 1.5px solid #a4a4a4;
+  border-bottom: 1.5px solid #a4a4a4;
+  width: 39.25px;
+  height: 44px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sliderArrowLeft {
+  opacity: 0.5;
+  margin-top: 10px;
+  color: #a4a4a4;
+}
+.sliderArrowRight {
+  opacity: 0.5;
+  margin-top: 10px;
+  color: #a4a4a4;
+  margin-left: 10px;
+  /* border: 1px solid red; */
+}
+
+.sliderArrowDeActive {
+  color: #a4a4a4;
+  opacity: 0.5;
+}
+
+/* When It's Active */
+.leftAC {
+  border-top: 1.5px solid #10146e;
+  border-left: 1.5px solid #10146e;
+  border-bottom: 1.5px solid #10146e;
+  width: 39.25px;
+  height: 44px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sliderArrowActive {
+  color: #10146e;
+  opacity: 1;
+}
+
+/* When It's Hover */
+.servicesSliderHoverArrow {
+  border-top: 1.5px solid #10146e;
+  border-left: 1.5px solid #10146e;
+  border-bottom: 1.5px solid #10146e;
+  width: 39.25px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.sliderArrowHover {
+  color: #10146e;
+  opacity: 1;
+}
+
+/* When It's Focus */
+.servicesSliderFocusArrow {
+  border-top: 1.5px solid #10146e;
+  border-left: 1.5px solid #10146e;
+  border-bottom: 1.5px solid #10146e;
+  width: 39.25px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.sliderArrowFocus {
+  color: #10146e;
+  opacity: 1;
+}
+
+/* Sider Arrow Text Left */
+.sliderArrowTextLeft {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 8px;
+  padding-left: 10px;
+}
+
+/* Sider Arrow Text Right */
+.sliderArrowTextRight {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 8px;
+  padding-left: 0px;
+  margin-left: -40px;
+}
+
+.sliderArrowTextActive {
+  color: #1c1c1c;
+}
+
+.sliderArrowTextDeActive {
+  color: #a4a4a4;
+}
+
+@media all and (max-width: 970px) {
+  .servicesSliderArrowContainer {
+    /* border: 1px solid rgb(34, 0, 255); */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .leftAC,
+  .rightAC {
+    border: none;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .sliderArrowTextLeft,.sliderArrowTextRight {
+    font-size: 14px;
+  }
+}

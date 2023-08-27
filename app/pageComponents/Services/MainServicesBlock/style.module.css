@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+@media all and (max-width: 1350px) {
+  .container {
+    padding-left: 6rem;
+    padding-right: 3rem;
+    /* border: 2px solid green; */
+  }
+}
+
+@media all and (max-width: 970px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    /* border: 2px solid green; */
+  }
+}
+
+@media all and (max-width: 899px) {
+  .container {
+    padding-left: 2.6rem;
+    padding-right: 2.6rem;
+    /* border: 2px solid green; */
+  }
+}
+
+@media all and (max-width: 600px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* border: 2px solid rgb(0, 41, 128); */
+  }
+}
+
+@media all and (max-width: 440px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* border: 2px solid rgb(0, 41, 128); */
+  }
+}
