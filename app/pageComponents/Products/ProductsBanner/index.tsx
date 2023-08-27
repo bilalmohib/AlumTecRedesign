@@ -6,7 +6,8 @@ const ProductsBanner = () => {
       <div className="relative h-[69vh] w-full backdrop-filter backdrop-blur-0 ease-linear transition">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <h1
-          className={`absolute top-0 left-0 right-0 bottom-0 mt-[20vh] text-5xl font-semibold font-sharp text-center text-white uppercase ${montserratFont.variable}`}
+          style={{ fontFamily: "var(--font-montserrat) !important" }}
+          className={`absolute top-0 left-0 right-0 bottom-0 mt-[20vh] text-5xl font-semibold font-sharp text-center text-white uppercase`}
         >
           Our Products
         </h1>
