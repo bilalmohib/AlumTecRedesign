@@ -62,42 +62,53 @@ const ProductItem = ({
       style={{
         background: background ? "url('/Images/Products/Union.png')" : "",
         overflow: "hidden",
+        // border: "5px solid red",
       }}
       className={`
-      bg-cover bg-repeat w-full h-[542px]
-          flex ${direction === "left" ? "flex-row" : "flex-row-reverse"}
+      bg-cover bg-repeat w-full h-[542px] px-20
+          flex ${
+            direction === "left" ? "flex-row" : "flex-row-reverse"
+          } justify-between
       `}
     >
-      <div className="w-3/6 flex flex-col h-full pl-20 mt-[62px]">
-        <motion.h1
-          className="text-5xl font-bold text-black"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          {title}
-        </motion.h1>
-        <ul className="mt-4 mb-4 text-2xl">
-          {descriptionList.map((item: productItemProps, index: number) => {
-            return (
-              <motion.li
-                className="ml-[-5px] mb-2"
-                key={index}
-                variants={staggeredListVariants}
-                custom={index}
-                initial="hidden"
-                animate="visible"
-              >
-                {item.title}
-              </motion.li>
-            );
-          })}
-        </ul>
-        <br />
-        <HTBLeftSliderControls />
+      <div
+        className={`w-6/12 h-full mt-[-50px] flex flex-row justify-center items-center
+      ${direction === "left" ? "ml-0" : "mr-0"}
+      `}
+      >
+        <div>
+          <motion.h1
+            className="text-5xl font-bold text-black"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            {title}
+          </motion.h1>
+          <ul className="mt-4 mb-4 text-2xl">
+            {descriptionList.map((item: productItemProps, index: number) => {
+              return (
+                <motion.li
+                  className="ml-[-5px] mb-2"
+                  key={index}
+                  variants={staggeredListVariants}
+                  custom={index}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {item.title}
+                </motion.li>
+              );
+            })}
+          </ul>
+          <br />
+          <HTBLeftSliderControls />
+        </div>
       </div>
       <motion.div
-        className="w-3/6 flex justify-end"
+        className={`w-6/12 flex flex-row justify-center
+        ${direction === "left" ? "mr-[20px]" : "ml-[-25px]"}
+        `}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4 }}
@@ -107,7 +118,7 @@ const ProductItem = ({
           alt="Product Image"
           width={479}
           height={496}
-          className="mt-4 block mr-20"
+          className="mt-4 block"
         />
       </motion.div>
     </motion.div>

@@ -2,6 +2,7 @@ import Navbar from "@/app/Components/Navbar";
 import ProductsBanner from "@/app/pageComponents/Products/ProductsBanner";
 import ProductItem from "@/app/pageComponents/Products/ProductItem";
 import { productsList } from "@/app/data/Products";
+import Footer from "@/app/Components/Footer";
 
 const ProductsPage = () => {
   return (
@@ -26,6 +27,8 @@ const ProductsPage = () => {
           })}
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
