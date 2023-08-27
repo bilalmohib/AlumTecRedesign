@@ -8,6 +8,7 @@ module.exports = {
     "./pages/_app.tsx",
     "./pages/_document.tsx",
     "/styles/**/*.{css,module.css,scss,sass}",
+    "./styles/globals.css",
   ],
   content: [
     "./app/Components/**/*.{js,ts,jsx,tsx}",
@@ -15,7 +16,8 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./pages/_app.tsx",
     "./pages/_document.tsx",
-    "/styles/**/*.{css,module.css,scss,sass}",
+    "./styles/**/*.{css,module.css,scss,sass}",
+    "./styles/globals.css",
   ],
   theme: {
     extend: {
@@ -31,6 +33,5 @@ module.exports = {
   plugins: [],
   corePlugins: {
     preflight: false,
-
   },
 };
