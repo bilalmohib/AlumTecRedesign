@@ -9,12 +9,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sharp: ["Sharp Grotesk"],
+      serif: ["ui-serif", "Georgia"],
+      lato: ["Lato", "sans-serif"],
+    },
     extend: {
       theme: {
         fontFamily: {
           sharp: ["Sharp Grotesk"],
           serif: ["ui-serif", "Georgia"],
-          lato: ["Lato", 'sans-serif'],
+          lato: ["Lato", "sans-serif"],
         },
       },
     },
