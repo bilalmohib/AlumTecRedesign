@@ -16,7 +16,6 @@ const AboutStoryBlock = () => {
     <div className={styles.container}>
       <section>
         <HSBBody />
-        <GetInTouchContactForm />
       </section>
     </div>
   );

@@ -33,6 +33,7 @@
   color: rgba(0, 0, 0, 0.64);
   margin-top: 2rem;
   padding-bottom: 1rem;
+  padding-right: 20px;
 }
 
 .mobileControls {
@@ -77,6 +78,7 @@
   }
   .servicesDescription {
     text-align: center;
+     padding-right: initial;
   }
 }
 

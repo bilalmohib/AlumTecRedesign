@@ -11,7 +11,7 @@ const AboutPage = () => {
       <section>
         <AboutBanner />
         <AboutMissionBlock />
-        {/* <AboutStoryBlock /> */}
+        <AboutStoryBlock />
       </section>
     </>
   );
