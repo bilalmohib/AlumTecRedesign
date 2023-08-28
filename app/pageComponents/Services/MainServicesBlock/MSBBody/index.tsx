@@ -3,26 +3,32 @@ import MSBBodyRightSide from "./MSBBodyRightSide";
 
 import { ServicesBlockProps } from "../types";
 
-import styles from "./style.module.css";
-
 const MSBBody = ({
   title,
   description,
   direction,
   background,
-  image
+  image,
 }: ServicesBlockProps) => {
   return (
     <div
-      className={`${styles.container} ${
-        direction === "left" ? "flex-row" : "flex-row-reverse"
+      className={`h-full flex-col mlg:h-auto mlg:w-full mlg:flex ${
+        direction === "left"
+          ? "flex-row mlg:flex-row"
+          : "flex-row-reverse mlg:flex-row-reverse"
       }
           ${background ? background : "bg-white"}`}
     >
-      <div className={styles.leftContainer}>
+      <div
+        className={`w-full flex justify-center
+      mlg:w-6/12 mlg:h-full mlg:block
+      `}
+      >
         <MSBBodyLeftSide image={image} />
       </div>
-      <div className={styles.rightContainer}>
+      <div className={` w-full h-full block
+      mlg:w-6/12 mlg:h-full mlg:block
+      `}>
         <MSBBodyRightSide title={title} description={description} />
       </div>
     </div>

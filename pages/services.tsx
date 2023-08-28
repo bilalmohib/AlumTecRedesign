@@ -16,20 +16,22 @@ const ServicesPage = () => {
 
       <section>
         <ServicesBanner />
-        <div className="mx-auto md:ml-20 mt-10">
+        <div className="mx-auto md:ml-20 mt-20">
           <MSBHeader />
         </div>
 
         <div className="mb-6">
           {servicesList.map((service, index) => (
             <ScrollAnimationWrapper key={index}>
-              <MainServicesBlock
-                title={service.title}
-                description={service.description}
-                direction={service.direction}
-                background={service.background}
-                image={service.image}
-              />
+              <div className="my-10">
+                <MainServicesBlock
+                  title={service.title}
+                  description={service.description}
+                  direction={service.direction}
+                  background={service.background}
+                  image={service.image}
+                />
+              </div>
             </ScrollAnimationWrapper>
           ))}
         </div>

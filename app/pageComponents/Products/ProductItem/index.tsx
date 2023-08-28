@@ -65,15 +65,19 @@ const ProductItem = ({
         // border: "5px solid red",
       }}
       className={`
-      bg-cover bg-repeat w-full h-[542px] px-20
+      bg-cover bg-repeat w-full h-[542px] px-14 lg:px-20
           flex ${
             direction === "left" ? "flex-row" : "flex-row-reverse"
           } justify-between
       `}
     >
       <div
-        className={`w-6/12 h-full mt-[-50px] flex flex-row justify-center items-center
-      ${direction === "left" ? "ml-0" : "mr-0"}
+        className={`w-6/12 h-full flex flex-row justify-center items-center
+      ${
+        direction === "left"
+          ? "mt-[-5px] lg:mt-[-30px] xl:mt-[-50px] ml-0"
+          : "mr-0 mt-[-35px] lg:mt-[-30px] xl:mt-[-50px]"
+      }
       `}
       >
         <div>
@@ -118,7 +122,7 @@ const ProductItem = ({
           alt="Product Image"
           width={479}
           height={496}
-          className="mt-4 block"
+          className="mt-14 lg:mt-4 block w-96 h-96 lg:w-[479px] lg:h-[496px]"
         />
       </motion.div>
     </motion.div>

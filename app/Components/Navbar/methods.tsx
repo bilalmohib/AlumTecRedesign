@@ -30,7 +30,7 @@ export const NavItemContainer = ({
         >
           {item.name === "Call us" ? (
             <div className="flex">
-              <div className="uppercase hover-underline-animation">
+              <div className="normal-case xl:uppercase hover-underline-animation">
                 {item.name}
               </div>
               <CallIcon
@@ -43,7 +43,7 @@ export const NavItemContainer = ({
               />
             </div>
           ) : (
-            <div className="uppercase hover-underline-animation">
+            <div className="normal-case xl:uppercase hover-underline-animation">
               {item.name}
             </div>
           )}

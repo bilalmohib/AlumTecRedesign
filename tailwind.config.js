@@ -21,12 +21,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      theme: {
-        fontFamily: {
-          sharp: ["Sharp Grotesk"],
-          serif: ["ui-serif", "Georgia"],
-          lato: ["Lato", "sans-serif"],
-        },
+      fontFamily: {
+        'sharp': ["Sharp Grotesk"],
+        'serif': ["ui-serif", "Georgia"],
+        'lato': ["Lato", "sans-serif"],
+      },
+      screens: {
+        'mlg': "970px",
+        // => @media (min-width: 640px) { ... }
       },
     },
   },

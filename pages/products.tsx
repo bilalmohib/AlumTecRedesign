@@ -11,10 +11,10 @@ const ProductsPage = () => {
 
       <section>
         <ProductsBanner />
-        <div className="overflow-hidden">
+        <div className="overflow-hidden mt-6">
           {productsList.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="my-6 lg:mt-0">
                 <ProductItem
                   background={item.background}
                   direction={item.direction}
