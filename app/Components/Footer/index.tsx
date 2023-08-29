@@ -10,7 +10,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 export const Footer: FC = (): ReactElement => {
   return (
     <div className="w-full min-h-[500px] bg-[#E7EBFB] pt-8 px-[1.5rem] sm:px-[4.8rem]">
-      <h1 className="text-center font-lato text-2xl sm:text-[26px]">
+      <h1 className="text-center text-gray-800 font-serif text-2xl sm:text-[26px] font-semibold">
         Want to start your projects with us?
       </h1>
       <p className="text-center mt-2">

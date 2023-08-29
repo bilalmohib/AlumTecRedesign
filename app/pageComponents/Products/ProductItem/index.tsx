@@ -65,53 +65,63 @@ const ProductItem = ({
         // border: "5px solid red",
       }}
       className={`
-      bg-cover bg-repeat w-full h-[542px] px-10
+      bg-cover bg-repeat w-full h-full mlg:min-h-[542px] px-10
           flex ${
-            direction === "left" ? "flex-row" : "flex-row-reverse"
-          } justify-between
+            direction === "left"
+              ? "flex-col mlg:flex-row"
+              : "flex-col mlg:flex-row-reverse"
+          } justify-center mlg:justify-between
       `}
     >
       <div
-        className={`w-6/12 h-full flex flex-row justify-center items-center
+        style={{ border: "2px solid red" }}
+        className={`w-full mlg:w-6/12 h-full flex flex-row justify-center items-center mlg:items-start mlg:justify-start
       ${
         direction === "left"
-          ? "mt-[-5px] lg:mt-[-30px] xl:mt-[-50px] ml-0"
-          : "mr-0 mt-[-35px] lg:mt-[-30px] xl:mt-[-50px]"
+          ? "mt-0 mlg:mt-[-10px] lg:mt-[-30px] xl:mt-[-50px] ml-auto mlg:ml-8"
+          : "mr-auto ml-auto mlg:ml-6 mlg:mr-0 mt-0 mlg:mt-[-10px] lg:mt-[-30px] xl:mt-[-50px]"
       }
       `}
       >
-        <div>
+        <div className="flex flex-col mlg:items-start min-w-full justify-center mlg:justify-start mt-10 xl:mt-20 items-center border-red-800 border border-solid">
           <motion.h1
-            className="text-5xl font-bold text-black"
+            className="text-center sm:text-left text-3xl sm:text-5xl font-bold text-black mx-auto mlg:mx-0"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
+            style={{ border: "4px solid green" }}
           >
             {title}
           </motion.h1>
-          <ul className="mt-4 mb-4 text-2xl">
-            {descriptionList.map((item: productItemProps, index: number) => {
-              return (
-                <motion.li
-                  className="ml-[-5px] mb-2"
-                  key={index}
-                  variants={staggeredListVariants}
-                  custom={index}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {item.title}
-                </motion.li>
-              );
-            })}
-          </ul>
+          <div style={{ border: "1px solid red" }}>
+            <ul className="mt-4 mb-4 text-lg sm:text-2xl mx-auto mlg:mx-0 min-w-full mlg:h-full">
+              {descriptionList.map((item: productItemProps, index: number) => {
+                return (
+                  <motion.li
+                    className="ml-[-5px] mb-2"
+                    key={index}
+                    variants={staggeredListVariants}
+                    custom={index}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {item.title}
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </div>
           <br />
           <HTBLeftSliderControls />
         </div>
       </div>
       <motion.div
-        className={`w-6/12 flex flex-row justify-center
-        ${direction === "left" ? "mr-[20px]" : "ml-[-25px]"}
+        className={`w-full mlg:w-6/12 flex flex-row justify-center
+        ${
+          direction === "left"
+            ? "mr-auto mlg:mr-[20px]"
+            : "ml-auto mlg:ml-[-20px]"
+        }
         `}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -122,7 +132,7 @@ const ProductItem = ({
           alt="Product Image"
           width={479}
           height={496}
-          className="mt-14 lg:mt-4 block w-96 h-96 lg:w-[479px] lg:h-[496px]"
+          className="mt-14 lg:mt-4 block w-11/12 h-auto sm:w-96 sm:h-96 mlg:w-[420px] mlg:h-[440px] xl:w-[496px] xl:h-[496px]"
         />
       </motion.div>
     </motion.div>
