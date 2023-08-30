@@ -22,13 +22,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sharp: ["Sharp Grotesk"],
-        serif: ["ui-serif", "Georgia"],
-        lato: ["Lato", "sans-serif"],
+        'sharp': ["Sharp Grotesk"],
+        'serif': ["ui-serif", "Georgia"],
+        'lato': ["Lato", "sans-serif"],
       },
       screens: {
-        mlg: "970px",
-        ssm: "400px",
+        'mlg': "970px",
+        'ssm':'400px'
         // => @media (min-width: 640px) { ... }
       },
     },

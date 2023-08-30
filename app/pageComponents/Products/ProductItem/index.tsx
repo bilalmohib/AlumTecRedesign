@@ -77,7 +77,7 @@ const ProductItem = ({
       ${
         direction === "left"
           ? "mt-0 mlg:mt-[-10px] lg:mt-[-30px] xl:mt-[-50px] ml-auto mlg:ml-8"
-          : "mr-auto ml-auto mlg:ml-6 mlg:mr-0 mt-0 mlg:mt-[-10px] lg:mt-[-30px] xl:mt-[-50px]"
+          : "mr-auto ml-auto mlg:ml-8 mlg:mr-0 mt-0 mlg:mt-[-10px] lg:mt-[-30px] xl:mt-[-50px] lg:ml-[120px]"
       }
       `}
       >
