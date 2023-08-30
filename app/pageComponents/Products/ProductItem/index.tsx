@@ -62,10 +62,9 @@ const ProductItem = ({
       style={{
         background: background ? "url('/Images/Products/Union.png')" : "",
         overflow: "hidden",
-        // border: "5px solid red",
       }}
       className={`
-      bg-cover bg-repeat w-full h-full mlg:min-h-[542px] px-10
+      bg-cover bg-repeat w-full h-full mlg:min-h-[542px] px-3 sm:px-10 
           flex ${
             direction === "left"
               ? "flex-col mlg:flex-row"
@@ -74,7 +73,6 @@ const ProductItem = ({
       `}
     >
       <div
-        style={{ border: "2px solid red" }}
         className={`w-full mlg:w-6/12 h-full flex flex-row justify-center items-center mlg:items-start mlg:justify-start
       ${
         direction === "left"
@@ -83,17 +81,16 @@ const ProductItem = ({
       }
       `}
       >
-        <div className="flex flex-col mlg:items-start min-w-full justify-center mlg:justify-start mt-10 xl:mt-20 items-center border-red-800 border border-solid">
+        <div className="flex flex-col mlg:items-start min-w-full justify-center mlg:justify-start mt-0 sm:mt-8 xl:mt-12 items-center">
           <motion.h1
-            className="text-center sm:text-left text-3xl sm:text-5xl font-bold text-black mx-auto mlg:mx-0"
+            className="text-center sm:text-left text-3xl ssm:text-4xl sm:text-5xl font-bold text-black mx-auto mlg:mx-0"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            style={{ border: "4px solid green" }}
           >
             {title}
           </motion.h1>
-          <div style={{ border: "1px solid red" }}>
+          <div>
             <ul className="mt-4 mb-4 text-lg sm:text-2xl mx-auto mlg:mx-0 min-w-full mlg:h-full">
               {descriptionList.map((item: productItemProps, index: number) => {
                 return (
@@ -116,7 +113,7 @@ const ProductItem = ({
         </div>
       </div>
       <motion.div
-        className={`w-full mlg:w-6/12 flex flex-row justify-center
+        className={`w-full mlg:w-6/12 flex flex-row justify-center mt-[-1.5rem] sm:mt-0
         ${
           direction === "left"
             ? "mr-auto mlg:mr-[20px]"
