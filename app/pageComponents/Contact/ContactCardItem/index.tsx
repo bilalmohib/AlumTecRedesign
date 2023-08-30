@@ -9,7 +9,7 @@ const CotactCardItem = ({
   contact,
 }: CotactCardItemPropsType) => {
   return (
-    <div className="flex flex-col justify-center items-center border rounded-lg shadow-md bg-gray-50 hover:bg-slate-100 pt-8 pb-8 px-8 min-h-[310px]">
+    <div className="flex flex-col justify-center items-center border rounded-lg shadow-md bg-gray-50 hover:bg-slate-100 pt-8 pb-8 px-8 min-h-[370px] lg:min-h-[370px] xl:min-h-[310px]">
       <div className="bg-[#123E95] rounded-md w-16 h-16 p-[10px]">
         <Image
           className="w-11 h-11"

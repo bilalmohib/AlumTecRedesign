@@ -23,7 +23,7 @@ const ContactUsPage = () => {
               <div className="w-full bg-[url('/Images/Contact/curved_lines.jxr')] bg-cover bg-no-repeat bg-center h-[899px] absolute" />
 
               <div className="w-full h-auto left-0 right-0 mx-auto absolute z-[10] mt-[320px] flex justify-center">
-                <div className="h-[300px] w-full grid grid-cols-3 gap-3 container mt-24">
+                <div className="h-[300px] w-full grid grid-cols-1 lg:grid-cols-3 md:gap-3 lg:gap-6 xl:gap-3 container mt-24 md:px-3 lg:px-10 xl:px-10">
                   {contact_data_list.map((item, index) => {
                     return (
                       <div key={index} className="cursor-pointer">
