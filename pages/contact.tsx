@@ -16,13 +16,11 @@ const ContactUsPage = () => {
       // Yahan par border add karna hai
       >
         <div className="w-full relative min-h-full lg:min-h-[1880px]">
-          <div className="w-full absolute border-[20px]">
+          <div className="w-full border-solid border-red-500 border-[20px]">
             <ContactUsBanner />
 
             <div className="w-full relative h-auto">
-              <div className="w-full bg-[url('/Images/Contact/curved_lines.jxr')] bg-cover bg-no-repeat bg-center h-[899px] absolute" />
-
-              <div className="w-full h-auto left-0 right-0 mx-auto absolute z-[10] mt-[320px] flex justify-center md:px-5 lg:px-8 xl:px-10">
+              <div className="bg-[url('/Images/Contact/curved_lines.jxr')] bg-cover bg-no-repeat bg-center w-full h-auto left-0 right-0 mx-auto absolute z-[10] mt-[320px] flex justify-center md:px-5 lg:px-8 xl:px-10">
                     <div className="h-auto border border-solid border-red-600 w-full grid grid-cols-3 gap-3 container mt-24">
                   {contact_data_list.map((item, index) => {
                     return (
@@ -40,7 +38,7 @@ const ContactUsPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-8/12 h-[1200px] left-0 right-0 mx-auto absolute z-[10] mt-[350px]">
+          {/* <div className="w-8/12 h-[1200px] left-0 right-0 mx-auto absolute z-[10] mt-[350px]">
             <ContactForm />
           </div>
           <div className="w-12/12 h-[419px] left-0 right-0 mx-auto absolute z-[10] mt-[1420px]">
@@ -53,7 +51,7 @@ const ContactUsPage = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
+          </div> */}
         </div>
       </section>
 
