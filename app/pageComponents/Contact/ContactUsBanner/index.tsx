@@ -1,9 +1,9 @@
 const ContactUsBanner = () => {
   return (
-    <div className="bg-[url('/Images/Contact/background_auto_x2.jpg')] h-[80vh] mt-[105px] w-full bg-cover bg-no-repeat bg-center">
-      <div className="relative h-[80vh] w-full backdrop-filter backdrop-blur-0 ease-linear transition">
+    <div className="bg-[url('/Images/Contact/background_auto_x2.jpg')] h-72 sm:h-[80vh] mt-[105px] w-full bg-cover bg-no-repeat bg-center">
+      <div className="relative h-72 sm:h-[80vh] w-full backdrop-filter backdrop-blur-0 ease-linear transition">
         <div className="absolute inset-0 bg-black opacity-10"></div>
-        <h1 className="absolute top-0 left-0 right-0 bottom-0 mt-[15vh] text-5xl font-semibold font-sharp text-center text-white">
+        <h1 className="pl-7 sm:px-2 md:px-6 absolute top-0 left-0 right-0 bottom-0 mt-8 sm:mt-[15vh] text-3xl sm:text-5xl font-semibold font-lato sm:font-sharp text-left sm:text-center text-white">
           Let&rsquo;s help you navigate your next
         </h1>
         <p className="absolute top-0 left-0 right-0 bottom-0 mt-[28vh] w-8/12 text-lg text-center text-white ml-auto mr-auto">
