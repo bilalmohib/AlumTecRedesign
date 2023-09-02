@@ -4,7 +4,6 @@ import { contact_data_list } from "@/app/data/Contacts";
 import ContactCardItem from "@/app/pageComponents/Contact/ContactCardItem";
 import ContactForm from "@/app/pageComponents/Contact/ContactForm";
 import ContactUsBanner from "@/app/pageComponents/Contact/ContactUsBanner";
-import Image from "next/image";
 
 const ContactUsPage = () => {
   return (
@@ -16,15 +15,15 @@ const ContactUsPage = () => {
         // Yahan par border add karna hai
       >
         <div className="w-full relative min-h-full lg:min-h-[1880px]">
-          <div className="w-full border-solid border-red-500 border-[2px]">
+          <div className="w-full">
             <ContactUsBanner />
 
             <div className="w-full relative h-auto">
-              <div className="bg-[url('/Images/Contact/curved_lines.jxr')] bg-cover bg-no-repeat bg-center w-full h-auto mx-auto z-[10] flex justify-center md:px-5 lg:px-8 xl:px-10">
-                <div className="w-8/12 h-fit border-solid border-green-600 border-[5px] mx-auto z-[10] mt-0">
+              <div className="bg-[url('/Images/Contact/mobile_curved_lines.jxr')] sm:bg-[url('/Images/Contact/curved_lines.jxr')] bg-cover bg-no-repeat bg-center w-full h-auto mx-auto z-[10] flex flex-col justify-center md:px-5 lg:px-8 xl:px-10">
+                <div className="w-full sm:w-10/12 md:w-10/12 lg:w-9/12 xl:8/12 h-fit mx-auto z-[10] mt-0 sm:mt-[-35vh]">
                   <ContactForm />
                 </div>
-                <div className="h-auto border border-solid border-red-600 w-full grid grid-cols-3 gap-3 container mt-24">
+                <div className="w-full sm:w-full md:w-full mlg:w-full lg:w-full 2xl:w-10/12 h-auto mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-3 md:gap-3 lg:gap-3 xl:gap-6 2xl:gap-10 container my-6 sm:my-8 md:my-10 lg:my-14 xl:my-16 2xl:my-20">
                   {contact_data_list.map((item, index) => {
                     return (
                       <div key={index} className="cursor-pointer">

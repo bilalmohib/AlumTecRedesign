@@ -65,7 +65,7 @@ const ContactForm = () => {
   }, []);
 
   return (
-    <div className="w-full rounded-lg bg-white shadow-md pl-20 pr-20 pt-12">
+    <div className="w-full rounded-lg bg-white shadow-md px-10 sm:px-20 pt-12">
       <Grid
         container
         spacing={
@@ -171,7 +171,7 @@ const ContactForm = () => {
           <Autocomplete
             {...countryDefaultProps}
             id="countryAutoComplete"
-            className="w-full mt-3"
+            className="w-full mt-4"
             autoHighlight
             value={countryId}
             onChange={(event, newValue: string) => {
