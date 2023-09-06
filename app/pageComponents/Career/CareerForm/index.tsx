@@ -1,5 +1,4 @@
 import { Autocomplete, Button, Grid, TextField } from "@mui/material";
-import { MuiFileInput } from "mui-file-input";
 import { useEffect, useState } from "react";
 
 const CareerForm = () => {
@@ -238,7 +237,7 @@ const CareerForm = () => {
         >
           Resume
         </label>
-        <MuiFileInput value={file} onChange={handleFileChange} className="w-full border-none" placeholder="Add Relative Documents to support your application" />
+        {/* <MuiFileInput value={file} onChange={handleFileChange}/> */}
       </div>
 
       <p className="mt-[16px] text-[##757575] text-[15px] leading-7">
