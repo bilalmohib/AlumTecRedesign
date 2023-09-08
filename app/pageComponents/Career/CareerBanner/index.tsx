@@ -7,6 +7,8 @@ const CareerBanner = () => {
           <div className="w-full flex flex-col justify-center items-center">
             <p className="text-left text-lg text-white mx-auto font-sans tracking-widest font-extralight">Careers at Alumtec</p>
             <h1 className="mt-0 text-2xl sm:text-6xl font-normal font-sharp sm:font-lato text-white text-center">
+               Work with us to build <br /> your CAREER
+            </h1>
           </div>
         </div>
       </div>
