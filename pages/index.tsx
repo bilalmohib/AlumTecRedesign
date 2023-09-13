@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
 
+import Head from "next/head";
+
+// Components
 import Navbar from "@/app/Components/Navbar";
 import HomeBanner from "@/app/pageComponents/Home/HomeBanner";
 import HomeServicesBlock from "@/app/pageComponents/Home/HomeServicesBlock";
@@ -9,8 +11,8 @@ import Footer from "@/app/Components/Footer";
 import HomeTestimonialsBlock from "@/app/pageComponents/Home/HomeTestimonialsBlock";
 import GetInTouchContactForm from "@/app/Components/GetInTouchContactForm";
 
+// Styles
 import styles from "../styles/Home.module.css";
-import Head from "next/head";
 
 const Home = () => {
   return (
@@ -25,7 +27,7 @@ const Home = () => {
           name="keywords"
           content="AlumTec, Glazing solutions, Aluminium curtain wall, windows and doors, Glass and Aluminium, Dubai Green Building Regulations, Dubai Civil Defense, Abu Dhabi Estidama Regulations, Canada, Dubai, UAE, United Arab Emirates, AlumTec, Glazing solutions are our passion"
         />
-        <meta name="author" content="Muhammad-Bilal-7896" />
+        <meta name="author" content="bilalmohib" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
