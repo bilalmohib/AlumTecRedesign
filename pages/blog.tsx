@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "@/app/Components/Navbar";
+import BlogBanner from "@/app/pageComponents/Blog/BlogBanner";
 
 const Blog = () => {
   return (
@@ -19,11 +20,7 @@ const Blog = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <h1 className="text-center text-7xl text-blue-800 mt-40">Blog</h1>
-
-      <p className="text-center text-3xl text-blue-800 mt-1">
-        Page under construction. Stay tuned! 🚧
-      </p>
+      <BlogBanner />
     </div>
   );
 };
