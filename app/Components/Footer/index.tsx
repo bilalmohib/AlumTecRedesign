@@ -130,7 +130,7 @@ export const Footer: FC = (): ReactElement => {
           <span className="text-black font-poppins text-[14px] font-normal tracking-wider">
             {" "}
             <a
-              href="https://www.linkedin.com/in/muhammad-bilal-028843199/"
+              href="https://www.github.com/bilalmohib/"
               target="_blank"
               rel="noopener noreferrer"
             >
