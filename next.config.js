@@ -8,6 +8,8 @@ const nextConfig = {
       "s.yimg.com",
       "generation-sessions.s3.amazonaws.com",
       "alumtec.ca",
+      "example.com",
+      "img.freepik.com"
     ],
   },
 

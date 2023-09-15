@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "@/app/Components/Navbar";
 import BlogBanner from "@/app/pageComponents/Blog/BlogBanner";
+import BlogBody from "@/app/pageComponents/Blog/BlogBody";
 
 const Blog = () => {
   return (
@@ -21,6 +22,7 @@ const Blog = () => {
       </Head>
       <Navbar />
       <BlogBanner />
+      <BlogBody/>
     </div>
   );
 };
