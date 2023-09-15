@@ -3,11 +3,6 @@
 const BlogBanner = () => {
   return (
     <div className="bg-[url('/Images/Blogs/banner.png')] h-60 sm:h-[80vh] mt-[105px] w-full bg-cover bg-no-repeat bg-center">
-      {/* <h1 className="text-center text-7xl text-blue-800 mt-40">Blog</h1>
-
-      <p className="text-center text-3xl text-blue-800 mt-1">
-        Page under construction. Stay tuned! 🚧
-      </p> */}
       <div className="relative h-60 sm:h-[80vh] w-full backdrop-filter backdrop-blur-0 ease-linear transition">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="px-7 sm:px-8 md:px-6 absolute top-0 left-0 right-0 bottom-0 mt-8 sm:mt-[15vh]">
