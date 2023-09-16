@@ -46,7 +46,7 @@ Then, you need to install 🔧 the dependencies required to run this project.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/your-project.git
+git clone https://github.com/bilalmohib/AlumTecRedesign.git
 ```
 
 # Install dependencies
