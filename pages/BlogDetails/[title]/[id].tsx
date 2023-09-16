@@ -41,12 +41,12 @@ const BlogDetails = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <section className="mt-[105px] mx-20 pt-3 border border-blue-600 border-dotted">
+      <section className="mt-[105px] mx-20 pt-3">
         <h3 className="text-5xl font-semibold my-0 mt-4 text-[#37474F] font-sans">
           {title}
         </h3>
         <div className="flex w-full mt-4">
-          <div className="border border-yellow-500 border-solid w-6/12">
+          <div className="w-6/12">
             <div className="flex flex-row mt-4">
               <Image
                 src="https://img.freepik.com/free-photo/detail-glass-architectures-blue-tone_1359-612.jpg?w=900&t=st=1694757138~exp=1694757738~hmac=0d12552920a362ffc0b95571dd0d9395b0b131f96d1ea4107ee0976e84e04bc5"
@@ -62,7 +62,7 @@ const BlogDetails = () => {
               </h3>
             </div>
           </div>
-          <div className="border border-green-500 border-solid w-6/12 flex justify-end items-end">
+          <div className="w-6/12 flex justify-end items-end">
             <div className="flex flex-row mt-4">
               <Link
                 key="title"
