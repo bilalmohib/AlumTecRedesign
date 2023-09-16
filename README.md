@@ -8,7 +8,7 @@ Brief project description goes here. Make it captivating! 💡
   - [📋 Table of Contents](#-table-of-contents)
   - [🧐 About](#-about)
   - [✨ Features](#-features)
-  - [🎥 Demo](#-demo)
+  - [🎥 Live Website 📷](#-live-website-)
   - [🛠️ Installation](#️-installation)
 - [Install dependencies](#install-dependencies)
   - [💡 Usage](#-usage)
@@ -23,13 +23,21 @@ Provide a concise introduction to your project. Explain its purpose and why it's
 
 List the key features of your project:
 
-- ✅ Feature 1
-- ✅ Feature 2
-- ✅ Feature 3
+- ✅ Responsiveness
+- ✅ Uses Material UI, Tailwind CSS and latest React
+- ✅ Uses Page Routing by Next.js
+- ✅ Uses Firebase for Authentication and Database
+- ✅ Uses Redux for State Management
+- ✅ Uses React Hook Form for Form Validation
+- ✅ Uses Clean Code Architecture
+- ✅ Offers Dynamic Blog Post Creation
+- ✅ Offers Dynamic Project Creation
+- ✅ Offers Admin Panel for Blog Post and Project Creation
 
-## 🎥 Demo
+## 🎥 Live Website 📷
 
-Showcase your project with a live demo or screenshots. Make it visually appealing! 📷
+Provide a link to your live website here. 👇
+[alumtec.ca](https://alumtec.ca/)
 
 ## 🛠️ Installation
 
@@ -39,14 +47,17 @@ Provide clear instructions on how to install and set up your project. Include an
 # Clone the repository
 git clone https://github.com/yourusername/your-project.git
 ```
+
 # Install dependencies
+
 npm install
 
 ## 💡 Usage
+
 Explain how to use your project. Provide code examples, if applicable. Make it user-friendly! 🤓
 
 ```javascript
-import { yourFunction } from 'your-project';
+import { yourFunction } from "your-project";
 
 // Usage example
 const result = yourFunction(param1, param2);
@@ -54,6 +65,7 @@ console.log(result);
 ```
 
 ## 🤝 Contributing
+
 Encourage contributions! Explain how others can contribute to your project. 🤗
 
 1. Fork the project.
@@ -62,5 +74,6 @@ Encourage contributions! Explain how others can contribute to your project. 🤗
 4. Open a Pull Request.
 
 ## 📄 License
+
 State the license of your project. Be transparent about how others can use your code. 📝
 This project is licensed under the MIT License.
