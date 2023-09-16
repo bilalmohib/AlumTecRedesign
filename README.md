@@ -1,66 +1,75 @@
-# 🚀 Project Name
+# 🚧 ALUMTEC
 
-Brief project description goes here. Make it captivating! 💡
+A Construction Company 💡 Website built with Next.js, React, Redux, Firebase, Material UI, Tailwind CSS and best practices. 
 
 ## 📋 Table of Contents
 
-- [🚀 Project Name](#-project-name)
+- [🚧 ALUMTEC](#-alumtec)
   - [📋 Table of Contents](#-table-of-contents)
   - [🧐 About](#-about)
   - [✨ Features](#-features)
-  - [🎥 Demo](#-demo)
+  - [🎥 Live Website 📷](#-live-website-)
   - [🛠️ Installation](#️-installation)
 - [Install dependencies](#install-dependencies)
-  - [💡 Usage](#-usage)
   - [🤝 Contributing](#-contributing)
   - [📄 License](#-license)
 
 ## 🧐 About
 
-Provide a concise introduction to your project. Explain its purpose and why it's awesome. 🌟
+Alumtec is a construction company website 🌟 built with Next.js, React, Redux, Firebase, Material UI, Tailwind CSS and best practices. It offers a dynamic blog post creation and project creation. It also offers an admin panel for blog post and project creation. It is a responsive website that works on all devices.
 
 ## ✨ Features
 
-List the key features of your project:
+Following are the features of this website:
 
-- ✅ Feature 1
-- ✅ Feature 2
-- ✅ Feature 3
+- ✅ Responsiveness
+- ✅ Uses Material UI, Tailwind CSS and latest React
+- ✅ Uses Page Routing by Next.js
+- ✅ Uses Firebase for Authentication and Database
+- ✅ Uses Redux for State Management
+- ✅ Uses React Hook Form for Form Validation
+- ✅ Uses Clean Code Architecture
+- ✅ Offers Dynamic Blog Post Creation
+- ✅ Offers Dynamic Project Creation
+- ✅ Offers Admin Panel for Blog Post and Project Creation
 
-## 🎥 Demo
+## 🎥 Live Website 📷
 
-Showcase your project with a live demo or screenshots. Make it visually appealing! 📷
+Provide a link to your live website here. 👇
+[alumtec.ca](https://alumtec.ca/)
 
 ## 🛠️ Installation
 
-Provide clear instructions on how to install and set up your project. Include any prerequisites. 🔧
+First of all, you need to have Node.js and npm installed on your computer. 😊
+
+Then, you need to install 🔧 the dependencies required to run this project.
 
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/your-project.git
 ```
+
 # Install dependencies
+
 npm install
 
-## 💡 Usage
-Explain how to use your project. Provide code examples, if applicable. Make it user-friendly! 🤓
-
-```javascript
-import { yourFunction } from 'your-project';
-
-// Usage example
-const result = yourFunction(param1, param2);
-console.log(result);
-```
-
 ## 🤝 Contributing
-Encourage contributions! Explain how others can contribute to your project. 🤗
+
+Contributions, issues and feature requests are welcome! 🤝
+
+Follow these steps to contribute:
 
 1. Fork the project.
 2. Create a new branch.
 3. Make your changes.
 4. Open a Pull Request.
+5. Please wait for your PR to be reviewed. 🙏🏼
+6. If your PR is accepted, it will be merged. 😃
+7. If you have any questions, you can ask in the Issues section or contact me directly. 🤩
+8. Show your support by giving a ⭐ to this project if you like it. 😊
+9. And voilà! You've made your contribution! 🎉🎉🎉
+10. Thanks! ❤️
 
 ## 📄 License
-State the license of your project. Be transparent about how others can use your code. 📝
-This project is licensed under the MIT License.
+
+This project is MIT licensed. 😊
