@@ -1,7 +1,7 @@
 export const blogDataList = [
   {
     id: 1,
-    title: "How to use the new features of React 18",
+    title: "Here are the Top 10 Construction Companies in Lahore",
     description:
       "React 18 is the latest version of React. It was released on 16th November 2021. It has some new features and improvements. In this article, we will discuss how to use the new features of React 18.",
     image:
