@@ -39,6 +39,9 @@ const BlogBody = () => {
           Load More
         </Button>
       </div>
+      {/* Add divider here */}
+      <div className="border-t border-gray-300 border-dotted border-b-0 my-10 mx-16"></div>
+      {/* Add divider here */}
       <Footer />
     </div>
   );
