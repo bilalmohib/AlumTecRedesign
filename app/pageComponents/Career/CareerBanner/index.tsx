@@ -16,12 +16,12 @@ const CareerBanner = () => {
             <Button
               variant="contained"
               color="primary"
-              className="font-[Sharp Grotesk] text-lg mt-16 font-normal leading-[77px] rounded-sm bg-[#123E95] hover:bg-[#0b46bb] hover:text-white w-40 h-[50px]"
+              className="font-[Sharp Grotesk] text-lg mt-0 font-normal leading-[77px] rounded-sm bg-[#123E95] hover:bg-[#0b46bb] hover:text-white w-40 h-[50px]"
               onClick={() => {
                 console.log("Button clicked");
               }}
             >
-              View All
+              Apply
             </Button>
           </div>
         </div>
