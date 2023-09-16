@@ -55,8 +55,8 @@ const BlogDetails = () => {
                 height={40}
                 className="rounded-full block"
               />
-              <h3 className="m-0 font-light mt-2 ml-2">Arya Stark</h3>
-              <h3 className="m-0 font-light mt-2 ml-2 text-gray-400">
+              <h3 className="m-0 font-light mt-[5px] ml-3">Arya Stark</h3>
+              <h3 className="m-0 font-light mt-[5px] ml-3 text-gray-400">
                 {new Date().toLocaleString("default", { month: "long" })}{" "}
                 {new Date().getFullYear()}
               </h3>
