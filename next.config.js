@@ -9,7 +9,8 @@ const nextConfig = {
       "generation-sessions.s3.amazonaws.com",
       "alumtec.ca",
       "example.com",
-      "img.freepik.com"
+      "img.freepik.com",
+      "wpassets.graana.com",
     ],
   },
 
