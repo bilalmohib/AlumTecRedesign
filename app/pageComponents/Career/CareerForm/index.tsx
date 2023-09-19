@@ -230,17 +230,29 @@ const CareerForm = () => {
 
       <div className="border-t border-[#123E95] border-[0.5px] border-solid mt-5"></div>
 
-      <div className="border border-red-500 border-solid mt-9">
+      <div className="mt-9">
         <label
           htmlFor="fileInput"
-          className="font-normal leading-5 text-black text-lg block"
+          className="font-normal leading-5 text-black text-base block"
         >
           Resume
         </label>
-        {/* <MuiFileInput value={file} onChange={handleFileChange}/> */}
+        <input
+          type="file"
+          id="fileInput"
+          className="border border-solid border-[#BBB7B7] text-lg w-full rounded-sm bg-white mt-2"
+        />
       </div>
 
-      <p className="mt-[16px] text-[##757575] text-[15px] leading-7">
+      <Button
+        variant="contained"
+        color="primary"
+        className="mt-7 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[15px] w-32"
+      >
+        UPLOAD
+      </Button>
+
+      <p className="mt-[16px] text-[#757575] text-[16px] leading-7">
         By submitting this form you agree to our terms and conditions and our
         Privacy Policy which explains how we may collect, use and disclose your
         personal information including to third parties.
@@ -249,9 +261,9 @@ const CareerForm = () => {
       <Button
         variant="contained"
         color="primary"
-        className="mt-8 mb-8 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[16px]"
+        className="mt-2 mb-12 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[15px] w-32"
       >
-        Contact sales
+        Submit
       </Button>
     </div>
   );

@@ -1,7 +1,5 @@
 import Button from "@mui/material/Button";
 
-import { montserratFont } from "@/utils/fonts";
-
 import styles from "./style.module.css";
 
 const LeftContainerHB = () => {
@@ -9,10 +7,10 @@ const LeftContainerHB = () => {
     <div className={styles.leftContainer}>
       <div className={styles.insideLeftContainer}>
         <div className={styles.dash_line}></div>
-        <h3 className={`${styles.heading} ${montserratFont.variable}`}>
+        <h3 className={`${styles.heading}`}>
           Aluminium curtain wall, windows and doors are our speciality.
         </h3>
-        <h3 className={`${styles.subHeading} ${montserratFont.variable}`}>
+        <h3 className={`${styles.subHeading}`}>
           Glazing solutions are our passion.
         </h3>
         <Button className={styles.readMoreButton}>Read more</Button>

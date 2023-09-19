@@ -16,7 +16,7 @@ const ServicesPage = () => {
 
       <section>
         <ServicesBanner />
-        <div className="mx-auto md:ml-20 mt-20">
+        <div className="mx-auto md:ml-20 mt-4">
           <MSBHeader />
         </div>
 

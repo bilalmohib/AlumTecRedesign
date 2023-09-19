@@ -1,38 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚧 ALUMTEC
 
-## Getting Started
+A Construction Company 💡 Website built with Next.js, React, Redux, Firebase, Material UI, Tailwind CSS and best practices. 
 
-First, run the development server:
+## 📋 Table of Contents
+
+- [🚧 ALUMTEC](#-alumtec)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [🧐 About](#-about)
+  - [✨ Features](#-features)
+  - [🎥 Live Website 📷](#-live-website-)
+  - [🛠️ Installation](#️-installation)
+- [Install dependencies](#install-dependencies)
+  - [🤝 Contributing](#-contributing)
+  - [📄 License](#-license)
+
+## 🧐 About
+
+Alumtec is a construction company website 🌟 built with Next.js, React, Redux, Firebase, Material UI, Tailwind CSS and best practices. It offers a dynamic blog post creation and project creation. It also offers an admin panel for blog post and project creation. It is a responsive website that works on all devices.
+
+## ✨ Features
+
+Following are the features of this website:
+
+- ✅ Responsiveness
+- ✅ Uses Material UI, Tailwind CSS and latest React
+- ✅ Uses Page Routing by Next.js
+- ✅ Uses Firebase for Authentication and Database
+- ✅ Uses Redux for State Management
+- ✅ Uses React Hook Form for Form Validation
+- ✅ Uses Clean Code Architecture
+- ✅ Offers Dynamic Blog Post Creation
+- ✅ Offers Dynamic Project Creation
+- ✅ Offers Admin Panel for Blog Post and Project Creation
+
+## 🎥 Live Website 📷
+
+Provide a link to your live website here. 👇
+[alumtec.ca](https://alumtec.ca/)
+
+## 🛠️ Installation
+
+First of all, you need to have Node.js and npm installed on your computer. 😊
+
+Then, you need to install 🔧 the dependencies required to run this project.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# Clone the repository
+git clone https://github.com/bilalmohib/AlumTecRedesign.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Install dependencies
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+npm install
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🤝 Contributing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Contributions, issues and feature requests are welcome! 🤝
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Follow these steps to contribute:
 
-## Learn More
+1. Fork the project.
+2. Create a new branch.
+3. Make your changes.
+4. Open a Pull Request.
+5. Please wait for your PR to be reviewed. 🙏🏼
+6. If your PR is accepted, it will be merged. 😃
+7. If you have any questions, you can ask in the Issues section or contact me directly. 🤩
+8. Show your support by giving a ⭐ to this project if you like it. 😊
+9. And voilà! You've made your contribution! 🎉🎉🎉
+10. Thanks! ❤️
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is MIT licensed. 😊

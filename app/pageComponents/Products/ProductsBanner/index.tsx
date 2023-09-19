@@ -1,5 +1,3 @@
-import { montserratFont } from "@/utils/fonts";
-
 const ProductsBanner = () => {
   return (
     <div className="bg-[url('/Images/Products/banner.jxr')] min-h-96 h-96 sm:h-[70vh] mt-[100px] w-full bg-cover bg-no-repeat bg-center">
