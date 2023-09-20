@@ -49,7 +49,7 @@ const Home = () => {
         <br />
       </section>
 
-      <div style={{ marginTop: 560, position: "relative" }}>
+      <div style={{ position: "relative" }}>
         <Footer />
       </div>
     </div>

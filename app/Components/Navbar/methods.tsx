@@ -26,13 +26,22 @@ export const NavItemContainer = ({
         <Link
           key={index}
           className={`${styles.navItem} no-underline hover:no-underline`}
-          onClick={() => menuClick(item.link)}
+          onClick={() => {
+            if (item.name !== "Call us") {
+              menuClick(item.link);
+            }
+            else {
+              // Call on phone number using href link like the phone number gets open in mobile
+              window.open("tel:+1-416-746-6666");
+            }
+          }}
         >
           {item.name === "Call us" ? (
             <div className="flex">
               <div className="normal-case xl:uppercase font-normal hover-underline-animation">
                 {item.name}
               </div>
+
               <CallIcon
                 sx={{
                   fontSize: 30,

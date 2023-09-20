@@ -121,7 +121,7 @@ export const Footer: FC = (): ReactElement => {
       </div>
       <div className="flex flex-col md:flex-row justify-between mt-2 pb-2">
         <p className="text-black font-poppins text-[14px] font-normal tracking-wider">
-          © 2021 Alumtec Glazing Solutions Inc. All rights reserved.
+          © 2023 Alumtec Glazing Solutions Inc. All rights reserved.
         </p>
         <p>
           <span className="text-black font-poppins text-[14px] font-normal tracking-wider">

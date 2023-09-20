@@ -6,7 +6,7 @@ const HPBHeader = () => {
       <h2
         className={`${styles.heading} text-white text-6xl font-semibold leading-5 xl:leading-[77px] text-center`}
       >
-        OUR PRODUCTS
+        OUR PROJECTS
       </h2>
       <p
         className={`text-gray-300 text-center font-sharp text-lg font-normal leading-10 px-32 mt-8 ${styles.paragraph}`}
