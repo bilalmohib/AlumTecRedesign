@@ -5,7 +5,7 @@ import styles from "./style.module.css";
 
 const HomeBlogsBlock = () => {
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       <HBBHeader />
 
       <HomeBlogsBody />

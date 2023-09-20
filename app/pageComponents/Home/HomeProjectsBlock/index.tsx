@@ -1,12 +1,12 @@
 import HPBHeader from "./HPBHeader";
-import HomeProductsList from "./HomeProductsList";
+import HomeProjectsList from "./HomeProjectsList";
 
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 import Slider from "react-slick";
 
-import Carousel from 'react-material-ui-carousel'
+import Carousel from "react-material-ui-carousel";
 
 import styles from "./style.module.css";
 import { Box, Button } from "@mui/material";
@@ -15,24 +15,24 @@ const HomeProjectsBlock = () => {
   var items = [
     {
       name: "Random Name #1",
-      description: "Probably the most random thing you have ever seen!"
+      description: "Probably the most random thing you have ever seen!",
     },
     {
       name: "Random Name #2",
-      description: "Hello World!"
-    }
-  ]
+      description: "Hello World!",
+    },
+  ];
   return (
-    <div className={styles.container}>
-      <HPBHeader />
+    <div className="h-[750px] ">
+      <div className={styles.container}>
+        <HPBHeader />
 
-      <HomeProductsList />
+        <HomeProjectsList />
 
-      {/* <Carousel
+        {/* <Carousel
         NextIcon={<ArrowForwardIosIcon />}
         PrevIcon={<ArrowBackIosIcon sx={{ border: "1px solid red;" }} />}
         navButtonsAlwaysVisible={true}
-        
       >
         {
           items.map((item, i) => (
@@ -46,7 +46,7 @@ const HomeProjectsBlock = () => {
             </Box>
           ))}
       </Carousel> */}
-
+      </div>
     </div>
   );
 };

@@ -7,9 +7,6 @@
 }
 
 @media all and (max-width: 500px) {
-  .container {
-    margin-top: 0px;
-  }
   .image {
     width: 320px;
     height: 100%;

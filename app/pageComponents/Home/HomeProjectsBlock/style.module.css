@@ -5,6 +5,7 @@
   background-color: rgba(16, 20, 110, 0.84);
   margin-top: 140px;
   padding-top: 50px;
+  position: relative;
   background-image: url(../../../../public/Images/Home/Products/Patterns.png);
 }
 
