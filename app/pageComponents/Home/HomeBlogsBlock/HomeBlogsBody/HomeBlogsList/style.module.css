@@ -6,26 +6,11 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  width: 89%;
+  margin-top: 80px;
+  margin-bottom: 30px;
   /* border: 2px solid red; */
 }
 
-.leftContainer {
-  height: 493px;
-  position: relative;
-  width: 45%;
-  /* border: 2px solid rgb(43, 255, 0); */
-}
-
-.rightContainer {
-  height: 493px;
-  position: relative;
-  /* width: 669px; */
-  width: 45%;
-  margin-top: 32px;
-  margin-left: 70px;
-  /* border: 2px solid brown; */
-}
 
 .leftHBCard {
   margin-top: 65px;
@@ -72,68 +57,4 @@
   position: absolute;
   top: 0;
   width: 112px;
-}
-
-.overlap_3 {
-  height: 434px;
-  position: relative;
-  width: 625px;
-}
-
-.rectangle_4 {
-  border: 1px solid;
-  border-color: #10146e;
-  height: 389px;
-  left: 79px;
-  position: absolute;
-  top: 0;
-  width: 546px;
-}
-
-.rectangle_5 {
-  background-color: #363a85;
-  box-shadow: 0px 12px 18px 3px #00000040;
-  height: 400px;
-  left: 0;
-  position: absolute;
-  top: 34px;
-  width: 600px;
-}
-
-.mask_group_2 {
-  height: 400px;
-  left: 0;
-  position: absolute;
-  top: 34px;
-  width: 270px;
-}
-
-.right_content_2 {
-  height: 220px;
-  left: 302px;
-  position: absolute;
-  top: 124px;
-  width: 233px;
-}
-
-.group_3 {
-  height: 25px;
-  left: 176px;
-  position: absolute;
-  top: 0;
-  width: 56px;
-}
-
-.text_wrapper_8 {
-  color: #ffffff;
-  font-family: "Jost", Helvetica;
-  font-size: 14px;
-  font-weight: 500;
-  left: 30px;
-  letter-spacing: 0;
-  line-height: 24px;
-  position: absolute;
-  text-align: center;
-  top: 1px;
-  white-space: nowrap;
 }

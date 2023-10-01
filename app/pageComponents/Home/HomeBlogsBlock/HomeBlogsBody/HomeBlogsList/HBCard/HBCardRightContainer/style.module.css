@@ -1,5 +1,5 @@
 .container {
-  width: 330px;
+  width: 260px;
   height: 400px;
   background-color: #363a85;
   box-shadow: 0px 6px 12px 3px #00000040;
@@ -7,6 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .inside_right_side_container {

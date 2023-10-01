@@ -42,7 +42,7 @@ const Home = () => {
           className={`mt-[72rem] sm:mt-[70rem] lg:mt-auto ${styles.projectsBottomMargin}`}
         ></div>
 
-        {/* <HomeBlogsBlock /> */}
+        <HomeBlogsBlock />
         {/* <HomeTestimonialsBlock /> */}
         {/* <GetInTouchContactForm /> */}
         <br />
