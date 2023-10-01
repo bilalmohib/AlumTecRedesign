@@ -6,6 +6,18 @@ import ContactForm from "@/app/pageComponents/Contact/ContactForm";
 import ContactUsBanner from "@/app/pageComponents/Contact/ContactUsBanner";
 
 const ContactUsPage = () => {
+  const openContactModal = (item: ContactDataType) => {
+    // window.open(`tel:${contact}`, "_blank");
+
+    if (item.type === "email") {
+      window.open(`mailto:${item.contact}`);
+    } else if (item.type === "phone") {
+      window.open(`tel:${item.contact}`);
+    } else {
+      // window.open(`${item.contact}`);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -14,7 +26,7 @@ const ContactUsPage = () => {
         className="relative"
         // Yahan par border add karna hai
       >
-        <div className="w-full relative min-h-full lg:min-h-[1880px]">
+        <div className="w-full relative min-h-full">
           <div className="w-full">
             <ContactUsBanner />
 
@@ -24,18 +36,25 @@ const ContactUsPage = () => {
                   <ContactForm />
                 </div>
                 <div className="w-full sm:w-full md:w-full mlg:w-full lg:w-full 2xl:w-10/12 h-auto mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-3 md:gap-3 lg:gap-3 xl:gap-6 2xl:gap-10 container my-6 sm:my-8 md:my-10 lg:my-14 xl:my-16 2xl:my-20">
-                  {contact_data_list.map((item, index) => {
-                    return (
-                      <div key={index} className="cursor-pointer">
-                        <ContactCardItem
-                          icon={item.icon}
-                          title={item.title}
-                          description={item.description}
-                          contact={item.contact}
-                        />
-                      </div>
-                    );
-                  })}
+                  {contact_data_list.map(
+                    (item: ContactDataType, index: number) => {
+                      return (
+                        <div
+                          key={index}
+                          className="cursor-pointer"
+                          onClick={() => openContactModal(item)}
+                        >
+                          <ContactCardItem
+                            icon={item.icon}
+                            title={item.title}
+                            description={item.description}
+                            contact={item.contact}
+                            type={item.type}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>
@@ -54,11 +73,7 @@ const ContactUsPage = () => {
         </div>
       </section>
 
-      <div
-      // style={{
-      //   border: "5px solid red",
-      // }}
-      >
+      <div>
         <Footer />
       </div>
     </div>

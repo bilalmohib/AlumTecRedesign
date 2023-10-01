@@ -29,10 +29,9 @@ export const NavItemContainer = ({
           onClick={() => {
             if (item.name !== "Call us") {
               menuClick(item.link);
-            }
-            else {
+            } else {
               // Call on phone number using href link like the phone number gets open in mobile
-              window.open("tel:+1-416-746-6666");
+              window.open("tel:+19055088777");
             }
           }}
         >

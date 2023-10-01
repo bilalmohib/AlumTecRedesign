@@ -4,4 +4,5 @@ export type CotactCardItemPropsType = {
     title: string;
     description: string;
     contact: string;
+    type: "email" | "phone" | "support";
 }
