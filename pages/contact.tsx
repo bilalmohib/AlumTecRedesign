@@ -1,6 +1,7 @@
 import Footer from "@/app/Components/Footer";
 import Navbar from "@/app/Components/Navbar";
 import { contact_data_list } from "@/app/data/Contacts";
+import { ContactDataType } from "@/app/data/Contacts/types";
 import ContactCardItem from "@/app/pageComponents/Contact/ContactCardItem";
 import ContactForm from "@/app/pageComponents/Contact/ContactForm";
 import ContactUsBanner from "@/app/pageComponents/Contact/ContactUsBanner";

@@ -1,3 +1,5 @@
+import { ContactDataType } from "./types";
+
 export const contact_data_list: ContactDataType[] = [
   {
     title: "Email us",
