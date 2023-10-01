@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import { countries } from "@/app/data/Common";
+import firebase from "@/firebase/index";
 import Image from "next/image";
 
 const ContactForm = () => {
@@ -85,15 +86,52 @@ const ContactForm = () => {
     }
 
     if (name !== "" && email !== "" && comapnyName !== "" && message !== "") {
-      console.log("Form Submitted");
-      toast(
-        "Thank you so much for contacting AlumTec. We will get back to you soon through 📧 email.",
-        {
-          theme: "dark",
-        }
-      );
+      ////////////////////////////To take the current date and time//////////////////////////////////
+      let today = new Date();
+      let date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+      let time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let dateTime = date + " " + time;
+      dateTime = dateTime.toString();
+      ////////////////////////////To take the current date and time//////////////////////////////////
+
+      let Data = {
+        NAME: name,
+        EMAIL: email,
+        COMPANY: comapnyName,
+        COUNTRY: countryId,
+        MESSAGE: message,
+        currentTime: dateTime,
+      };
+
+      //For storing all ads i.e to show at main page
+      firebase
+        .database()
+        .ref(`ContactUs/`)
+        .push(Data)
+        .then(() => {
+          setName("");
+          setEmail("");
+          setComapnyName("");
+          setCountryId(null);
+          setMessage("");
+          toast(
+            "Thank you so much for contacting AlumTec. We will get back to you soon through 📧 email.",
+            {
+              theme: "dark",
+            }
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Network Error while submitting the contact form");
+        });
     } else {
-      console.log("Form Not Submitted");
       toast.error("Please fill all the required fields");
     }
     return;
