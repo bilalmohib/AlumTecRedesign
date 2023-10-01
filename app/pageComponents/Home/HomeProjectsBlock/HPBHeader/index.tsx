@@ -8,13 +8,13 @@ const HPBHeader = () => {
       >
         OUR PROJECTS
       </h2>
-      <p
+      {/* <p
         className={`text-gray-300 text-center font-sharp text-lg font-normal leading-10 px-32 mt-8 ${styles.paragraph}`}
       >
         AlumTec Glass and Aluminium offers a wide range of aluminium products
         and services. All our products comply with Dubai Green Building
         Regulations, Dubai Civil Defense and Abu Dhabi Estidama Regulations.
-      </p>
+      </p> */}
     </>
   );
 };
