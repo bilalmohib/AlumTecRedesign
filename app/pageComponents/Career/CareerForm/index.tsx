@@ -1,5 +1,7 @@
-import { Autocomplete, Button, Grid, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
+import Image from "next/image";
+import { countries } from "@/app/data/Common";
 
 const CareerForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
@@ -40,9 +42,6 @@ const CareerForm = () => {
   // Country Id Error
   const [countryIdError, setCountryIdError] = useState(false);
 
-  // For Country autocomplete component
-  const [countryList, setCountryList] = useState<any>([]);
-
   const [file, setFile] = useState<any>(null);
 
   const handleFileChange = (newFile: any) => {
@@ -51,24 +50,12 @@ const CareerForm = () => {
 
   // For autocomplete component
   const countryDefaultProps = {
-    options: countryList,
-    getOptionLabel: (option: any) => option.countryName,
+    options: countries,
+    getOptionLabel: (option: any) => option.label,
   };
   // For Country autocomplete component
 
   // Use Effect for Country autocomplete component
-
-  useEffect(() => {
-    // Fetch Country List
-    let countryList = [
-      { countryId: 1, countryName: "India" },
-      { countryId: 2, countryName: "USA" },
-      { countryId: 3, countryName: "UK" },
-      { countryId: 4, countryName: "Canada" },
-      { countryId: 5, countryName: "Australia" },
-    ];
-    setCountryList(countryList);
-  }, []);
 
   return (
     <div className="w-full rounded-lg bg-bgCareerForm shadow-md px-10 sm:px-20 pt-12">
@@ -175,10 +162,10 @@ const CareerForm = () => {
           }
         >
           <Autocomplete
+            id="select-country-dropdown"
             {...countryDefaultProps}
-            id="countryAutoComplete"
-            className="w-full mt-4"
             autoHighlight
+            className="w-full mt-4"
             value={countryId}
             onChange={(event, newValue: string) => {
               setCountryId(newValue);
@@ -186,6 +173,22 @@ const CareerForm = () => {
                 setCountryIdError(false);
               }
             }}
+            renderOption={(props, option) => (
+              <Box
+                component="li"
+                sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                {...props}
+              >
+                <Image
+                  loading="lazy"
+                  width="20"
+                  height="20"
+                  src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                  alt=""
+                />
+                {option.label} ({option.code}) +{option.phone}
+              </Box>
+            )}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -228,7 +231,7 @@ const CareerForm = () => {
         </Grid>
       </Grid>
 
-      <div className="border-t border-[#123E95] border-[0.5px] border-solid mt-5"></div>
+      <div className="border-t border-[#123E95] border-[0.5px] border-solid mt-10"></div>
 
       <div className="mt-9">
         <label

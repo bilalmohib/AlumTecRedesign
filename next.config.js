@@ -11,6 +11,7 @@ const nextConfig = {
       "example.com",
       "img.freepik.com",
       "wpassets.graana.com",
+      "flagcdn.com",
     ],
   },
 

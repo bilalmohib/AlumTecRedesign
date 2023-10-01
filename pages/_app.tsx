@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 // Importing Components
 import GlobalCssPriority from "@/app/Components/GlobalCssPriority";
