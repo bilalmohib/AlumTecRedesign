@@ -57,6 +57,20 @@ const CareerForm = () => {
 
   // Use Effect for Country autocomplete component
 
+  const submitForm = () => {
+    if (!firstName) {
+      setFirstNameError(true);
+    }
+
+    if (!lastName) {
+      setLastNameError(true);
+    }
+
+    if (!countryId) {
+      setCountryIdError(true);
+    }
+  }
+
   return (
     <div className="w-full rounded-lg bg-bgCareerForm shadow-md px-10 sm:px-20 pt-12">
       <Grid
@@ -265,6 +279,7 @@ const CareerForm = () => {
         variant="contained"
         color="primary"
         className="mt-2 mb-12 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[15px] w-32"
+        onClick={submitForm}
       >
         Submit
       </Button>
