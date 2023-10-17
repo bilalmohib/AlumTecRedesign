@@ -10,9 +10,9 @@ const ProductsBanner = () => {
           Our Products
         </h1>
         <p className="absolute top-0 left-0 right-0 bottom-0 mt-36 sm:mt-[35vh] w-10/12 md:w-9/12 text-base sm:text-lg text-center text-white mx-auto leading-7 sm:leading-8 font-thin sm:font-light">
-          AlumTec Glass and Aluminium offers a wide range of aluminium products
+{/*           AlumTec Glass and Aluminium offers a wide range of aluminium products
           and services. All our products comply with Dubai Green Building
-          Regulations, Dubai Civil Defense and Abu Dhabi Estidama Regulations.
+          Regulations, Dubai Civil Defense and Abu Dhabi Estidama Regulations. */}
         </p>
       </div>
     </div>
