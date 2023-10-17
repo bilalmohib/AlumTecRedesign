@@ -5,7 +5,7 @@ const ProductsBanner = () => {
         <div className="absolute inset-0 bg-black opacity-70 sm:opacity-50"></div>
         <h1
           style={{ fontFamily: "var(--font-montserrat) !important" }}
-          className={`absolute top-0 left-0 right-0 bottom-0 mt-20 sm:mt-[20vh] leading-6 sm:leading-10 text-3xl sm:text-5xl font-semibold font-sharp text-center text-white uppercase`}
+          className={`absolute top-12 left-0 right-0 bottom-0 mt-20 sm:mt-[20vh] leading-6 sm:leading-10 text-3xl sm:text-5xl font-semibold font-sharp text-center text-white uppercase`}
         >
           Our Products
         </h1>
