@@ -1,7 +1,13 @@
-import { FormEventHandler, useState } from "react";
-import { Button, TextField } from "@mui/material";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import * as React from "react";
 import { auth } from "@/firebase";
+import { Button, TextField } from "@mui/material";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { useState } from "react";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -14,20 +20,53 @@ const LoginScreen = () => {
       console.log("password", password);
       console.log("submit");
 
-      createUserWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(auth, email, password)
         .then((userCredential: { user: any }) => {
           // Signed up
           const user = userCredential.user;
           console.log("user signed In", user);
+          alert("user signed In successfully : " + user.email);
         })
         .catch((error: { code: any; message: any }) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+
+          alert(errorMessage);
+          return;
           // ..
         });
     } else {
       console.log("error");
     }
+  };
+
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+
+        alert("user signed In successfully : " + user.email);
+
+        console.log("user signed In", user);
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   };
 
   return (
@@ -89,7 +128,10 @@ const LoginScreen = () => {
               <p className="text-center text-sm">OR</p>
               <hr className="border-gray-500" />
             </div>
-            <Button className="bg-gray-100 border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300">
+            <Button
+              onClick={handleGoogleLogin}
+              className="bg-gray-100 border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
