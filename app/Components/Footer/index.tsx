@@ -1,11 +1,14 @@
+import Image from "next/image";
 import React, { FC, ReactElement } from "react";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import Image from "next/image";
+
+import Router from "next/router";
 
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { supportList } from "./data";
 
 export const Footer: FC = (): ReactElement => {
   return (
@@ -67,13 +70,14 @@ export const Footer: FC = (): ReactElement => {
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
             Support
           </h2>
-          {["Contact Us", "Privacy Policy"].map((v, i) => {
+          {supportList.map((v, i: number) => {
             return (
               <p
                 key={i}
                 className="text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
+                onClick={() => Router.push(v.link)}
               >
-                {v}
+                {v.label}
               </p>
             );
           })}
