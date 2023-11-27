@@ -15,6 +15,8 @@ import { useRouter } from "next/router";
 import { DesktopNavbar } from "./methods";
 import { DesktopNavbarProps, NavbarProps } from "./types";
 import styles from "./style.module.css";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase";
 
 const drawerWidth = 240;
 
@@ -84,6 +86,8 @@ function AdminNavbar({ bgWhite }: NavbarProps) {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const [user, loading, error] = useAuthState(auth);
+
   useEffect(() => {
     const debounce = (fn: any) => {
       let frame: any;
@@ -109,6 +113,27 @@ function AdminNavbar({ bgWhite }: NavbarProps) {
     // Update scroll position for first time
     storeScroll();
   });
+
+  useEffect(() => {
+    const loginPage: boolean = router.pathname === "/admin-login";
+
+    if (!loading) {
+      if (user) {
+        // alert("User is already Signed In" + user.email);
+        // do something with the user
+        if (loginPage) router.push("/admin");
+      } else {
+        console.log("user is null");
+        // alert("User is not Signed In");
+        if (!loginPage) {
+          router.push("/admin-login");
+        }
+
+        // if user is not logged in, redirect to login page
+      }
+    }
+    // if user is null, redirect to login page
+  }, [user, loading, router]);
 
   return (
     <div>

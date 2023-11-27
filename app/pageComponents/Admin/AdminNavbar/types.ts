@@ -5,6 +5,7 @@ export type NavItemContainerProps = {
 
 export type NavbarProps = {
     bgWhite?: boolean;
+    loginPage?: boolean;
 }
 
 export type DesktopNavbarProps = {

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { auth } from "@/firebase";
 import { Button, TextField } from "@mui/material";
 import {
@@ -7,11 +8,33 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [user, loading, error] = useAuthState(auth);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      alert("Loading");
+    }
+    if (user) {
+      alert("User is already Signed In" + user.email);
+      // do something with the user
+      router.push("/admin");
+    } else {
+      console.log("user is null");
+      alert("User is not Signed In");
+      // if user is not logged in, redirect to login page
+    }
+    // if user is null, redirect to login page
+  }, [user, loading, router]);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -42,7 +65,7 @@ const LoginScreen = () => {
 
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
-    
+
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -51,7 +74,7 @@ const LoginScreen = () => {
         // The signed-in user info.
         const user = result.user;
 
-        alert("user signed In successfully : " + user.email);
+        // alert("user signed In successfully : " + user.email);
 
         console.log("user signed In", user);
         // IdP data available using getAdditionalUserInfo(result)
