@@ -21,7 +21,7 @@ function AdminBlogsHeader({ value, setValue }: AdminBlogsHeaderProps) {
       variant="fullWidth"
       indicatorColor="primary"
       aria-label="Add or View Services"
-      className="border-2 border-blue-600 border-solid rounded-none border-b-0"
+      className="border-2 border-indigo-600 border-solid rounded-b-none rounded-t-lg border-b-0"
     >
       <Tab icon={<ControlPointIcon />} iconPosition="start" label="Add Blogs" />
       <Tab icon={<ViewCompactIcon />} iconPosition="start" label="View Blogs" />

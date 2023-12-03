@@ -1,7 +1,7 @@
 const AddBlogs = () => {
   return (
     <div>
-      <h1>Add Blogs</h1>
+      <h1 className="adminHeadingText">Add Blogs</h1>
     </div>
   );
 };

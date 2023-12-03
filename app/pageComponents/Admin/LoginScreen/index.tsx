@@ -20,20 +20,18 @@ const LoginScreen = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      alert("Loading");
+    if (!loading) {
+      if (user) {
+        // alert("User is already Signed In" + user.email);
+        // do something with the user
+        router.push("/admin");
+      } else {
+        console.log("user is null");
+        // alert("User is not Signed In");
+        // if user is not logged in, redirect to login page
+      }
+      // if user is null, redirect to login page
     }
-    if (user) {
-      alert("User is already Signed In" + user.email);
-      // do something with the user
-      router.push("/admin");
-    } else {
-      console.log("user is null");
-      alert("User is not Signed In");
-      // if user is not logged in, redirect to login page
-    }
-    // if user is null, redirect to login page
   }, [user, loading, router]);
 
   const handleSubmit = (event: any) => {
@@ -48,13 +46,13 @@ const LoginScreen = () => {
           // Signed up
           const user = userCredential.user;
           console.log("user signed In", user);
-          alert("user signed In successfully : " + user.email);
+          // alert("user signed In successfully : " + user.email);
         })
         .catch((error: { code: any; message: any }) => {
           const errorCode = error.code;
           const errorMessage = error.message;
 
-          alert(errorMessage);
+          // alert(errorMessage);
           return;
           // ..
         });

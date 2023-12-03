@@ -1,7 +1,7 @@
 const ViewProjects = () => {
   return (
     <div>
-      <h1>View Projects</h1>
+      <h1 className="adminHeadingText">View Projects</h1>
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore id
         ducimus dolorum, doloribus, nulla animi quo dignissimos expedita

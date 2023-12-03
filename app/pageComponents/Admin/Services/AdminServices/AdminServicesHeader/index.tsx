@@ -22,8 +22,8 @@ function AdminServicesHeader({ value, setValue }: AdminServicesHeaderProps) {
       onChange={handleChange}
       variant="fullWidth"
       indicatorColor="primary"
-          aria-label="Add or View Services"
-          className="border-2 border-blue-600 border-solid rounded-none border-b-0"
+      aria-label="Add or View Services"
+      className="border-2 border-indigo-600 border-solid rounded-b-none rounded-t-lg border-b-0"
     >
       <Tab
         icon={<ControlPointIcon />}

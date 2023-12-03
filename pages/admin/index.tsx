@@ -117,7 +117,7 @@ function AdminScreen() {
       case 2:
         return <AdminBlogs />;
       case 3:
-        return <h1>Add Services</h1>;
+        return <h1 className="adminHeadingText">Drafts</h1>;
       case 4:
         return <h1>View Services</h1>;
       case 5:
