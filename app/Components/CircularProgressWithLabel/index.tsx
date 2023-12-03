@@ -5,8 +5,19 @@ import CircularProgress, {
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
+interface localCircularProgressProps extends CircularProgressProps {
+  color?: "inherit" | "primary" | "secondary" | "success" | "error" | undefined;
+  size?: number | string | undefined;
+  thickness?: number | undefined;
+  sx?: object | undefined;
+  labelClass?: string;
+}
+
 function CircularProgressWithLabel(
-  props: CircularProgressProps & { value: number }
+  props: localCircularProgressProps & {
+    value: number;
+    labelClass?: string;
+  }
 ) {
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
@@ -27,6 +38,7 @@ function CircularProgressWithLabel(
           variant="caption"
           component="div"
           color="text.white"
+          className={`${props.labelClass}`}
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>
     </Box>

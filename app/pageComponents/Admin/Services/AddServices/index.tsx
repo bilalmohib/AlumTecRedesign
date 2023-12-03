@@ -1,20 +1,18 @@
 import { useState } from "react";
-
-import { TextField, Button, ButtonBase } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
-import ClearIcon from "@mui/icons-material/Clear";
-import InputFileUpload from "@/app/Components/InputFileUpload";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-
 import { storage } from "@/firebase";
-
+import ClearIcon from "@mui/icons-material/Clear";
+import { TextField, Button, ButtonBase } from "@mui/material";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import InputFileUpload from "@/app/Components/InputFileUpload";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import CircularProgressWithLabel from "@/app/Components/CircularProgressWithLabel";
-import { error } from "console";
 
 const AddServices = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+
+  const [imageUploading, setImageUploading] = useState<boolean>(false);
 
   const [serviceTitle, setServiceTitle] = useState<string>("");
   const [serviceDescription, setServiceDescription] = useState<string>("");
@@ -26,11 +24,13 @@ const AddServices = () => {
 
   const storageRef = ref(storage, `images/${selectedFile?.name}`);
 
-  const handleUpload = async () => {
-    if (!selectedFile) return;
+  const handleUpload = async (file: File) => {
+    if (!file) return;
 
     try {
-      const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      setImageUploading(true);
 
       uploadTask.on(
         "state_changed",
@@ -52,7 +52,9 @@ const AddServices = () => {
       const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log("File available at", downloadURL);
 
+      setSelectedFile(file);
       setServiceImage(downloadURL);
+      setImageUploading(false);
     } catch (error) {
       // Handle error if needed
       console.error("Error handling file upload:", error);
@@ -61,7 +63,7 @@ const AddServices = () => {
   };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (errorImage.trim() !== "") setErrorImage("");
+    // if (errorImage.trim() !== "") setErrorImage("");
 
     const fileInput = e.target as HTMLInputElement;
     const files = fileInput.files;
@@ -71,14 +73,17 @@ const AddServices = () => {
       console.log("Selected File Name:", file.name);
 
       try {
-        await handleUpload();
-        setSelectedFile(file);
+        await handleUpload(file);
       } catch (error) {
         // Handle error if needed
         console.error("Error handling file upload:", error);
+        setImageUploading(false);
+        return;
       }
     } else {
       setSelectedFile(null);
+      setImageUploading(false);
+      setUploadProgress(null);
     }
   };
 
@@ -90,6 +95,13 @@ const AddServices = () => {
   const handleChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setServiceDescription(e.target.value);
     if (errorDescription.trim() !== "") setErrorDescription("");
+  };
+
+  const onRemoveSelectedImage = () => {
+    setSelectedFile(null);
+    setServiceImage("");
+    setUploadProgress(null);
+    setImageUploading(false);
   };
 
   const handleAddService = async () => {
@@ -147,7 +159,7 @@ const AddServices = () => {
           }
           variant="standard"
           fullWidth
-          className="mt-4"
+          className="mt-4 w-full sm:w-6/12 block"
           value={serviceTitle}
           onChange={handleChangeTitle}
           error={errorTitle.trim() !== ""}
@@ -164,8 +176,7 @@ const AddServices = () => {
               : "Please enter service description"
           }
           variant="standard"
-          fullWidth
-          className="mt-4"
+          className="mt-4 w-full sm:w-6/12"
           value={serviceDescription}
           onChange={handleChangeDescription}
           error={errorDescription.trim() !== ""}
@@ -178,45 +189,57 @@ const AddServices = () => {
               : `Change Image - ${selectedFile.name}`
           }
           onChange={handleFileChange}
-          className="mt-8"
-          icon={
-            !uploadProgress ? (
-              <CloudUploadIcon />
-            ) : (
-              <CircularProgressWithLabel
-                value={uploadProgress ? uploadProgress : 0}
-              />
-            )
-          }
+          className="mt-8 w-full sm:w-6/12"
+          icon={!selectedFile ? <CloudUploadIcon /> : <ChangeCircleIcon />}
           error={errorImage.trim() !== ""}
         />
 
-        <div className="w-[431px] h-[476px] mt-8">
+        <div className="w-64 h-auto sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[431px] lg:h-[476px] mt-8">
           {selectedFile && (
             <ButtonBase
-              onClick={() => setSelectedFile(null)}
-              className="absolute left-[450px] rounded-full bg-white border-black border border-solid"
+              onClick={onRemoveSelectedImage}
+              className="absolute left-64 sm:left-72 md:left-80 lg:left-[450px] rounded-full bg-white border-black border border-solid"
             >
               <ClearIcon className="cursor-pointer text-black text-2xl" />
             </ButtonBase>
           )}
 
-          <img
-            src={
-              selectedFile ? serviceImage : "https://via.placeholder.com/200"
-            }
-            className="rounded-md w-[431px] h-[476px]"
-            alt={selectedFile ? selectedFile.name : "Placeholder Image"}
-            title={selectedFile ? selectedFile.name : "Placeholder Image"}
-            width="300"
-            height="400"
-          />
+          {imageUploading ? (
+            <div className="flex flex-col justify-center items-center w-64 h-auto sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[431px] lg:h-[476px] border border-gray-500 border-solid inset-5 bg-gray-200">
+              <CircularProgressWithLabel
+                aria-label="upload-progress"
+                value={uploadProgress ? uploadProgress : 0}
+                labelClass="text-4xl font-light font-sans"
+                sx={{
+                  width: "200px",
+                  height: "200px",
+                }}
+              />
+            </div>
+          ) : (
+            <img
+              src={
+                selectedFile ? serviceImage : "https://via.placeholder.com/200"
+              }
+              className="rounded-md w-64 h-auto sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[431px] lg:h-[476px]"
+              alt={selectedFile ? selectedFile?.name : "Placeholder Image"}
+              title={selectedFile ? selectedFile?.name : "Placeholder Image"}
+              width="300"
+              height="400"
+            />
+          )}
         </div>
 
         <Button
           variant="contained"
           className="mt-10 block"
           onClick={handleAddService}
+          disabled={imageUploading}
+          title={
+            imageUploading
+              ? "Image is uploading please wait"
+              : "Please fill all the fields"
+          }
         >
           Add Service
         </Button>
