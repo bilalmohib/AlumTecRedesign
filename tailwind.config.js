@@ -33,6 +33,7 @@ module.exports = {
       },
       colors: {
         bgCareerForm: "#FAFCFF",
+        blogTitle: "#666666",
       },
     },
   },
