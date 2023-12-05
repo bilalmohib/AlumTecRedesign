@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+.navContainer {
+  font-family: "Montserrat", sans-serif !important;
+  /* border: 5px solid rgb(9, 255, 0); */
+  height: 105px;
+  background-color: transparent;
+  color: #000000;
+  /* top: 50px; */
+  transition: 0.1s linear;
+  box-shadow: none;
+  padding-top: 10px;
+}
+
+.bgWhite {
+  background-color: white;
+}
+
+.phone_logo {
+  display: none;
+}
+
+.insideContainer {
+  display: flex;
+  width: 100%;
+}
+
+/* When data scroll is not zero, the navbar is not visible. I want to make it visible when data scroll is not zero. */
+html:not([data-scroll="0"]) .navContainer {
+  /* border: 1px solid red; */
+  position: fixed;
+  background-color: white;
+  box-shadow: none;
+  border-bottom: 1px solid #eaeaea;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: 0.1s linear;
+}
+
+/* Logo Container */
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Logo Styles */
+.logo {
+  margin-left: 2%;
+  margin-top: 10px;
+  /* width: 200px;
+  height: 68px; */
+  display: block;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+
+  /* Safari seems to support, but seems deprecated and does the same thing as the others. */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Nav Item Container */
+.navItemContainer {
+  display: flex;
+  color: #332d2d;
+  margin-left: -6rem;
+  padding-top: 8px;
+  
+}
+
+/* Menu Button */
+.menuButton {
+  display: none;
+}
+
+.menuButtonIcon {
+  font-size: 45px;
+  color: #4165aa;
+}
+
+/* Nav Links */
+.navItem {
+  color: #332d2d;
+  font-size: 20;
+  text-transform: none;
+  display: block;
+
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.navItem:hover {
+  color: #10146f;
+  transition: 0.2s linear;
+}
+
+@media all and (max-width: 1200px) {
+  .navItemContainer {
+    margin-left: -50px;
+  }
+}
+
+@media all and (max-width: 1099px) {
+  .navItemContainer {
+    /* border: 2px solid red; */
+    margin-left: -70px;
+  }
+}
+
+@media all and (max-width: 1068px) {
+  .navItemContainer {
+    /* border: 2px solid rgb(94, 255, 0); */
+    margin-left: -78px;
+  }
+}
+
+@media all and (max-width: 1050px) {
+  .insideContainer {
+    justify-content: space-between;
+    /* border: 3px solid brown; */
+  }
+  .navItemContainer {
+    display: none;
+  }
+  .menuButton {
+    display: block;
+    /* border: 5px solid red; */
+  }
+}
+
+@media all and (max-width: 899px) {
+  .navContainer {
+    height: 105px;
+    padding-top: 10px;
+    border-bottom: 1px solid #2f5353;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    width: 100%;
+  }
+  .logoContainer {
+    /* border: 1px solid red; */
+    padding-left: 0rem;
+    width: fit-content;
+    margin-left: 0rem;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .logoContainer {
+    /* border: 1px solid red; */
+    margin-left: -0.5rem;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .navContainer {
+    padding-top: 0px;
+    height: auto;
+    padding-right: 0px;
+    /* border: 4px solid blue; */
+  }
+  .insideContainer {
+    /* border: 5px solid green; */
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .menuButton {
+    /* border: 1px solid red; */
+    width: auto;
+    height: 48px;
+    border-radius: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 46px;
+    margin-bottom: 6px;
+    margin-right: 0px;
+  }
+  .menuButtonIcon {
+    font-size: 35px;
+    border-radius: 0px;
+  }
+  .phone_logo {
+    display: block;
+    margin-right: 12px;
+  }
+  .logoContainer {
+    margin-left: -0.5rem;
+  }
+  .logo {
+    margin-left: 2%;
+    margin-top: 46px;
+    margin-bottom: 6px;
+    width: 112px;
+    height: 39px;
+    display: block;
+  }
+}

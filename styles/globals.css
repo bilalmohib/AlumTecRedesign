@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,4 +31,13 @@ body {
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.adminHeadingText {
+  @apply text-indigo-600 font-serif text-3xl my-0;
+  font-family: "Lato", sans-serif;
+}
+
+.adminTaglineStyles {
+  @apply text-base text-gray-600 my-0 mt-2;
 }

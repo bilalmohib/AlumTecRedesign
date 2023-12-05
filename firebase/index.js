@@ -1,27 +1,32 @@
-import firebase from "firebase/app";
-import "firebase/storage";
-import "firebase/database";
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-try {
-  const firebaseConfig = {
-    apiKey: "AIzaSyBnzrG43_2Fhwue_dQBxNqLSqDYOQ6Tm3g",
-    authDomain: "alumtech-9f4f0.firebaseapp.com",
-    databaseURL: "https://alumtech-9f4f0-default-rtdb.firebaseio.com",
-    projectId: "alumtech-9f4f0",
-    storageBucket: "alumtech-9f4f0.appspot.com",
-    messagingSenderId: "79031759259",
-    appId: "1:79031759259:web:b67ce20c814e75ac44f13e",
-    measurementId: "G-DRM2HGG1NH",
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-} catch (error) {
-  if (!/already exists/.test(error.message)) {
-    console.log(`Firebase didnt initialize correctly: ${error.message}`);
-  }
-}
+const firebaseConfig = {
+  // apiKey: process.env.REACT_APP_API_KEY,
+  // authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  // projectId: process.env.REACT_APP_PROJECT_ID,
+  // storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  // appId: process.env.REACT_APP_APP_ID,
+  // measurementId: process.env.REACT_APP_MEASUREMENT_ID
 
-const storage = firebase.storage();
+  apiKey: "AIzaSyC73jJz3lqIO_qTnbV8ei4OLPygL1QRzaI",
+  authDomain: "taskencher.firebaseapp.com",
+  projectId: "taskencher",
+  storageBucket: "taskencher.appspot.com",
+  messagingSenderId: "1052740073596",
+  appId: "1:1052740073596:web:548143663a11c4cce5b1f9",
+  measurementId: "G-L0F850N8Z9",
+};
 
-export { storage, firebase as default };
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+export { auth, db, storage, app as default };
