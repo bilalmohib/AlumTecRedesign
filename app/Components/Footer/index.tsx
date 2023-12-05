@@ -25,6 +25,7 @@ export const Footer: FC = (): ReactElement => {
           variant="contained"
           color="primary"
           className="mt-2 mb-2 pt-1 pb-1 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white text-[20px] normal-case"
+          onClick={() => Router.push("/contact")}
         >
           Get started
         </Button>

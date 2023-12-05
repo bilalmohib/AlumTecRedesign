@@ -1,15 +1,13 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
 import { auth } from "@/firebase";
 import { Button, TextField } from "@mui/material";
 import {
-  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider,
 } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");

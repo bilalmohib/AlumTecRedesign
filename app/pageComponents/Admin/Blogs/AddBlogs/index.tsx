@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SVGImage from "@/app/SVGs/SVGImage";
 import { Button } from "@mui/material";
 
@@ -8,19 +8,38 @@ const AddBlogs = () => {
   );
 
   const [savedSelection, setSavedSelection] = useState<Range | null>(null);
+  const [history, setHistory] = useState<string[]>([]);
+
+  // const handleInput = () => {
+  //   // Your existing handleInput logic
+  //   if (inputRef.current) {
+  //     const editedContent = inputRef.current.innerHTML;
+  //     console.log("Edited content:", editedContent);
+  //     setHistory((prev) => [...prev, editedContent]);
+  //   }
+  // };
 
   const handleInput = () => {
-    // Your existing handleInput logic
     if (inputRef.current) {
+      // Save the current selection before updating the content
+      // saveSelection();
+
       const editedContent = inputRef.current.innerHTML;
       console.log("Edited content:", editedContent);
+
+      // Update the history
+      setHistory((prev) => [...prev, editedContent]);
+
+      // Restore the previous selection
+      // restoreSelection();
     }
   };
 
   const saveSelection = () => {
     const selection = window.getSelection();
     if (selection?.rangeCount) {
-      setSavedSelection(selection.getRangeAt(0).cloneRange());
+      const range = selection.getRangeAt(0);
+      setSavedSelection(range.cloneRange());
     }
   };
 
@@ -40,37 +59,49 @@ const AddBlogs = () => {
     const selection = window.getSelection();
     const range = selection?.getRangeAt(0) || document.createRange();
 
-    // Check if there's content after the cursor
-    const isContentAfterCursor =
-      range.endContainer.nodeType === Node.TEXT_NODE &&
-      (range.endContainer.nodeValue?.length ?? 0) > range.endOffset;
-
     // Get the parent element containing the cursor
-    const cursorParentElement: HTMLElement | null =
-      range.endContainer.nodeType === Node.TEXT_NODE
-        ? range.endContainer.parentElement
-        : range.endContainer;
+    let cursorParentElement: HTMLElement | null = null;
 
-    // Get the text content of the cursor line
-    const cursorLineText = cursorParentElement?.textContent || "";
+    if (range.endContainer.nodeType === Node.TEXT_NODE) {
+      cursorParentElement = range.endContainer.parentElement;
+    } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
+      cursorParentElement = range.endContainer as HTMLElement;
+    }
 
-    // Create a new header element with a class
-    const header = document.createElement(headerType);
-    header.className = getHeaderClass(headerType); // Set the class based on your logic
-
-    // Set the text content of the header
-    header.textContent = cursorLineText;
-
-    // Replace the cursor line with the new header
+    // Check if cursorParentElement is an HTMLElement
     if (cursorParentElement) {
-      cursorParentElement.innerHTML = "";
-      cursorParentElement.appendChild(header);
+      // Get the text content of the cursor line
+      const cursorLineText = cursorParentElement.textContent || "";
+
+      // Create a new header element with a class
+      const header = document.createElement(headerType);
+      header.className = getHeaderClass(headerType); // Set the class based on your logic
+
+      // Set the text content of the header
+      header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+
+      // If there's no text, insert a zero-width space character (\u200B)
+      // to ensure the cursor stays in the same position
+      if (cursorLineText === "") {
+        range.deleteContents();
+        range.insertNode(document.createTextNode("\u200B"));
+      } else {
+        // Replace the cursor line with the new header
+        cursorParentElement.innerHTML = "";
+        cursorParentElement.appendChild(header);
+      }
     }
 
     restoreSelection();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Check if the Enter key is pressed
+    // if (e.key === "Enter") {
+    //   e.preventDefault();
+    //   handleInsertHeader(""); // Insert a new paragraph
+    // }
+
     // Check if the backspace key is pressed
     if (e.key === "Backspace") {
       // Prevent removing certain elements like headers
@@ -83,6 +114,35 @@ const AddBlogs = () => {
           return;
         }
       }
+    }
+
+    // Check if Ctrl + Z is pressed for undo
+    // if ((e.ctrlKey || (e.key === "Meta" && e.shiftKey)) && e.key === "z") {
+    //   e.preventDefault();
+    //   undo();
+    // }
+
+    // Check if the space key is pressed
+    // if (e.key === " ") {
+    //   e.preventDefault();
+    //   insertSpace(); // Function to manually move the cursor forward
+    // }
+  };
+
+  const undo = () => {
+    if (inputRef.current && history.length > 1) {
+      const previousState = history[history.length - 2];
+      setHistory((prev) => prev.slice(0, -1));
+      inputRef.current.innerHTML = previousState;
+    }
+  };
+
+  const insertSpace = () => {
+    if (savedSelection) {
+      const spaceNode = document.createTextNode("\u00a0"); // Non-breaking space
+      savedSelection.insertNode(spaceNode);
+      savedSelection.setStartAfter(spaceNode);
+      savedSelection.setEndAfter(spaceNode);
     }
   };
 
@@ -110,6 +170,11 @@ const AddBlogs = () => {
         return "";
     }
   };
+
+  // Save initial state to history on mount
+  useEffect(() => {
+    handleInput();
+  }, []);
 
   return (
     <div>
@@ -195,7 +260,7 @@ const AddBlogs = () => {
       <section className="w-[720px] mx-auto">
         <div className="bg-[#f4f2ee] rounded-lg w-full h-80 flex flex-col justify-center items-center">
           <SVGImage className="mx-auto block" />
-          <h5 className="font-normal text-base text-center font-sans">
+          <h5 className="font-normal text-base text-center font-sans select-none">
             We recommend uploading or dragging in an image that is{" "}
             <b>1920x1080 pixels</b>
           </h5>
@@ -212,7 +277,7 @@ const AddBlogs = () => {
         <div className="mt-8">
           <div
             ref={inputRef}
-            className="text-2xl font-normal border-none focus-within:border-none focus:border-none outline-none text-black"
+            className="text-xl font-normal border-none focus-within:border-none focus:border-none outline-none text-black"
             contentEditable={true}
             dangerouslySetInnerHTML={{
               __html: `<p>Blog Content</p>`,
