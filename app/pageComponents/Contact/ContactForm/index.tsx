@@ -137,7 +137,19 @@ const ContactForm = () => {
 
       //For storing all ads i.e to show at main page
       try {
-        await addDoc(collection(db, "ContactUs"), Data);
+        await addDoc(collection(db, "ContactUs"), Data).then(() => {
+          setName("");
+          setEmail("");
+          setComapnyName("");
+          setCountryId(null);
+          setMessage("");
+          toast(
+            "Thank you so much for contacting AlumTec. We will get back to you soon through 📧 email.",
+            {
+              theme: "dark",
+            }
+          );
+        });
       } catch (err: any) {
         alert(err);
         toast.error(`Error ${err.message || err || "Unknown Error"}`);
