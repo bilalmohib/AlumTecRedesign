@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
 import { countries } from "@/app/data/Common";
-import firebase from "@/firebase/index";
+import { db } from "@/firebase/index";
+import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
+import { addDoc, collection } from "firebase/firestore";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const ContactForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
@@ -68,7 +69,9 @@ const ContactForm = () => {
   // For Country autocomplete component
 
   // Submit Form
-  const submitForm = () => {
+  const submitForm = async (e: Event) => {
+    e.preventDefault();
+
     if (name === "") {
       setNameError(true);
     }
@@ -110,11 +113,31 @@ const ContactForm = () => {
       };
 
       //For storing all ads i.e to show at main page
-      firebase
-        .database()
-        .ref(`ContactUs/`)
-        .push(Data)
-        .then(() => {
+      // firebase
+      //   .database()
+      //   .ref(`ContactUs/`)
+      //   .push(Data)
+      //   .then(() => {
+      //     setName("");
+      //     setEmail("");
+      //     setComapnyName("");
+      //     setCountryId(null);
+      //     setMessage("");
+      //     toast(
+      //       "Thank you so much for contacting AlumTec. We will get back to you soon through 📧 email.",
+      //       {
+      //         theme: "dark",
+      //       }
+      //     );
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     toast.error("Network Error while submitting the contact form");
+      //   });
+
+      //For storing all ads i.e to show at main page
+      try {
+        await addDoc(collection(db, "ContactUs"), Data).then(() => {
           setName("");
           setEmail("");
           setComapnyName("");
@@ -126,11 +149,11 @@ const ContactForm = () => {
               theme: "dark",
             }
           );
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error("Network Error while submitting the contact form");
         });
+      } catch (err: any) {
+        alert(err);
+        toast.error(`Error ${err.message || err || "Unknown Error"}`);
+      }
     } else {
       toast.error("Please fill all the required fields");
     }
@@ -334,7 +357,7 @@ const ContactForm = () => {
         variant="contained"
         color="primary"
         className="mt-8 mb-8 w-full sm:w-fit bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[16px]"
-        onClick={submitForm}
+        onClick={(event: any) => submitForm(event)}
       >
         Contact sales
       </Button>
