@@ -5,19 +5,11 @@ module.exports = {
     "./app/Components/**/*.{js,ts,jsx,tsx}",
     "./app/pageComponents/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./pages/_app.tsx",
-    "./pages/_document.tsx",
-    "/styles/**/*.{css,module.css,scss,sass}",
-    "./styles/globals.css",
   ],
   content: [
     "./app/Components/**/*.{js,ts,jsx,tsx}",
     "./app/pageComponents/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./pages/_app.tsx",
-    "./pages/_document.tsx",
-    "./styles/**/*.{css,module.css,scss,sass}",
-    "./styles/globals.css",
   ],
   theme: {
     extend: {
