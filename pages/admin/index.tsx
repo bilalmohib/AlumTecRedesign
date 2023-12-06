@@ -22,10 +22,10 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Badge, Menu, MenuItem } from "@mui/material";
-import { sidebarItemsList } from "./data";
 import AdminServices from "@/app/pageComponents/Admin/Services/AdminServices";
 import AdminProjects from "@/app/pageComponents/Admin/Projects/AdminProjects";
 import AdminBlogs from "@/app/pageComponents/Admin/Blogs/AdminBlogs";
+import { sidebarItemsList } from "@/app/data/admin/sidebarItemsList";
 
 const drawerWidth = 240;
 
