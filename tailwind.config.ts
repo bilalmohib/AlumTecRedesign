@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+export {};
+
 module.exports = {
   // important: true,
   purge: [
