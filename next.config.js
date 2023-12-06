@@ -27,7 +27,7 @@ const nextConfig = {
 
   // Add modular CSS support
 
-  modules: true,
+  // modules: true,
 };
 
 module.exports = nextConfig;
