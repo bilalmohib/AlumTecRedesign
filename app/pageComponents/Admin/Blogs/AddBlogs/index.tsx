@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import SVGImage from "@/app/SVGs/SVGImage";
 import { Button } from "@mui/material";
+import InputFileUpload from "@/app/Components/InputFileUpload";
 
 const AddBlogs = () => {
   const inputRef: React.RefObject<HTMLDivElement> = useRef(
@@ -255,6 +256,12 @@ const AddBlogs = () => {
         >
           a
         </Button>
+
+        <InputFileUpload
+          className="bg-sky-800 text-white px-4 py-2 rounded-md"
+          label="Upload Image"
+          onChange={(e) => console.log(e.target.files)}
+        />
       </div>
 
       <section className="w-[720px] mx-auto">
@@ -264,6 +271,12 @@ const AddBlogs = () => {
             We recommend uploading or dragging in an image that is{" "}
             <b>1920x1080 pixels</b>
           </h5>
+
+          <InputFileUpload
+            className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
+            label="Upload Image"
+            onChange={(e) => console.log(e.target.files)}
+          />
         </div>
 
         <div className="mt-8">
