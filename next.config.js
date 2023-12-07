@@ -15,19 +15,19 @@ const nextConfig = {
     ],
   },
 
-  // TailwindCSS
-  // https://tailwindcss.com/docs/controlling-file-size#setting-up-purgecss-manually
-  // https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html
+  // // TailwindCSS
+  // // https://tailwindcss.com/docs/controlling-file-size#setting-up-purgecss-manually
+  // // https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html
 
-  tailwindcss: {
-    config: "./tailwind.config.js",
-    styled: "styled-components",
-    format: "auto",
-  },
+  // tailwindcss: {
+  //   config: "./tailwind.config.js",
+  //   styled: "styled-components",
+  //   format: "auto",
+  // },
 
   // Add modular CSS support
 
-  modules: true,
+  // modules: true,
 };
 
 module.exports = nextConfig;
