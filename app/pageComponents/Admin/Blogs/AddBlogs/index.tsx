@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import SVGImage from "@/app/SVGs/SVGImage";
+import { storage } from "@/firebase";
 import { Button } from "@mui/material";
+import SVGImage from "@/app/SVGs/SVGImage";
+import InputFileUpload from "@/app/Components/InputFileUpload";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const AddBlogs = () => {
   const inputRef: React.RefObject<HTMLDivElement> = useRef(
@@ -10,14 +13,21 @@ const AddBlogs = () => {
   const [savedSelection, setSavedSelection] = useState<Range | null>(null);
   const [history, setHistory] = useState<string[]>([]);
 
-  // const handleInput = () => {
-  //   // Your existing handleInput logic
-  //   if (inputRef.current) {
-  //     const editedContent = inputRef.current.innerHTML;
-  //     console.log("Edited content:", editedContent);
-  //     setHistory((prev) => [...prev, editedContent]);
-  //   }
-  // };
+  const [title, setTitle] = useState<string>("");
+
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+
+  const [imageUploading, setImageUploading] = useState<boolean>(false);
+
+  const storageRef = ref(
+    storage,
+    `images/blogs/${title}/${selectedFile?.name}`
+  );
+
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
 
   const handleInput = () => {
     if (inputRef.current) {
@@ -93,6 +103,94 @@ const AddBlogs = () => {
     }
 
     restoreSelection();
+  };
+
+  const handleInsertImageInBlog = (imageSource: string) => {
+    const img = document.createElement("img");
+    img.src = imageSource;
+    img.className = "w-[99%] mx-auto h-auto";
+    img.contentEditable = "false";
+    if (inputRef.current) {
+      inputRef.current.appendChild(img);
+    }
+
+    // Insert a new line
+    const newLine = document.createElement("div");
+    newLine.innerHTML = "<br>";
+    inputRef.current?.appendChild(newLine);
+
+    // Move the cursor to the new line
+    const newRange = document.createRange();
+    newRange.setStart(newLine, 0);
+
+    const newSelection = window.getSelection();
+    newSelection?.removeAllRanges();
+    newSelection?.addRange(newRange);
+
+    // Save the new selection
+    saveSelection();
+  };
+
+  const handleImageUpload = async (file: File) => {
+    if (!file) return;
+
+    try {
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      setImageUploading(true);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          setUploadProgress(progress);
+        },
+        (error) => {
+          console.error("Error uploading file:", error);
+          throw error;
+        }
+      );
+
+      await uploadTask;
+
+      // Upload complete, get download URL
+      const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+      console.log("File available at", downloadURL);
+
+      setSelectedFile(file);
+      handleInsertImageInBlog(downloadURL);
+      setImageUploading(false);
+    } catch (error) {
+      // Handle error if needed
+      console.error("Error handling file upload:", error);
+      throw error;
+    }
+  };
+
+  const handleBlogImageChange = async (files: FileList | null) => {
+    if (files && files.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+
+      reader.onload = async (e) => {
+        if (e.target) {
+          console.log("Selected File Name:", file.name);
+
+          try {
+            await handleImageUpload(file);
+          } catch (error) {
+            // Handle error if needed
+            console.error("Error handling file upload:", error);
+            setImageUploading(false);
+            return;
+          }
+        }
+      };
+
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -255,6 +353,12 @@ const AddBlogs = () => {
         >
           a
         </Button>
+
+        <InputFileUpload
+          className="bg-sky-800 text-white px-4 py-2 rounded-md"
+          label="Upload Image"
+          onChange={(e) => handleBlogImageChange(e.target.files)}
+        />
       </div>
 
       <section className="w-[720px] mx-auto">
@@ -264,12 +368,20 @@ const AddBlogs = () => {
             We recommend uploading or dragging in an image that is{" "}
             <b>1920x1080 pixels</b>
           </h5>
+
+          <InputFileUpload
+            className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
+            label="Upload Image"
+            onChange={(e) => console.log(e.target.files)}
+          />
         </div>
 
         <div className="mt-8">
           <input
             className="placeholder:text-blogTitle text-5xl font-semibold border-none focus-within:border-none focus:border-none outline-none"
             contentEditable={true}
+            value={title}
+            onChange={handleChangeTitle}
             placeholder="Title"
           />
         </div>

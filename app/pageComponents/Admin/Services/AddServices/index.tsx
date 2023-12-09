@@ -198,7 +198,7 @@ const AddServices = () => {
           {selectedFile && (
             <ButtonBase
               onClick={onRemoveSelectedImage}
-              className="absolute left-64 sm:left-72 md:left-80 lg:left-[450px] rounded-full bg-white border-black border border-solid"
+              className="absolute left-64 sm:left-72 md:left-80 lg:left-[695px] rounded-full bg-white border-black border border-solid"
             >
               <ClearIcon className="cursor-pointer text-black text-2xl" />
             </ButtonBase>
