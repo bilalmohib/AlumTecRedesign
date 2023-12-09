@@ -63,81 +63,150 @@ const AddBlogs = () => {
     }
   };
 
+  // const handleInsertHeader = (headerType: string) => {
+  //   saveSelection();
+
+  //   const selection = window.getSelection();
+  //   const range = selection?.getRangeAt(0) || document.createRange();
+
+  //   // Get the parent element containing the cursor
+  //   let cursorParentElement: HTMLElement | null = null;
+
+  //   if (range.endContainer.nodeType === Node.TEXT_NODE) {
+  //     cursorParentElement = range.endContainer.parentElement;
+  //   } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
+  //     cursorParentElement = range.endContainer as HTMLElement;
+  //   }
+
+  //   // Check if cursorParentElement is an HTMLElement
+  //   if (cursorParentElement) {
+  //     // Get the text content of the cursor line
+  //     const cursorLineText = cursorParentElement.textContent || "";
+
+  //     // Create a new header element with a class
+  //     const header = document.createElement(headerType);
+  //     header.className = getHeaderClass(headerType); // Set the class based on your logic
+
+  //     // Set the text content of the header
+  //     header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+
+  //     // If there's no text, insert a zero-width space character (\u200B)
+  //     // to ensure the cursor stays in the same position
+  //     if (cursorLineText === "") {
+  //       range.deleteContents();
+  //       range.insertNode(document.createTextNode("\u200B"));
+  //     } else {
+  //       // Replace the cursor line with the new header
+  //       cursorParentElement.innerHTML = "";
+  //       cursorParentElement.appendChild(header);
+  //     }
+  //   }
+
+  //   restoreSelection();
+  // };
+
   const handleInsertHeader = (headerType: string) => {
     saveSelection();
 
     const selection = window.getSelection();
     const range = selection?.getRangeAt(0) || document.createRange();
 
-    // Get the parent element containing the cursor
-    let cursorParentElement: HTMLElement | null = null;
-
-    if (range.endContainer.nodeType === Node.TEXT_NODE) {
-      cursorParentElement = range.endContainer.parentElement;
-    } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
-      cursorParentElement = range.endContainer as HTMLElement;
-    }
-
-    // Check if cursorParentElement is an HTMLElement
-    if (cursorParentElement) {
-      // Get the text content of the cursor line
-      const cursorLineText = cursorParentElement.textContent || "";
-
-      // Create a new header element with a class
+    // Check if there's a selection
+    if (!range.collapsed) {
+      // If there's a selection, wrap it in the specified header
+      const selectedText = range.toString();
       const header = document.createElement(headerType);
-      header.className = getHeaderClass(headerType); // Set the class based on your logic
+      header.className = getHeaderClass(headerType);
+      header.textContent = selectedText;
 
-      // Set the text content of the header
-      header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+      range.deleteContents();
+      range.insertNode(header);
 
-      // If there's no text, insert a zero-width space character (\u200B)
-      // to ensure the cursor stays in the same position
-      if (cursorLineText === "") {
-        range.deleteContents();
-        range.insertNode(document.createTextNode("\u200B"));
-      } else {
-        // Replace the cursor line with the new header
-        cursorParentElement.innerHTML = "";
-        cursorParentElement.appendChild(header);
+      // Move the cursor to the end of the header
+      // range.setStartAfter(header);
+      range.setEndAfter(header);
+
+      selection?.removeAllRanges();
+
+      selection?.addRange(range);
+
+      // Restore the previous selection
+      restoreSelection();
+    } else {
+      // If there's no selection, handle the cursor position
+
+      // Get the parent element containing the cursor
+      let cursorParentElement: HTMLElement | null = null;
+
+      if (range.endContainer.nodeType === Node.TEXT_NODE) {
+        cursorParentElement = range.endContainer.parentElement;
+      } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
+        cursorParentElement = range.endContainer as HTMLElement;
+      }
+
+      // Check if cursorParentElement is an HTMLElement
+      if (cursorParentElement) {
+        // Get the text content of the cursor line
+        const cursorLineText = cursorParentElement.textContent || "";
+
+        // Create a new header element with a class
+        const header = document.createElement(headerType);
+        header.className = getHeaderClass(headerType); // Set the class based on your logic
+
+        // Set the text content of the header
+        header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+
+        // If there's no text, insert a zero-width space character (\u200B)
+        // to ensure the cursor stays in the same position
+        if (cursorLineText === "") {
+          range.deleteContents();
+          range.insertNode(document.createTextNode("\u200B"));
+        } else {
+          // Replace the cursor line with the new header
+          cursorParentElement.innerHTML = "";
+          cursorParentElement.appendChild(header);
+        }
       }
     }
 
     restoreSelection();
   };
 
-  const handleInsertImageInBlog = (imageSource: string) => {
+  const handleInsertImageInBlog = (file: File, id: string) => {
     const img = document.createElement("img");
-    img.src = imageSource;
+    img.src = URL.createObjectURL(file);
+    img.id = id;
     img.className = "w-[99%] mx-auto h-auto";
     img.contentEditable = "false";
     if (inputRef.current) {
       inputRef.current.appendChild(img);
     }
-
-    // Insert a new line
-    const newLine = document.createElement("div");
-    newLine.innerHTML = "<br>";
-    inputRef.current?.appendChild(newLine);
-
-    // Move the cursor to the new line
-    const newRange = document.createRange();
-    newRange.setStart(newLine, 0);
-
-    const newSelection = window.getSelection();
-    newSelection?.removeAllRanges();
-    newSelection?.addRange(newRange);
-
-    // Save the new selection
-    saveSelection();
   };
 
-  const handleImageUpload = async (file: File) => {
+  const handleReplaceImageInBlog = (imageSource: string, id: string) => {
+    const img = document.getElementById(id) as HTMLImageElement;
+    img.src = imageSource;
+  };
+
+  enum ImageType {
+    BLOG = "BLOG",
+    COVER = "COVER",
+  }
+
+  const handleImageUpload = async (
+    file: File,
+    type: ImageType.BLOG | ImageType.COVER
+  ) => {
     if (!file) return;
+
+    const imageId = Date.now().toString();
 
     try {
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       setImageUploading(true);
+
+      handleInsertImageInBlog(file, imageId);
 
       uploadTask.on(
         "state_changed",
@@ -160,7 +229,7 @@ const AddBlogs = () => {
       console.log("File available at", downloadURL);
 
       setSelectedFile(file);
-      handleInsertImageInBlog(downloadURL);
+      handleReplaceImageInBlog(downloadURL, imageId);
       setImageUploading(false);
     } catch (error) {
       // Handle error if needed
@@ -169,7 +238,10 @@ const AddBlogs = () => {
     }
   };
 
-  const handleBlogImageChange = async (files: FileList | null) => {
+  const handleBlogImageChange = async (
+    files: FileList | null,
+    type: ImageType.BLOG | ImageType.COVER
+  ) => {
     if (files && files.length > 0) {
       const file = files[0];
       const reader = new FileReader();
@@ -179,7 +251,7 @@ const AddBlogs = () => {
           console.log("Selected File Name:", file.name);
 
           try {
-            await handleImageUpload(file);
+            await handleImageUpload(file, type);
           } catch (error) {
             // Handle error if needed
             console.error("Error handling file upload:", error);
@@ -357,7 +429,9 @@ const AddBlogs = () => {
         <InputFileUpload
           className="bg-sky-800 text-white px-4 py-2 rounded-md"
           label="Upload Image"
-          onChange={(e) => handleBlogImageChange(e.target.files)}
+          onChange={(e) =>
+            handleBlogImageChange(e.target.files, ImageType.BLOG)
+          }
         />
       </div>
 
@@ -372,7 +446,9 @@ const AddBlogs = () => {
           <InputFileUpload
             className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
             label="Upload Image"
-            onChange={(e) => console.log(e.target.files)}
+            onChange={(e) =>
+              handleBlogImageChange(e.target.files, ImageType.COVER)
+            }
           />
         </div>
 
