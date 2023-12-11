@@ -16,6 +16,7 @@ const AddBlogs = () => {
   const [title, setTitle] = useState<string>("");
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [coverImage, setCoverImage] = useState<string>("");
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
   const [imageUploading, setImageUploading] = useState<boolean>(false);
@@ -173,13 +174,27 @@ const AddBlogs = () => {
   };
 
   const handleInsertImageInBlog = (file: File, id: string) => {
+    // Create a container div for the image and loader
+    const container = document.createElement("div");
+    container.style.position = "relative"; // Ensure position is set for absolute positioning of loader
+
+    // Create the loader element
+    const loader = document.createElement("div");
+    loader.className = "loader"; // Apply a class for styling
+    container.appendChild(loader);
+
+    // Create the image element
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     img.id = id;
-    img.className = "w-[99%] mx-auto h-auto";
+    img.className = "w-[99%] mx-auto h-auto blurred-image"; // Apply a class for styling
     img.contentEditable = "false";
+
+    // Append the image to the container
+    container.appendChild(img);
+
     if (inputRef.current) {
-      inputRef.current.appendChild(img);
+      inputRef.current.appendChild(container);
     }
   };
 
