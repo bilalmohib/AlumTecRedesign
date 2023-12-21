@@ -1,11 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
+import Router from "next/router";
 import { storage } from "@/firebase";
 import { Button } from "@mui/material";
 import SVGImage from "@/app/SVGs/SVGImage";
 import InputFileUpload from "@/app/Components/InputFileUpload";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth } from "@/firebase";
+import {
+  doc,
+  collection,
+  onSnapshot,
+  addDoc,
+  query,
+  orderBy,
+  deleteDoc,
+  setDoc,
+  Timestamp,
+} from "firebase/firestore";
+
+import { onAuthStateChanged } from "firebase/auth";
+
 const AddBlogs = () => {
+  // States for status of login users
+  const [signedInUserData, setSignedInUserData] = useState<any>(null);
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+
   const inputRef: React.RefObject<HTMLDivElement> = useRef(
     document.createElement("div")
   );
@@ -25,6 +46,9 @@ const AddBlogs = () => {
     storage,
     `images/blogs/${title}/${selectedFile?.name}`
   );
+
+  // For Loading
+  const [user, loading, error] = useAuthState(auth);
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -200,6 +224,7 @@ const AddBlogs = () => {
 
   const handleReplaceImageInBlog = (imageSource: string, id: string) => {
     const img = document.getElementById(id) as HTMLImageElement;
+    console.log("Image element:", img);
     img.src = imageSource;
   };
 
@@ -361,6 +386,83 @@ const AddBlogs = () => {
     handleInput();
   }, []);
 
+  const handleBlogSubmit = async () => {
+    if (title.trim() === "") {
+      // setErrorTitle("Please enter a title");
+    }
+
+    if (selectedFile === null) {
+      // setErrorImage("Please select an image");
+    }
+
+    if (inputRef.current?.innerHTML === "") {
+      // setErrorDescription("Please enter a description");
+    }
+
+    if (
+      title.trim() === "" &&
+      selectedFile === null &&
+      inputRef.current?.innerHTML === ""
+    ) {
+      // setErrorTitle("Please enter a title");
+      // setErrorDescription("Please enter a description");
+      // setErrorImage("Please select an image");
+      alert("All fields are not filled");
+      return;
+    }
+
+    if (title.trim() !== "" && selectedFile !== null) {
+      console.log("All fields are filled");
+      alert("All fields are filled");
+
+      if (user && !loading && !error) {
+        // Make a random color code in rgba format
+        let color_code = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
+          Math.random() * 255
+        )}, ${Math.floor(Math.random() * 255)}, 0.5)`;
+
+        ////////////////////////////// For New Version of Firebase(V9) //////////////////////////////
+        // ADD JOB TO FIRESTORE
+        const blogData = {
+          title: title,
+          content: inputRef.current?.innerHTML,
+          uid: signedInUserData.uid,
+          userEmail: signedInUserData.email,
+          createAt: formatDate(new Date()),
+          createdBy: signedInUserData.email,
+          color_code: color_code,
+        };
+
+        // console.log("Blog Data:", blogData);
+        addDoc(collection(db, `Blogs`), blogData)
+          .then(() => {
+            console.log("Blog submitted");
+            const { pathname } = Router;
+            // if (pathname == "/createProject") {
+              alert(
+                "Your Blog is submitted successfully."
+              );
+              // Router.push(`/dashboard/${signedInUserData.email}`);
+            // }
+          })
+          .catch((err) => {
+            console.warn(err);
+            alert(`Error while submitting blog: ${err.message}`);
+          });
+        //
+        ////////////////////////////// For New Version of Firebase(V9) //////////////////////////////
+
+        //Now sending the data for notifications
+      } else {
+        alert("Please sign in to save project to cloud.");
+      }
+    } else {
+      // console.log("All fields are not filled");
+      alert("All fields are not filled");
+      return;
+    }
+  };
+
   return (
     <div>
       <div>
@@ -369,7 +471,7 @@ const AddBlogs = () => {
           color="primary"
           fullWidth
           onClick={() => console.log("Hello")}
-          className="fixed top-0 z-50 w-11/12"
+          className="fixed top-64 z-50 w-9/12"
         >
           Submit Blog
         </Button>
@@ -450,7 +552,7 @@ const AddBlogs = () => {
         />
       </div>
 
-      <section className="w-[720px] mx-auto">
+      <section className="w-[720px] mx-auto mt-16">
         <div className="bg-[#f4f2ee] rounded-lg w-full h-80 flex flex-col justify-center items-center">
           <SVGImage className="mx-auto block" />
           <h5 className="font-normal text-base text-center font-sans select-none">
