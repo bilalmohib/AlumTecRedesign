@@ -19,14 +19,9 @@ import {
   setDoc,
   Timestamp,
 } from "firebase/firestore";
-
-import { onAuthStateChanged } from "firebase/auth";
+import { formatDate } from "@/app/utils/commonFunctions";
 
 const AddBlogs = () => {
-  // States for status of login users
-  const [signedInUserData, setSignedInUserData] = useState<any>(null);
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-
   const inputRef: React.RefObject<HTMLDivElement> = useRef(
     document.createElement("div")
   );
@@ -426,10 +421,10 @@ const AddBlogs = () => {
         const blogData = {
           title: title,
           content: inputRef.current?.innerHTML,
-          uid: signedInUserData.uid,
-          userEmail: signedInUserData.email,
+          uid: user.uid,
+          userEmail: user.email,
           createAt: formatDate(new Date()),
-          createdBy: signedInUserData.email,
+          createdBy: user.email,
           color_code: color_code,
         };
 
@@ -439,10 +434,8 @@ const AddBlogs = () => {
             console.log("Blog submitted");
             const { pathname } = Router;
             // if (pathname == "/createProject") {
-              alert(
-                "Your Blog is submitted successfully."
-              );
-              // Router.push(`/dashboard/${signedInUserData.email}`);
+            alert("Your Blog is submitted successfully.");
+            // Router.push(`/dashboard/${signedInUserData.email}`);
             // }
           })
           .catch((err) => {
@@ -470,7 +463,7 @@ const AddBlogs = () => {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={() => console.log("Hello")}
+          onClick={handleBlogSubmit}
           className="fixed top-64 z-50 w-9/12"
         >
           Submit Blog

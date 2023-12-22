@@ -1,19 +1,6 @@
-enum Months {
-  January = 1,
-  February,
-  March,
-  April,
-  May,
-  June,
-  July,
-  August,
-  September,
-  October,
-  November,
-  December,
-}
+import { Months } from "../enums";
 
-const formatDate = (date: Date): string => {
+export const formatDate = (date: Date): string => {
   let day = date.getDate().toString();
   let month = Months[date.getMonth() + 1].toString();
     const year = date.getFullYear().toString();
