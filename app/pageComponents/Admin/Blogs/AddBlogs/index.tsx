@@ -19,9 +19,12 @@ import {
   setDoc,
   Timestamp,
 } from "firebase/firestore";
+import Image from "next/image";
 import { formatDate } from "@/app/utils/commonFunctions";
 
 const AddBlogs = () => {
+  const [scrolled, setScrolled] = useState(false);
+
   const inputRef: React.RefObject<HTMLDivElement> = useRef(
     document.createElement("div")
   );
@@ -36,6 +39,22 @@ const AddBlogs = () => {
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
   const [imageUploading, setImageUploading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const isScrolled = scrollTop > 10; // Adjust the scroll threshold as needed
+
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const storageRef = ref(
     storage,
@@ -241,7 +260,9 @@ const AddBlogs = () => {
 
       setImageUploading(true);
 
-      handleInsertImageInBlog(file, imageId);
+      if (type !== ImageType.COVER) {
+        handleInsertImageInBlog(file, imageId);
+      }
 
       uploadTask.on(
         "state_changed",
@@ -264,7 +285,11 @@ const AddBlogs = () => {
       console.log("File available at", downloadURL);
 
       setSelectedFile(file);
-      handleReplaceImageInBlog(downloadURL, imageId);
+      if (type === ImageType.COVER) {
+        setCoverImage(downloadURL);
+      } else {
+        handleReplaceImageInBlog(downloadURL, imageId);
+      }
       setImageUploading(false);
     } catch (error) {
       // Handle error if needed
@@ -397,7 +422,8 @@ const AddBlogs = () => {
     if (
       title.trim() === "" &&
       selectedFile === null &&
-      inputRef.current?.innerHTML === ""
+      inputRef.current?.innerHTML === "" &&
+      coverImage === ""
     ) {
       // setErrorTitle("Please enter a title");
       // setErrorDescription("Please enter a description");
@@ -406,7 +432,7 @@ const AddBlogs = () => {
       return;
     }
 
-    if (title.trim() !== "" && selectedFile !== null) {
+    if (title.trim() !== "" && selectedFile !== null && inputRef.current?.innerHTML !== "" && coverImage !== "") {
       console.log("All fields are filled");
       alert("All fields are filled");
 
@@ -423,9 +449,12 @@ const AddBlogs = () => {
           content: inputRef.current?.innerHTML,
           uid: user.uid,
           userEmail: user.email,
-          createAt: formatDate(new Date()),
+          createdAt: formatDate(new Date()),
           createdBy: user.email,
+          photoURL: user.photoURL,
           color_code: color_code,
+          coverImage: coverImage,
+          authorName: user.displayName,
         };
 
         // console.log("Blog Data:", blogData);
@@ -464,7 +493,7 @@ const AddBlogs = () => {
           color="primary"
           fullWidth
           onClick={handleBlogSubmit}
-          className="fixed top-64 z-50 w-9/12"
+          className={`fixed ${scrolled ? 'top-20' : 'top-64'} z-50 w-9/12`}
         >
           Submit Blog
         </Button>
@@ -546,25 +575,40 @@ const AddBlogs = () => {
       </div>
 
       <section className="w-[720px] mx-auto mt-16">
-        <div className="bg-[#f4f2ee] rounded-lg w-full h-80 flex flex-col justify-center items-center">
-          <SVGImage className="mx-auto block" />
-          <h5 className="font-normal text-base text-center font-sans select-none">
-            We recommend uploading or dragging in an image that is{" "}
-            <b>1920x1080 pixels</b>
-          </h5>
+        {(coverImage !== "" || selectedFile !== null) ? (
+          <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
+            <Image
+              src={coverImage}
+              alt="Cover Image"
+              loading="lazy"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="relative">
+            <div className="bg-[#f4f2ee] rounded-lg w-full h-80 flex flex-col justify-center items-center">
+              <SVGImage className="mx-auto block" />
+              <h5 className="font-normal text-base text-center font-sans select-none">
+                We recommend uploading or dragging in an image that is{" "}
+                <b>1920x1080 pixels</b>
+              </h5>
 
-          <InputFileUpload
-            className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
-            label="Upload Image"
-            onChange={(e) =>
-              handleBlogImageChange(e.target.files, ImageType.COVER)
-            }
-          />
-        </div>
+              <InputFileUpload
+                className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
+                label="Upload Image"
+                onChange={(e) =>
+                  handleBlogImageChange(e.target.files, ImageType.COVER)
+                }
+              />
+            </div>
+          </div>
+        )}
 
         <div className="mt-8">
           <input
-            className="placeholder:text-blogTitle text-5xl font-semibold border-none focus-within:border-none focus:border-none outline-none"
+            className="placeholder:text-blogTitle text-5xl font-semibold border-none focus-within:border-none focus:border-none outline-none w-full block overflow-x-hidden"
             contentEditable={true}
             value={title}
             onChange={handleChangeTitle}

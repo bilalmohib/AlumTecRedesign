@@ -14,6 +14,7 @@ import {
   setDoc,
   Timestamp,
 } from "firebase/firestore";
+import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 
 const ViewBlogs = () => {
   // For Loading
@@ -51,7 +52,7 @@ const ViewBlogs = () => {
       // localObj = localObj.filter((blog: any) => );
 
       // Filter the blogs array and extract only those blogs that are shared with me
-      localObj = localObj.filter((blog: any) => blog?.createdBy.toString() === email?.toString());
+      localObj = localObj.filter((blog: any) => blog?.createdBy.toString() == email?.toString());
 
       let arrBlogs: any = localObj;
 
@@ -77,12 +78,16 @@ const ViewBlogs = () => {
   return (
     <div>
       <h1 className="adminHeadingText">View Blogs</h1>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore id
-        ducimus dolorum, doloribus, nulla animi quo dignissimos expedita
-        provident dicta quos fugiat iure nam enim, blanditiis iusto esse nobis
-        eum.
-      </div>
+
+      {
+        blogs?.map((blog: BlogDataTypes) => (
+          <div className="border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
+            <h1 className="text-2xl font-bold text-slate-800">{blog?.title}</h1>
+            <p className="text-md text-slate-800">{blog?.authorName}</p>
+            <p className="text-md text-slate-800">{blog?.date_published}</p>
+          </div>
+        ))
+      }
     </div>
   );
 };

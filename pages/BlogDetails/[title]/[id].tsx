@@ -1,15 +1,31 @@
-import Navbar from "@/app/Components/Navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { db, auth } from "@/firebase";
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
 import { BsFacebook } from "react-icons/bs";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io5";
-import Image from "next/image";
-import ButtonBase from "@mui/material/ButtonBase";
-import Link from "next/link";
-import { useEffect } from "react";
+import Navbar from "@/app/Components/Navbar";
 import Footer from "@/app/Components/Footer";
+
+import {
+  doc,
+  collection,
+  onSnapshot,
+  addDoc,
+  query,
+  orderBy,
+  deleteDoc,
+  setDoc,
+  Timestamp,
+} from "firebase/firestore";
+import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
+import Blog from "@/pages/blog";
 
 const BlogDetails = () => {
   const router = useRouter();
@@ -20,7 +36,62 @@ const BlogDetails = () => {
     }
   }, []);
 
+  const { id } = router.query;
   const { title } = router.query;
+
+  console.log("id ==> ", id);
+
+  // For Loading
+  const [user, loadingAuth, errorAuth] = useAuthState(auth);
+
+  // For Blogs
+  // const e = email;
+  const email = user?.email;
+  /////////////////////////////////////// Database Part ////////////////////////////////////////////////
+  // let q = query(collection(db, "Data", "Blogs", e));
+  let q = query(collection(db, "Blogs"));
+
+  const [snapshot, loading, error] = useCollection(q, {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
+
+  // const [loading, setLoading] = useState(true);
+
+  const [blogs, setBlogs] = useState<BlogDataTypes[]>([]);
+  const [blogDetails, setBlogDetails] = useState<BlogDataTypes>({} as BlogDataTypes);
+
+  useEffect(() => {
+    if (!loading && snapshot && id) {
+
+      let localObj: any;
+      let localArrBlogs: any[] = [];
+
+      let filteredArrBlogsLocal = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      let arrBlogsLocal: any[] = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+
+      localObj = filteredArrBlogsLocal;
+
+      localObj = localObj.filter((blog: any) => blog?.id.toString() == id?.toString());
+
+      // Filter the blogs array and extract only select first three blogs
+      for (let i = 0; i < arrBlogsLocal.length; i++) {
+        if(i === 3){
+          break;
+        }
+        localArrBlogs[i] = arrBlogsLocal[i];
+      }
+
+      let objBlogDetails: BlogDataTypes = localObj[0];
+
+      setBlogDetails(objBlogDetails);
+      setBlogs(localArrBlogs);
+      console.log("Blogs ==> ", objBlogDetails);
+      console.log("Created by email ==> ", email);
+      console.log("Blogs Email ==> ", objBlogDetails?.id.toString() == id?.toString());
+    }
+
+  }, [loading, snapshot, id]);
+  // FOR GETTING BLOGS
 
   return (
     <div>
@@ -49,44 +120,39 @@ const BlogDetails = () => {
           <div className="w-6/12">
             <div className="flex flex-row mt-4">
               <Image
-                src="https://img.freepik.com/free-photo/detail-glass-architectures-blue-tone_1359-612.jpg?w=900&t=st=1694757138~exp=1694757738~hmac=0d12552920a362ffc0b95571dd0d9395b0b131f96d1ea4107ee0976e84e04bc5"
+                src={(blogDetails.photoURL) ? (blogDetails.photoURL) : ("https://img.freepik.com/free-photo/detail-glass-architectures-blue-tone_1359-612.jpg?w=900&t=st=1694757138~exp=1694757738~hmac=0d12552920a362ffc0b95571dd0d9395b0b131f96d1ea4107ee0976e84e04bc5")}
                 alt="author"
                 width={40}
                 height={40}
                 className="rounded-full block"
               />
-              <h3 className="m-0 font-light mt-[5px] ml-3">Arya Stark</h3>
+              <h3 className="m-0 font-light mt-[5px] ml-3">{blogDetails.authorName}</h3>
               <h3 className="m-0 font-light mt-[5px] ml-3 text-gray-400">
-                {new Date().toLocaleString("default", { month: "long" })}{" "}
-                {new Date().getFullYear()}
+                {blogDetails.createdAt}
               </h3>
             </div>
           </div>
           <div className="w-6/12 flex justify-end items-end">
             <div className="flex flex-row mt-4">
               <Link
-                key="title"
                 className="ml-2"
                 href="https://www.facebook.com/Alumtec-110622934682818"
               >
                 <BsFacebook className="text-3xl m-0 rounded-full text-[#0b7ce6]" />
               </Link>
               <Link
-                key="title"
                 className="ml-2"
                 href="https://www.facebook.com/Alumtec-110622934682818"
               >
                 <FaSquareXTwitter className="text-3xl m-0 text-[#060707]" />
               </Link>
               <Link
-                key="title"
                 className="ml-2"
                 href="https://www.facebook.com/Alumtec-110622934682818"
               >
                 <FaLinkedin className="text-3xl m-0 text-[#0964c0]" />
               </Link>
               <Link
-                key="title"
                 className="ml-2"
                 href="https://www.facebook.com/Alumtec-110622934682818"
               >
@@ -97,14 +163,14 @@ const BlogDetails = () => {
         </div>
         <div className="mt-4">
           <Image
-            src="https://img.freepik.com/free-photo/detail-glass-architectures-blue-tone_1359-612.jpg?w=900&t=st=1694757138~exp=1694757738~hmac=0d12552920a362ffc0b95571dd0d9395b0b131f96d1ea4107ee0976e84e04bc5"
-            alt="author"
+            src={(blogDetails?.coverImage) ? (blogDetails?.coverImage) : ("https://res.cloudinary.com/bytesizedpieces/image/upload/v1656084931/article/a-how-to-guide-on-making-an-animated-loading-image-for-a-website/animated_loader_gif_n6b5x0.gif")}
+            alt="cover image"
             width={800}
             height={500}
-            className="rounded-md block w-full h-96"
+            className="rounded-md block w-full h-[500px] border border-slate-300 border-solid"
           />
         </div>
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <p className="text-lg text-[#737678]">
             The construction industry has flourished in the provincial capital
             of Punjab – Lahore, where development is widespread, attracting
@@ -273,7 +339,11 @@ const BlogDetails = () => {
             Whether you have an under-construction project or you want to revamp
             your existing projects, consider these companies.
           </p>
-        </div>
+        </div> */}
+        <div
+          className="mt-4 w-full"
+          dangerouslySetInnerHTML={{ __html: blogDetails?.content }}
+        />
         {/* Add divider here */}
         <div className="border-t border-gray-300 border-solid border-b-0 my-10"></div>
         {/* Add divider here */}
@@ -282,17 +352,17 @@ const BlogDetails = () => {
             Related Posts
           </h2>
           <div className="grid grid-cols-3 gap-6 h-96 mt-6">
-            {[1, 2, 3].map((item, index) => {
+            {blogs.map((item: BlogDataTypes, index: number) => {
               return (
                 <div
                   key={index}
-                  className="border-[0.2px] w-full h-full border-solid border-gray-300 rounded-sm"
+                  className="border-[0.2px] w-full h-full border-solid border-gray-300 hover:bg-slate-300 rounded-sm"
                 >
                   <Image
                     src={
-                      "https://wpassets.graana.com/blog/wp-content/uploads/2023/08/Thokar-niaz-baig-1-645x338.jpg.webp"
+                      (item?.coverImage) ? (item?.coverImage) : ("https://res.cloudinary.com/bytesizedpieces/image/upload/v1656084931/article/a-how-to-guide-on-making-an-animated-loading-image-for-a-website/animated_loader_gif_n6b5x0.gif")
                     }
-                    alt="blog"
+                    alt="cover image"
                     width={400}
                     height={200}
                     className="w-full h-52 block"
@@ -303,11 +373,11 @@ const BlogDetails = () => {
                         Company News
                       </h3>
                       <h4 className="text-base my-0 mt-[2px] font-light text-gray-600 ">
-                        August 31, 2023
+                        {new Date(item?.createdAt).toDateString()}
                       </h4>
                     </div>
                     <h2 className="text-3xl text-[#37474F] font-light my-0">
-                      Thokar Niaz Baig Interchange
+                      {item?.title}
                     </h2>
                   </div>
                 </div>
