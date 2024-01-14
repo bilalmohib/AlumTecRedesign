@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useSnackbar } from "notistack";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -25,6 +26,9 @@ import AdminServices from "@/app/pageComponents/Admin/Services/AdminServices";
 import AdminProjects from "@/app/pageComponents/Admin/Projects/AdminProjects";
 import AdminBlogs from "@/app/pageComponents/Admin/Blogs/AdminBlogs";
 import { sidebarItemsList } from "@/app/data/admin/sidebarItemsList";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import { auth } from "@/firebase";
 
 const drawerWidth = 240;
 
@@ -79,6 +83,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 function AdminScreen() {
   const theme = useTheme();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  // For Loading
+  const [user, loadingAuth, errorAuth] = useAuthState(auth);
+
   const [open, setOpen] = React.useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -86,6 +95,14 @@ function AdminScreen() {
     React.useState<null | HTMLElement>(null);
 
   const [currentSidebarItem, setCurrentSidebarItem] = React.useState(0);
+
+  React.useEffect(() => {
+    if (user) {
+      console.log("User @ User ==> ", user);
+    } else {
+      console.log("User is null");
+    }
+  })
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -105,6 +122,24 @@ function AdminScreen() {
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  // For Logout
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        enqueueSnackbar("Logout Successful", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+        });
+      }).catch((error) => {
+        // An error happened.
+      });
+    }
   };
 
   const renderSideBarContent = (index: number) => {
@@ -148,6 +183,8 @@ function AdminScreen() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Dashboard</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -291,6 +328,9 @@ function AdminScreen() {
         open={open}
       >
         <DrawerHeader>
+          <div className="">
+            {user?.email}
+          </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />

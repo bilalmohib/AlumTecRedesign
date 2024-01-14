@@ -36,9 +36,18 @@ const BlogCard = (props: BlogDataTypes) => {
           </div>
           <h1 className="text-2xl font-semibold mt-5 mb-0">{props.title}</h1>
           <p className="text-base font-light mt-3 mb-0 text-gray-600">
-            {props.date_published}
+            {props.createdAt}
           </p>
-          <p className="text-base font-light mt-3 mb-0">{props.description}</p>
+          {/* <p className="text-base font-light mt-3 mb-0">{props.description}</p> */}
+          <div dangerouslySetInnerHTML={{
+            // If there is image then skip the first image
+            // Remove the internal styling of text and divs
+            __html: props.content.replace(/<img[^>]*>/g, "").replace(/<div[^>]*>/g, "").replace(/<p[^>]*>/g, "").replace(/<span[^>]*>/g, "").replace(/<h1[^>]*>/g, "").replace(/<h2[^>]*>/g, "").replace(/<h3[^>]*>/g, "").replace(/<h4[^>]*>/g, "").replace(/<h5[^>]*>/g, "").replace(/<h6[^>]*>/g, "").replace(/<style[^>]*>/g, "").replace(/<script[^>]*>/g, "").replace(/<link[^>]*>/g, "").replace(/<meta[^>]*>/g, "").replace(/<title[^>]*>/g, "").replace(/<head[^>]*>/g, "").replace(/<body[^>]*>/g, "").replace(/<html[^>]*>/g, "").replace(/<[^>]*>/g, "").replace(/<\/[^>]*>/g, ""),
+          }}
+            className="text-base font-light mt-3 mb-0"
+            style={{ maxHeight: "100px", overflow: "hidden" }}
+          >
+          </div>
         </div>
       </div>
     </div>

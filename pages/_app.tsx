@@ -12,12 +12,16 @@ import "react-toastify/dist/ReactToastify.min.css";
 // Importing Components
 import GlobalCssPriority from "@/app/Components/GlobalCssPriority";
 
+import { SnackbarProvider, useSnackbar } from 'notistack';
+
 import "../styles/globals.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <GlobalCssPriority>
-      <Component {...pageProps} />
+      <SnackbarProvider>
+        <Component {...pageProps} />
+      </SnackbarProvider>
     </GlobalCssPriority>
   );
 };

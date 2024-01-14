@@ -1,11 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
+import Router from "next/router";
 import { storage } from "@/firebase";
 import { Button } from "@mui/material";
 import SVGImage from "@/app/SVGs/SVGImage";
 import InputFileUpload from "@/app/Components/InputFileUpload";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth } from "@/firebase";
+import {
+  doc,
+  collection,
+  onSnapshot,
+  addDoc,
+  query,
+  orderBy,
+  deleteDoc,
+  setDoc,
+  Timestamp,
+} from "firebase/firestore";
+import Image from "next/image";
+import { formatDate } from "@/app/utils/commonFunctions";
+
 const AddBlogs = () => {
+  const [scrolled, setScrolled] = useState(false);
+
   const inputRef: React.RefObject<HTMLDivElement> = useRef(
     document.createElement("div")
   );
@@ -16,14 +35,34 @@ const AddBlogs = () => {
   const [title, setTitle] = useState<string>("");
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [coverImage, setCoverImage] = useState<string>("");
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
   const [imageUploading, setImageUploading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const isScrolled = scrollTop > 10; // Adjust the scroll threshold as needed
+
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const storageRef = ref(
     storage,
     `images/blogs/${title}/${selectedFile?.name}`
   );
+
+  // For Loading
+  const [user, loading, error] = useAuthState(auth);
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -63,81 +102,167 @@ const AddBlogs = () => {
     }
   };
 
+  // const handleInsertHeader = (headerType: string) => {
+  //   saveSelection();
+
+  //   const selection = window.getSelection();
+  //   const range = selection?.getRangeAt(0) || document.createRange();
+
+  //   // Get the parent element containing the cursor
+  //   let cursorParentElement: HTMLElement | null = null;
+
+  //   if (range.endContainer.nodeType === Node.TEXT_NODE) {
+  //     cursorParentElement = range.endContainer.parentElement;
+  //   } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
+  //     cursorParentElement = range.endContainer as HTMLElement;
+  //   }
+
+  //   // Check if cursorParentElement is an HTMLElement
+  //   if (cursorParentElement) {
+  //     // Get the text content of the cursor line
+  //     const cursorLineText = cursorParentElement.textContent || "";
+
+  //     // Create a new header element with a class
+  //     const header = document.createElement(headerType);
+  //     header.className = getHeaderClass(headerType); // Set the class based on your logic
+
+  //     // Set the text content of the header
+  //     header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+
+  //     // If there's no text, insert a zero-width space character (\u200B)
+  //     // to ensure the cursor stays in the same position
+  //     if (cursorLineText === "") {
+  //       range.deleteContents();
+  //       range.insertNode(document.createTextNode("\u200B"));
+  //     } else {
+  //       // Replace the cursor line with the new header
+  //       cursorParentElement.innerHTML = "";
+  //       cursorParentElement.appendChild(header);
+  //     }
+  //   }
+
+  //   restoreSelection();
+  // };
+
   const handleInsertHeader = (headerType: string) => {
     saveSelection();
 
     const selection = window.getSelection();
     const range = selection?.getRangeAt(0) || document.createRange();
 
-    // Get the parent element containing the cursor
-    let cursorParentElement: HTMLElement | null = null;
-
-    if (range.endContainer.nodeType === Node.TEXT_NODE) {
-      cursorParentElement = range.endContainer.parentElement;
-    } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
-      cursorParentElement = range.endContainer as HTMLElement;
-    }
-
-    // Check if cursorParentElement is an HTMLElement
-    if (cursorParentElement) {
-      // Get the text content of the cursor line
-      const cursorLineText = cursorParentElement.textContent || "";
-
-      // Create a new header element with a class
+    // Check if there's a selection
+    if (!range.collapsed) {
+      // If there's a selection, wrap it in the specified header
+      const selectedText = range.toString();
       const header = document.createElement(headerType);
-      header.className = getHeaderClass(headerType); // Set the class based on your logic
+      header.className = getHeaderClass(headerType);
+      header.textContent = selectedText;
 
-      // Set the text content of the header
-      header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+      range.deleteContents();
+      range.insertNode(header);
 
-      // If there's no text, insert a zero-width space character (\u200B)
-      // to ensure the cursor stays in the same position
-      if (cursorLineText === "") {
-        range.deleteContents();
-        range.insertNode(document.createTextNode("\u200B"));
-      } else {
-        // Replace the cursor line with the new header
-        cursorParentElement.innerHTML = "";
-        cursorParentElement.appendChild(header);
+      // Move the cursor to the end of the header
+      // range.setStartAfter(header);
+      range.setEndAfter(header);
+
+      selection?.removeAllRanges();
+
+      selection?.addRange(range);
+
+      // Restore the previous selection
+      restoreSelection();
+    } else {
+      // If there's no selection, handle the cursor position
+
+      // Get the parent element containing the cursor
+      let cursorParentElement: HTMLElement | null = null;
+
+      if (range.endContainer.nodeType === Node.TEXT_NODE) {
+        cursorParentElement = range.endContainer.parentElement;
+      } else if (range.endContainer.nodeType === Node.ELEMENT_NODE) {
+        cursorParentElement = range.endContainer as HTMLElement;
+      }
+
+      // Check if cursorParentElement is an HTMLElement
+      if (cursorParentElement) {
+        // Get the text content of the cursor line
+        const cursorLineText = cursorParentElement.textContent || "";
+
+        // Create a new header element with a class
+        const header = document.createElement(headerType);
+        header.className = getHeaderClass(headerType); // Set the class based on your logic
+
+        // Set the text content of the header
+        header.textContent = cursorLineText === "" ? "\u200B" : cursorLineText;
+
+        // If there's no text, insert a zero-width space character (\u200B)
+        // to ensure the cursor stays in the same position
+        if (cursorLineText === "") {
+          range.deleteContents();
+          range.insertNode(document.createTextNode("\u200B"));
+        } else {
+          // Replace the cursor line with the new header
+          cursorParentElement.innerHTML = "";
+          cursorParentElement.appendChild(header);
+        }
       }
     }
 
     restoreSelection();
   };
 
-  const handleInsertImageInBlog = (imageSource: string) => {
+  const handleInsertImageInBlog = (file: File, id: string) => {
+    // Create a container div for the image and loader
+    const container = document.createElement("div");
+    container.style.position = "relative"; // Ensure position is set for absolute positioning of loader
+
+    // Create the loader element
+    const loader = document.createElement("div");
+    loader.className = "loader"; // Apply a class for styling
+    container.appendChild(loader);
+
+    // Create the image element
     const img = document.createElement("img");
-    img.src = imageSource;
-    img.className = "w-[99%] mx-auto h-auto";
+    img.src = URL.createObjectURL(file);
+    img.id = id;
+    img.className = "w-[99%] mx-auto h-auto blurred-image"; // Apply a class for styling
     img.contentEditable = "false";
+
+    // Append the image to the container
+    container.appendChild(img);
+
     if (inputRef.current) {
-      inputRef.current.appendChild(img);
+      inputRef.current.appendChild(container);
     }
-
-    // Insert a new line
-    const newLine = document.createElement("div");
-    newLine.innerHTML = "<br>";
-    inputRef.current?.appendChild(newLine);
-
-    // Move the cursor to the new line
-    const newRange = document.createRange();
-    newRange.setStart(newLine, 0);
-
-    const newSelection = window.getSelection();
-    newSelection?.removeAllRanges();
-    newSelection?.addRange(newRange);
-
-    // Save the new selection
-    saveSelection();
   };
 
-  const handleImageUpload = async (file: File) => {
+  const handleReplaceImageInBlog = (imageSource: string, id: string) => {
+    const img = document.getElementById(id) as HTMLImageElement;
+    console.log("Image element:", img);
+    img.src = imageSource;
+  };
+
+  enum ImageType {
+    BLOG = "BLOG",
+    COVER = "COVER",
+  }
+
+  const handleImageUpload = async (
+    file: File,
+    type: ImageType.BLOG | ImageType.COVER
+  ) => {
     if (!file) return;
+
+    const imageId = Date.now().toString();
 
     try {
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       setImageUploading(true);
+
+      if (type !== ImageType.COVER) {
+        handleInsertImageInBlog(file, imageId);
+      }
 
       uploadTask.on(
         "state_changed",
@@ -160,7 +285,11 @@ const AddBlogs = () => {
       console.log("File available at", downloadURL);
 
       setSelectedFile(file);
-      handleInsertImageInBlog(downloadURL);
+      if (type === ImageType.COVER) {
+        setCoverImage(downloadURL);
+      } else {
+        handleReplaceImageInBlog(downloadURL, imageId);
+      }
       setImageUploading(false);
     } catch (error) {
       // Handle error if needed
@@ -169,7 +298,10 @@ const AddBlogs = () => {
     }
   };
 
-  const handleBlogImageChange = async (files: FileList | null) => {
+  const handleBlogImageChange = async (
+    files: FileList | null,
+    type: ImageType.BLOG | ImageType.COVER
+  ) => {
     if (files && files.length > 0) {
       const file = files[0];
       const reader = new FileReader();
@@ -179,7 +311,7 @@ const AddBlogs = () => {
           console.log("Selected File Name:", file.name);
 
           try {
-            await handleImageUpload(file);
+            await handleImageUpload(file, type);
           } catch (error) {
             // Handle error if needed
             console.error("Error handling file upload:", error);
@@ -274,6 +406,85 @@ const AddBlogs = () => {
     handleInput();
   }, []);
 
+  const handleBlogSubmit = async () => {
+    if (title.trim() === "") {
+      // setErrorTitle("Please enter a title");
+    }
+
+    if (selectedFile === null) {
+      // setErrorImage("Please select an image");
+    }
+
+    if (inputRef.current?.innerHTML === "") {
+      // setErrorDescription("Please enter a description");
+    }
+
+    if (
+      title.trim() === "" &&
+      selectedFile === null &&
+      inputRef.current?.innerHTML === "" &&
+      coverImage === ""
+    ) {
+      // setErrorTitle("Please enter a title");
+      // setErrorDescription("Please enter a description");
+      // setErrorImage("Please select an image");
+      alert("All fields are not filled");
+      return;
+    }
+
+    if (title.trim() !== "" && selectedFile !== null && inputRef.current?.innerHTML !== "" && coverImage !== "") {
+      console.log("All fields are filled");
+      alert("All fields are filled");
+
+      if (user && !loading && !error) {
+        // Make a random color code in rgba format
+        let color_code = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
+          Math.random() * 255
+        )}, ${Math.floor(Math.random() * 255)}, 0.5)`;
+
+        ////////////////////////////// For New Version of Firebase(V9) //////////////////////////////
+        // ADD JOB TO FIRESTORE
+        const blogData = {
+          title: title,
+          content: inputRef.current?.innerHTML,
+          uid: user.uid,
+          userEmail: user.email,
+          createdAt: formatDate(new Date()),
+          createdBy: user.email,
+          photoURL: user.photoURL,
+          color_code: color_code,
+          coverImage: coverImage,
+          authorName: user.displayName,
+        };
+
+        // console.log("Blog Data:", blogData);
+        addDoc(collection(db, `Blogs`), blogData)
+          .then(() => {
+            console.log("Blog submitted");
+            const { pathname } = Router;
+            // if (pathname == "/createProject") {
+            alert("Your Blog is submitted successfully.");
+            // Router.push(`/dashboard/${signedInUserData.email}`);
+            // }
+          })
+          .catch((err) => {
+            console.warn(err);
+            alert(`Error while submitting blog: ${err.message}`);
+          });
+        //
+        ////////////////////////////// For New Version of Firebase(V9) //////////////////////////////
+
+        //Now sending the data for notifications
+      } else {
+        alert("Please sign in to save project to cloud.");
+      }
+    } else {
+      // console.log("All fields are not filled");
+      alert("All fields are not filled");
+      return;
+    }
+  };
+
   return (
     <div>
       <div>
@@ -281,8 +492,8 @@ const AddBlogs = () => {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={() => console.log("Hello")}
-          className="fixed top-0 z-50 w-11/12"
+          onClick={handleBlogSubmit}
+          className={`fixed ${scrolled ? 'top-20' : 'top-64'} z-50 w-9/12`}
         >
           Submit Blog
         </Button>
@@ -357,28 +568,47 @@ const AddBlogs = () => {
         <InputFileUpload
           className="bg-sky-800 text-white px-4 py-2 rounded-md"
           label="Upload Image"
-          onChange={(e) => handleBlogImageChange(e.target.files)}
+          onChange={(e) =>
+            handleBlogImageChange(e.target.files, ImageType.BLOG)
+          }
         />
       </div>
 
-      <section className="w-[720px] mx-auto">
-        <div className="bg-[#f4f2ee] rounded-lg w-full h-80 flex flex-col justify-center items-center">
-          <SVGImage className="mx-auto block" />
-          <h5 className="font-normal text-base text-center font-sans select-none">
-            We recommend uploading or dragging in an image that is{" "}
-            <b>1920x1080 pixels</b>
-          </h5>
+      <section className="w-[720px] mx-auto mt-16">
+        {(coverImage !== "" || selectedFile !== null) ? (
+          <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
+            <Image
+              src={coverImage}
+              alt="Cover Image"
+              loading="lazy"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="relative">
+            <div className="bg-[#f4f2ee] rounded-lg w-full h-80 flex flex-col justify-center items-center">
+              <SVGImage className="mx-auto block" />
+              <h5 className="font-normal text-base text-center font-sans select-none">
+                We recommend uploading or dragging in an image that is{" "}
+                <b>1920x1080 pixels</b>
+              </h5>
 
-          <InputFileUpload
-            className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
-            label="Upload Image"
-            onChange={(e) => console.log(e.target.files)}
-          />
-        </div>
+              <InputFileUpload
+                className="bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-600 border-solid px-4 py-2 rounded-md w-72"
+                label="Upload Image"
+                onChange={(e) =>
+                  handleBlogImageChange(e.target.files, ImageType.COVER)
+                }
+              />
+            </div>
+          </div>
+        )}
 
         <div className="mt-8">
           <input
-            className="placeholder:text-blogTitle text-5xl font-semibold border-none focus-within:border-none focus:border-none outline-none"
+            className="placeholder:text-blogTitle text-5xl font-semibold border-none focus-within:border-none focus:border-none outline-none w-full block overflow-x-hidden"
             contentEditable={true}
             value={title}
             onChange={handleChangeTitle}
