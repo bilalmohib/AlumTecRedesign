@@ -66,8 +66,8 @@ const BlogBody = () => {
 
       setBlogs(arrBlogs);
       console.log("Blogs ==> ", blogs);
-      console.log("Created by email ==> ", email);
-      console.log("Blogs Email ==> ", blogs[0]?.createdBy.toString() == email?.toString());
+      // console.log("Created by email ==> ", email);
+      // console.log("Blogs Email ==> ", blogs[0]?.createdBy.toString() == email?.toString());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, snapshot]);
