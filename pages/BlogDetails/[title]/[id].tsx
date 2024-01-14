@@ -26,6 +26,7 @@ import {
 } from "firebase/firestore";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 import Blog from "@/pages/blog";
+import { ButtonBase } from "@mui/material";
 
 const BlogDetails = () => {
   const router = useRouter();
@@ -75,7 +76,7 @@ const BlogDetails = () => {
 
       // Filter the blogs array and extract only select first three blogs
       for (let i = 0; i < arrBlogsLocal.length; i++) {
-        if(i === 3){
+        if (i === 3) {
           break;
         }
         localArrBlogs[i] = arrBlogsLocal[i];
@@ -92,6 +93,19 @@ const BlogDetails = () => {
 
   }, [loading, snapshot, id]);
   // FOR GETTING BLOGS
+
+  const shareOnWhatsapp = () => {
+    const shareText = 'Check out this awesome content!';
+    let url = `https://alumtec.ca/BlogDetails/${blogDetails?.title}/${blogDetails?.id}`
+    const shareUrl = url;
+    
+    // Create the WhatsApp share URL using the WhatsApp Web API
+    const whatsappApiUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}%20${encodeURIComponent(shareUrl)}`;
+    
+    // Open a new window or redirect to the WhatsApp API URL
+    window.open(whatsappApiUrl, '_blank');
+}
+
 
   return (
     <div>
@@ -134,30 +148,28 @@ const BlogDetails = () => {
           </div>
           <div className="w-6/12 flex justify-end items-end">
             <div className="flex flex-row mt-4">
-              <Link
+              <p
                 className="ml-2"
-                href="https://www.facebook.com/Alumtec-110622934682818"
+
               >
                 <BsFacebook className="text-3xl m-0 rounded-full text-[#0b7ce6]" />
-              </Link>
-              <Link
+              </p>
+              <p
                 className="ml-2"
-                href="https://www.facebook.com/Alumtec-110622934682818"
               >
                 <FaSquareXTwitter className="text-3xl m-0 text-[#060707]" />
-              </Link>
-              <Link
+              </p>
+              <p
                 className="ml-2"
-                href="https://www.facebook.com/Alumtec-110622934682818"
               >
                 <FaLinkedin className="text-3xl m-0 text-[#0964c0]" />
-              </Link>
-              <Link
-                className="ml-2"
-                href="https://www.facebook.com/Alumtec-110622934682818"
+              </p>
+              <ButtonBase
+                className="ml-2 cursor-pointer"
+                onClick={()=>shareOnWhatsapp()}
               >
                 <IoLogoWhatsapp className="text-3xl m-0 text-[#0cc042]" />
-              </Link>
+              </ButtonBase>
             </div>
           </div>
         </div>
@@ -356,7 +368,8 @@ const BlogDetails = () => {
               return (
                 <div
                   key={index}
-                  className="border-[0.2px] w-full h-full border-solid border-gray-300 hover:bg-slate-300 rounded-sm"
+                  className="border-[0.2px] w-full h-full border-solid border-gray-300 hover:bg-indigo-50 cursor-pointer rounded-sm"
+                  onClick={() => router.push(`/BlogDetails/${item?.title}/${item?.id}`)}
                 >
                   <Image
                     src={
