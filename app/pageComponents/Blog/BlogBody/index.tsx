@@ -60,7 +60,7 @@ const BlogBody = () => {
       // localObj = localObj.filter((blog: any) => );
 
       // Filter the blogs array and extract only those blogs that are shared with me
-      localObj = localObj.filter((blog: any) => blog?.createdBy.toString() == email?.toString());
+      // localObj = localObj.filter((blog: any) => blog?.createdBy.toString() == email?.toString());
 
       let arrBlogs: any = localObj;
 
