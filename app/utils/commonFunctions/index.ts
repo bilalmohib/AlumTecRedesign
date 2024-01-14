@@ -17,3 +17,7 @@ export const formatDate = (date: Date): string => {
 
   return `${day}/${month}/${year} ${time}`;
 };
+
+export const convertToSlug = (input:string) => {
+  return input.toLowerCase().replace(/\s+/g, '-');
+};

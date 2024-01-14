@@ -38,7 +38,7 @@ const BlogDetails = () => {
   }, []);
 
   const { id } = router.query;
-  const { title } = router.query;
+  const { slug } = router.query;
 
   console.log("id ==> ", id);
 
@@ -96,26 +96,26 @@ const BlogDetails = () => {
 
   const shareOnWhatsapp = () => {
     const shareText = 'Check out this awesome content!';
-    let url = `https://alumtec.ca/BlogDetails/${blogDetails?.title}/${blogDetails?.id}`
+    let url = `https://alumtec.ca/BlogDetails/${blogDetails?.slug}/${blogDetails?.id}`
     const shareUrl = url;
-    
+
     // Create the WhatsApp share URL using the WhatsApp Web API
     const whatsappApiUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}%20${encodeURIComponent(shareUrl)}`;
-    
+
     // Open a new window or redirect to the WhatsApp API URL
     window.open(whatsappApiUrl, '_blank');
-}
+  }
 
 
   return (
     <div>
       <Head>
         <title>
-          Blog Details | {title} | AlumTec, Glazing solutions are our passion
+          Blog Details | {blogDetails.title} | AlumTec, Glazing solutions are our passion
         </title>
         <meta
           name="description"
-          content={`${title} | A guide to the latest trends in the glazing industry and how AlumTec is leading the way in the Canada`}
+          content={`${blogDetails.title} | A guide to the latest trends in the glazing industry and how AlumTec is leading the way in the Canada`}
         />
         <meta
           name="keywords"
@@ -128,7 +128,7 @@ const BlogDetails = () => {
       <Navbar />
       <section className="mt-[105px] mx-20 pt-3">
         <h3 className="text-5xl font-semibold my-0 mt-4 text-[#37474F] font-sans">
-          {title}
+          {blogDetails.title}
         </h3>
         <div className="flex w-full mt-4">
           <div className="w-6/12">
@@ -166,7 +166,7 @@ const BlogDetails = () => {
               </p>
               <ButtonBase
                 className="ml-2 cursor-pointer"
-                onClick={()=>shareOnWhatsapp()}
+                onClick={() => shareOnWhatsapp()}
               >
                 <IoLogoWhatsapp className="text-3xl m-0 text-[#0cc042]" />
               </ButtonBase>
@@ -369,7 +369,7 @@ const BlogDetails = () => {
                 <div
                   key={index}
                   className="border-[0.2px] w-full h-full border-solid border-gray-300 hover:bg-indigo-50 cursor-pointer rounded-sm"
-                  onClick={() => router.push(`/BlogDetails/${item?.title}/${item?.id}`)}
+                  onClick={() => router.push(`/BlogDetails/${item?.slug}/${item?.id}`)}
                 >
                   <Image
                     src={

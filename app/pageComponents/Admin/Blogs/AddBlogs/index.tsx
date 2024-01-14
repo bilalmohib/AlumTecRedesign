@@ -20,7 +20,8 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import Image from "next/image";
-import { formatDate } from "@/app/utils/commonFunctions";
+import { convertToSlug, formatDate } from "@/app/utils/commonFunctions";
+import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 
 const AddBlogs = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -446,15 +447,16 @@ const AddBlogs = () => {
         // ADD JOB TO FIRESTORE
         const blogData = {
           title: title,
+          slug: convertToSlug(title),
           content: inputRef.current?.innerHTML,
-          uid: user.uid,
-          userEmail: user.email,
+          uid: user.uid as string,
+          userEmail: user.email as string,
           createdAt: formatDate(new Date()),
-          createdBy: user.email,
-          photoURL: user.photoURL,
+          createdBy: user.email as string,
+          photoURL: user.photoURL as string,
           color_code: color_code,
           coverImage: coverImage,
-          authorName: user.displayName,
+          authorName: user.displayName as string,
         };
 
         // console.log("Blog Data:", blogData);
