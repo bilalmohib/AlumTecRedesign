@@ -83,7 +83,7 @@ const BlogBody = () => {
               key={index}
               onClick={() =>
                 router.push({
-                  pathname: `/BlogDetails/${blogData.title}/${blogData.id}`,
+                  pathname: `/BlogDetails/${blogData.slug}/${blogData.id}`,
                 })
               }
             >
