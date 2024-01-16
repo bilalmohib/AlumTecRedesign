@@ -8,7 +8,7 @@ import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { supportList } from "./data";
+import { supportList, companyUrlsList } from "./data";
 
 export const Footer: FC = (): ReactElement => {
   return (
@@ -56,13 +56,14 @@ export const Footer: FC = (): ReactElement => {
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
             Company
           </h2>
-          {["About Us", "Services", "Projects"].map((v, i) => {
+          {companyUrlsList.map((v, i) => {
             return (
               <p
                 key={i}
                 className="text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
+                onClick={() => Router.push(v.link)}
               >
-                {v}
+                {v.label}
               </p>
             );
           })}
