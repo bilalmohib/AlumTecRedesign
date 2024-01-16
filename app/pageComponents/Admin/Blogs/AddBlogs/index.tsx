@@ -49,11 +49,11 @@ const AddBlogs = () => {
       setScrolled(isScrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Cleanup the event listener on component unmount
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -256,6 +256,8 @@ const AddBlogs = () => {
 
     const imageId = Date.now().toString();
 
+    setSelectedFile(file);
+
     try {
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -285,7 +287,6 @@ const AddBlogs = () => {
       const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log("File available at", downloadURL);
 
-      setSelectedFile(file);
       if (type === ImageType.COVER) {
         setCoverImage(downloadURL);
       } else {
@@ -433,7 +434,12 @@ const AddBlogs = () => {
       return;
     }
 
-    if (title.trim() !== "" && selectedFile !== null && inputRef.current?.innerHTML !== "" && coverImage !== "") {
+    if (
+      title.trim() !== "" &&
+      selectedFile !== null &&
+      inputRef.current?.innerHTML !== "" &&
+      coverImage !== ""
+    ) {
       console.log("All fields are filled");
       alert("All fields are filled");
 
@@ -495,7 +501,7 @@ const AddBlogs = () => {
           color="primary"
           fullWidth
           onClick={handleBlogSubmit}
-          className={`fixed ${scrolled ? 'top-20' : 'top-64'} z-50 w-9/12`}
+          className={`fixed ${scrolled ? "top-20" : "top-64"} z-50 w-9/12`}
         >
           Submit Blog
         </Button>
@@ -577,7 +583,7 @@ const AddBlogs = () => {
       </div>
 
       <section className="w-[720px] mx-auto mt-16">
-        {(coverImage !== "" || selectedFile !== null) ? (
+        {coverImage !== "" || selectedFile !== null ? (
           <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
             <Image
               src={coverImage}

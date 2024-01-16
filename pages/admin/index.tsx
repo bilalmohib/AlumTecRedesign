@@ -29,6 +29,7 @@ import { sidebarItemsList } from "@/app/data/admin/sidebarItemsList";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase";
+import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -83,6 +84,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 function AdminScreen() {
   const theme = useTheme();
+  const router = useRouter();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   // For Loading
@@ -102,7 +104,22 @@ function AdminScreen() {
     } else {
       console.log("User is null");
     }
-  })
+  }, []);
+
+  React.useEffect(() => {
+    if (!loadingAuth) {
+      if (user) {
+        // alert("User is already Signed In" + user.email);
+        // do something with the user
+        router.push("/admin");
+      } else {
+        console.log("user is null");
+        // alert("User is not Signed In");
+        // if user is not logged in, redirect to login page
+      }
+      // if user is null, redirect to login page
+    }
+  }, [user, loadingAuth, router]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -127,18 +144,20 @@ function AdminScreen() {
   // For Logout
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to logout?")) {
-      signOut(auth).then(() => {
-        // Sign-out successful.
-        enqueueSnackbar("Logout Successful", {
-          variant: "success",
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          enqueueSnackbar("Logout Successful", {
+            variant: "success",
+            anchorOrigin: {
+              vertical: "top",
+              horizontal: "right",
+            },
+          });
+        })
+        .catch((error) => {
+          // An error happened.
         });
-      }).catch((error) => {
-        // An error happened.
-      });
     }
   };
 
@@ -328,9 +347,7 @@ function AdminScreen() {
         open={open}
       >
         <DrawerHeader>
-          <div className="">
-            {user?.email}
-          </div>
+          <div className="">{user?.email}</div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
