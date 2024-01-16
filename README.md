@@ -26,7 +26,6 @@ Following are the features of this website:
 - ✅ Uses Material UI, Tailwind CSS and latest React
 - ✅ Uses Page Routing by Next.js
 - ✅ Uses Firebase for Authentication and Database
-- ✅ Uses Redux for State Management
 - ✅ Uses React Hook Form for Form Validation
 - ✅ Uses Clean Code Architecture
 - ✅ Offers Dynamic Blog Post Creation
@@ -34,8 +33,6 @@ Following are the features of this website:
 - ✅ Offers Admin Panel for Blog Post and Project Creation
 
 ## 🎥 Live Website 📷
-
-Provide a link to your live website here. 👇
 [alumtec.ca](https://alumtec.ca/)
 
 ## 🛠️ Installation
