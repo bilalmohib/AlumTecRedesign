@@ -38,10 +38,12 @@ const ViewBlogs = () => {
 
   useEffect(() => {
     if (!loading && snapshot) {
-
       let localObj: any;
 
-      let arrBlogsLocal = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      let arrBlogsLocal = snapshot?.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
 
       localObj = arrBlogsLocal;
 
@@ -52,14 +54,19 @@ const ViewBlogs = () => {
       // localObj = localObj.filter((blog: any) => );
 
       // Filter the blogs array and extract only those blogs that are shared with me
-      localObj = localObj.filter((blog: any) => blog?.createdBy.toString() == email?.toString());
+      localObj = localObj.filter(
+        (blog: any) => blog?.createdBy.toString() == email?.toString()
+      );
 
       let arrBlogs: any = localObj;
 
       setBlogs(arrBlogs);
       console.log("Blogs ==> ", blogs);
       console.log("Created by email ==> ", email);
-      console.log("Blogs Email ==> ", blogs[0]?.createdBy.toString() == email?.toString());
+      console.log(
+        "Blogs Email ==> ",
+        blogs[0]?.createdBy.toString() == email?.toString()
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, snapshot]);
@@ -79,15 +86,13 @@ const ViewBlogs = () => {
     <div>
       <h1 className="adminHeadingText">View Blogs</h1>
 
-      {
-        blogs?.map((blog: BlogDataTypes) => (
-          <div className="border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
-            <h1 className="text-2xl font-bold text-slate-800">{blog?.title}</h1>
-            <p className="text-md text-slate-800">{blog?.authorName}</p>
-            <p className="text-md text-slate-800">{blog?.date_published}</p>
-          </div>
-        ))
-      }
+      {blogs?.map((blog: BlogDataTypes) => (
+        <div className="border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
+          <h1 className="text-2xl font-bold text-slate-800">{blog?.title}</h1>
+          <p className="text-md text-slate-800">{blog?.authorName}</p>
+          <p className="text-md text-slate-800">{blog?.date_published}</p>
+        </div>
+      ))}
     </div>
   );
 };
