@@ -15,13 +15,13 @@ const firebaseConfig = {
   // appId: process.env.REACT_APP_APP_ID,
   // measurementId: process.env.REACT_APP_MEASUREMENT_ID
 
-  apiKey: "AIzaSyC73jJz3lqIO_qTnbV8ei4OLPygL1QRzaI",
-  authDomain: "taskencher.firebaseapp.com",
-  projectId: "taskencher",
-  storageBucket: "taskencher.appspot.com",
-  messagingSenderId: "1052740073596",
-  appId: "1:1052740073596:web:548143663a11c4cce5b1f9",
-  measurementId: "G-L0F850N8Z9",
+  apiKey: "AIzaSyCl4EKlHH-1xHjs7F7tfxgL82qXal7zaD4",
+  authDomain: "alumtec-web.firebaseapp.com",
+  projectId: "alumtec-web",
+  storageBucket: "alumtec-web.appspot.com",
+  messagingSenderId: "479067030602",
+  appId: "1:479067030602:web:37da5dc52ba504d78652b3",
+  measurementId: "G-TEB55W7VZF"
 };
 
 // Initialize Firebase
