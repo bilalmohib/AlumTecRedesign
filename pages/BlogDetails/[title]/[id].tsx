@@ -23,75 +23,70 @@ import {
   deleteDoc,
   setDoc,
   Timestamp,
+  getDocs,
 } from "firebase/firestore";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 import Blog from "@/pages/blog";
 import { ButtonBase } from "@mui/material";
 
-const BlogDetails = () => {
+interface BlogDetailsInterface {
+  blogDetails: BlogDataTypes;
+  blogs: BlogDataTypes[];
+}
+
+const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
   const router = useRouter();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Your DOM manipulation code here
-    }
-  }, []);
-
-  const { id } = router.query;
-  const { slug } = router.query;
-
-  console.log("id ==> ", id);
+  // const { id } = router.query;
+  // const { slug } = router.query;
 
   // For Loading
-  const [user, loadingAuth, errorAuth] = useAuthState(auth);
+  // const [user, loadingAuth, errorAuth] = useAuthState(auth);
 
   // For Blogs
-  // const e = email;
-  const email = user?.email;
   /////////////////////////////////////// Database Part ////////////////////////////////////////////////
-  // let q = query(collection(db, "Data", "Blogs", e));
-  let q = query(collection(db, "Blogs"));
+  // let q = query(collection(db, "Blogs"));
 
-  const [snapshot, loading, error] = useCollection(q, {
-    snapshotListenOptions: { includeMetadataChanges: true },
-  });
+  // const [snapshot, loading, error] = useCollection(q, {
+  //   snapshotListenOptions: { includeMetadataChanges: true },
+  // });
 
   // const [loading, setLoading] = useState(true);
 
-  const [blogs, setBlogs] = useState<BlogDataTypes[]>([]);
-  const [blogDetails, setBlogDetails] = useState<BlogDataTypes>({} as BlogDataTypes);
+  // const [blogs, setBlogs] = useState<BlogDataTypes[]>([]);
+  // const [blogDetails, setBlogDetails] = useState<BlogDataTypes>({} as BlogDataTypes);
 
-  useEffect(() => {
-    if (!loading && snapshot && id) {
+  // useEffect(() => {
+  //   if (!loading && snapshot && id) {
 
-      let localObj: any;
-      let localArrBlogs: any[] = [];
+  //     let localObj: any;
+  //     let localArrBlogs: any[] = [];
 
-      let filteredArrBlogsLocal = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-      let arrBlogsLocal: any[] = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+  //     let filteredArrBlogsLocal = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+  //     let arrBlogsLocal: any[] = snapshot?.docs.map(doc => ({ ...doc.data(), id: doc.id }));
 
-      localObj = filteredArrBlogsLocal;
+  //     localObj = filteredArrBlogsLocal;
 
-      localObj = localObj.filter((blog: any) => blog?.id.toString() == id?.toString());
+  //     localObj = localObj.filter((blog: any) => blog?.id.toString() == id?.toString());
 
-      // Filter the blogs array and extract only select first three blogs
-      for (let i = 0; i < arrBlogsLocal.length; i++) {
-        if (i === 3) {
-          break;
-        }
-        localArrBlogs[i] = arrBlogsLocal[i];
-      }
+  //     // Filter the blogs array and extract only select first three blogs
+  //     for (let i = 0; i < arrBlogsLocal.length; i++) {
+  //       if (i === 3) {
+  //         break;
+  //       }
+  //       localArrBlogs[i] = arrBlogsLocal[i];
+  //     }
 
-      let objBlogDetails: BlogDataTypes = localObj[0];
+  //     let objBlogDetails: BlogDataTypes = localObj[0];
 
-      setBlogDetails(objBlogDetails);
-      setBlogs(localArrBlogs);
-      console.log("Blogs ==> ", objBlogDetails);
-      console.log("Created by email ==> ", email);
-      console.log("Blogs Email ==> ", objBlogDetails?.id.toString() == id?.toString());
-    }
+  //     setBlogDetails(objBlogDetails);
+  //     setBlogs(localArrBlogs);
+  //     console.log("Blogs ==> ", objBlogDetails);
+  //     console.log("Created by email ==> ", email);
+  //     console.log("Blogs Email ==> ", objBlogDetails?.id.toString() == id?.toString());
+  //   }
 
-  }, [loading, snapshot, id]);
+  // }, [loading, snapshot, id]);
   // FOR GETTING BLOGS
 
   const shareOnWhatsapp = () => {
@@ -105,7 +100,6 @@ const BlogDetails = () => {
     // Open a new window or redirect to the WhatsApp API URL
     window.open(whatsappApiUrl, '_blank');
   }
-
 
   return (
     <div>
@@ -412,4 +406,39 @@ const BlogDetails = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context: any) {
+  const { id } = context.query;
+
+  let q = query(collection(db, "Blogs"));
+
+  const snapshot = await getDocs(q);
+
+  let localObj;
+  let localArrBlogs = [];
+
+  let filteredArrBlogsLocal = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+  let arrBlogsLocal = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+
+  localObj = filteredArrBlogsLocal;
+
+  localObj = localObj.filter((blog) => blog?.id.toString() === id?.toString());
+
+  for (let i = 0; i < arrBlogsLocal.length; i++) {
+    if (i === 3) {
+      break;
+    }
+    localArrBlogs[i] = arrBlogsLocal[i];
+  }
+
+  let objBlogDetails = localObj[0];
+
+  return {
+    props: {
+      blogDetails: objBlogDetails,
+      blogs: localArrBlogs,
+    },
+  };
+}
+
 export default BlogDetails;
