@@ -23,6 +23,7 @@ import Image from "next/image";
 import { convertToSlug, formatDate } from "../../../../utils/commonFunctions";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 import { Months } from "@/app/utils/enums";
+import { enqueueSnackbar } from "notistack";
 
 const AddBlogs = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -125,8 +126,6 @@ const AddBlogs = () => {
       }
     }
   };
-
-  // const handleInsertHeader = (headerType: string) => {
   //   saveSelection();
 
   //   const selection = window.getSelection();
@@ -384,23 +383,6 @@ const AddBlogs = () => {
     // }
   };
 
-  const undo = () => {
-    if (inputRef.current && history.length > 1) {
-      const previousState = history[history.length - 2];
-      setHistory((prev) => prev.slice(0, -1));
-      inputRef.current.innerHTML = previousState;
-    }
-  };
-
-  const insertSpace = () => {
-    if (savedSelection) {
-      const spaceNode = document.createTextNode("\u00a0"); // Non-breaking space
-      savedSelection.insertNode(spaceNode);
-      savedSelection.setStartAfter(spaceNode);
-      savedSelection.setEndAfter(spaceNode);
-    }
-  };
-
   // Helper function to determine the class based on header type
   const getHeaderClass = (headerType: string): string => {
     switch (headerType) {
@@ -453,7 +435,14 @@ const AddBlogs = () => {
       // setErrorTitle("Please enter a title");
       // setErrorDescription("Please enter a description");
       // setErrorImage("Please select an image");
-      alert("All fields are not filled");
+      enqueueSnackbar("Please fill all the fields to submit the blog.", {
+        variant: "warning",
+        autoHideDuration: 4000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "right",
+        },
+      });
       return;
     }
 
@@ -463,8 +452,17 @@ const AddBlogs = () => {
       inputRef.current?.innerHTML !== "" &&
       coverImage !== ""
     ) {
-      console.log("All fields are filled");
-      alert("All fields are filled");
+      // console.log("All fields are filled");
+      // alert("All fields are filled");
+
+      enqueueSnackbar("Submitting Blog...", {
+        variant: "info",
+        autoHideDuration: 4000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "right",
+        },
+      });
 
       if (user && !loading && !error) {
         // Make a random color code in rgba format
@@ -494,24 +492,61 @@ const AddBlogs = () => {
             console.log("Blog submitted");
             const { pathname } = Router;
             // if (pathname == "/createProject") {
-            alert("Your Blog is submitted successfully.");
             // Router.push(`/dashboard/${signedInUserData.email}`);
             // }
+            enqueueSnackbar("Blog submitted successfully.", {
+              variant: "success",
+              autoHideDuration: 4000,
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "right",
+              },
+            });
+
+            // Clear the form
+            setTitle("");
+            // @ts-ignore
+            inputRef.current.innerHTML = <p>Blog Content</p>;
+            setCoverImage("");
+            setSelectedFile(null);
           })
           .catch((err) => {
             console.warn(err);
-            alert(`Error while submitting blog: ${err.message}`);
+            // alert(`Error while submitting blog: ${err.message}`);
+            enqueueSnackbar("Error while submitting blog.", {
+              variant: "error",
+              autoHideDuration: 4000,
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "right",
+              },
+            });
           });
         //
         ////////////////////////////// For New Version of Firebase(V9) //////////////////////////////
 
         //Now sending the data for notifications
       } else {
-        alert("Please sign in to save project to cloud.");
+        // alert("Please sign in to save project to cloud.");
+        enqueueSnackbar("Please sign in to save project to cloud.", {
+          variant: "error",
+          autoHideDuration: 4000,
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "right",
+          },
+        });
       }
     } else {
       // console.log("All fields are not filled");
-      alert("All fields are not filled");
+      enqueueSnackbar("Please fill all the fields to submit the blog.", {
+        variant: "warning",
+        autoHideDuration: 4000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "right",
+        },
+      });
       return;
     }
   };
@@ -524,7 +559,7 @@ const AddBlogs = () => {
           color="primary"
           fullWidth
           onClick={handleBlogSubmit}
-          className={`fixed ${scrolled ? "top-20" : "top-64"} z-50 w-9/12`}
+          className={`fixed ${scrolled ? "top-20" : "top-[52vh]"} z-50 w-9/12`}
         >
           Submit Blog
         </Button>
