@@ -69,4 +69,4 @@ Follow these steps to contribute:
 
 ## 📄 License
 
-This project is MIT licensed. 😊
+All rights reserved by AlummTec@2024. 😊
