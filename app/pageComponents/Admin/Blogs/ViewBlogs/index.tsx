@@ -15,6 +15,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
+import { Button } from "@mui/material";
 
 const ViewBlogs = () => {
   // For Loading
@@ -72,25 +73,47 @@ const ViewBlogs = () => {
   }, [loading, snapshot]);
   // FOR GETTING BLOGS
 
-  // // Update Report Data
-  // useEffect(() => {
-  //     updateReportData();
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [Blogs]);
-
-  // const updateReportData = () => {
-
-  // };
+  // Delete Blog
+  const deleteBlog = async (id: string) => {
+    if (window.confirm("Are you sure you want to delete this blog?")) {
+      try {
+        await deleteDoc(doc(db, "Blogs", id));
+        console.log("Blog deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting blog: ", error);
+      }
+    }
+  };
 
   return (
     <div>
       <h1 className="adminHeadingText">View Blogs</h1>
 
       {blogs?.map((blog: BlogDataTypes) => (
-        <div className="border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
-          <h1 className="text-2xl font-bold text-slate-800">{blog?.title}</h1>
-          <p className="text-md text-slate-800">{blog?.authorName}</p>
-          <p className="text-md text-slate-800">{blog?.date_published}</p>
+        <div className="flex justify-between border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
+          <div>
+            <h1 className="text-2xl font-bold text-slate-800">
+              <b className="text-indigo-600 underline">Blog Title:</b>{" "}
+              {blog?.title}
+            </h1>
+            <p className="text-md text-slate-800">
+              <b className="text-orange-500 italic">Blog written by:</b>{" "}
+              {blog?.authorName}
+            </p>
+            <p className="text-md text-slate-800">
+              <b className="text-purple-500 italic">Date posted:</b>{" "}
+              {blog?.createdAt}
+            </p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => deleteBlog(blog?.id)}
+            >
+              Delete
+            </Button>
+          </div>
         </div>
       ))}
     </div>
