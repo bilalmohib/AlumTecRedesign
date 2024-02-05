@@ -22,7 +22,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { Badge, Menu, MenuItem } from "@mui/material";
+import { Badge, Button, Menu, MenuItem } from "@mui/material";
 import AdminServices from "@/app/pageComponents/Admin/Services/AdminServices";
 import AdminProjects from "@/app/pageComponents/Admin/Projects/AdminProjects";
 import AdminBlogs from "@/app/pageComponents/Admin/Blogs/AdminBlogs";
@@ -31,6 +31,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const drawerWidth = 240;
 
@@ -100,13 +101,32 @@ function AdminScreen() {
   const [currentSidebarItem, setCurrentSidebarItem] = React.useState(0);
 
   React.useEffect(() => {
-    if (user) {
-      console.log("User @ User ==> ", user);
-    } else {
-      console.log("User is null");
-    }
-  }, []);
+    if (!loadingAuth) {
+      if (user) {
+        // alert("User is already Signed In" + user.email);
+        // do something with the user
+        console.log("User @ Admin ==> ", user);
+      } else {
+        console.log("user is null");
 
+        enqueueSnackbar("You are not logged in. Please login to continue", {
+          variant: "error",
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "center",
+          },
+          autoHideDuration: 3000,
+        });
+
+        setTimeout(() => {
+          router.push("/admin-login");
+        }, 3000);
+        // alert("User is not Signed In");
+        // if user is not logged in, redirect to login page
+      }
+      // if user is null, redirect to login page
+    }
+  }, [user, loadingAuth, router]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -301,7 +321,18 @@ function AdminScreen() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              {user ? (
+                <Image
+                  src={user?.photoURL as string}
+                  alt="profile"
+                  width={35}
+                  height={35}
+                  className="rounded-full"
+                  loading="lazy"
+                />
+              ) : (
+                <AccountCircle />
+              )}
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
@@ -334,7 +365,6 @@ function AdminScreen() {
         open={open}
       >
         <DrawerHeader>
-          <div className="">{user?.email}</div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
@@ -363,6 +393,29 @@ function AdminScreen() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        {user ? (
+          <h2 className="text-center font-light underline text-2xl lg:text-3xl">
+            Welcome,{" "}
+            <span className="text-indigo-600 font-normal">
+              {user.displayName}
+            </span>
+          </h2>
+        ) : (
+          <div className="flex flex-col mb-6 justify-center items-center">
+            <h2 className="text-red-500 font-light">
+              You are not logged in. Please login to continue
+            </h2>
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => router.push("/admin-login")}
+              className="text-3xl normal-case bg-green-500 hover:bg-green-600"
+            >
+              Login
+            </Button>
+          </div>
+        )}
         <section>{renderSideBarContent(currentSidebarItem)}</section>
       </Main>
     </Box>
