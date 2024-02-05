@@ -89,33 +89,39 @@ const ViewBlogs = () => {
     <div>
       <h1 className="adminHeadingText">View Blogs</h1>
 
-      {blogs?.map((blog: BlogDataTypes) => (
-        <div className="flex justify-between border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
-          <div>
-            <h1 className="text-2xl font-bold text-slate-800">
-              <b className="text-indigo-600 underline">Blog Title:</b>{" "}
-              {blog?.title}
-            </h1>
-            <p className="text-md text-slate-800">
-              <b className="text-orange-500 italic">Blog written by:</b>{" "}
-              {blog?.authorName}
-            </p>
-            <p className="text-md text-slate-800">
-              <b className="text-purple-500 italic">Date posted:</b>{" "}
-              {blog?.createdAt}
-            </p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <Button
-              variant="contained"
-              color="error"
-              onClick={() => deleteBlog(blog?.id)}
-            >
-              Delete
-            </Button>
-          </div>
+      {blogs.length > 0 ? (
+        <div>
+          {blogs?.map((blog: BlogDataTypes) => (
+            <div className="flex justify-between border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
+              <div>
+                <h1 className="text-2xl font-bold text-slate-800">
+                  <b className="text-indigo-600 underline">Blog Title:</b>{" "}
+                  {blog?.title}
+                </h1>
+                <p className="text-md text-slate-800">
+                  <b className="text-orange-500 italic">Blog written by:</b>{" "}
+                  {blog?.authorName}
+                </p>
+                <p className="text-md text-slate-800">
+                  <b className="text-purple-500 italic">Date posted:</b>{" "}
+                  {blog?.createdAt}
+                </p>
+              </div>
+              <div className="flex flex-col justify-center items-center">
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => deleteBlog(blog.id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      ) : (
+        <h3>No blogs available</h3>
+      )}
     </div>
   );
 };

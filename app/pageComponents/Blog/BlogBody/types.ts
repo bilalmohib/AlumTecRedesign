@@ -1,5 +1,5 @@
 export type BlogDataTypes = {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   uid: string;
