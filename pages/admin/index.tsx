@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { useSnackbar } from "notistack";
 import { styled, useTheme } from "@mui/material/styles";
@@ -106,20 +107,6 @@ function AdminScreen() {
     }
   }, []);
 
-  React.useEffect(() => {
-    if (!loadingAuth) {
-      if (user) {
-        // alert("User is already Signed In" + user.email);
-        // do something with the user
-        router.push("/admin");
-      } else {
-        console.log("user is null");
-        // alert("User is not Signed In");
-        // if user is not logged in, redirect to login page
-      }
-      // if user is null, redirect to login page
-    }
-  }, [user, loadingAuth, router]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);

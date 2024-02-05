@@ -20,8 +20,9 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import Image from "next/image";
-import { convertToSlug, formatDate } from "@/app/utils/commonFunctions";
+import { convertToSlug, formatDate } from "../../../../utils/commonFunctions";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
+import { Months } from "@/app/utils/enums";
 
 const AddBlogs = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -67,6 +68,28 @@ const AddBlogs = () => {
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+  };
+
+  const convertToSlug = (input: string) => {
+    return input.toLowerCase().replace(/\s+/g, "-");
+  };
+
+  const formatDate = (date: Date): string => {
+    let day = date.getDate().toString();
+    let month = Months[date.getMonth() + 1].toString();
+    const year = date.getFullYear().toString();
+
+    const time = date.toLocaleTimeString();
+
+    if (day.length === 1) {
+      day = `0${day}`;
+    }
+
+    if (month.length === 1) {
+      month = `0${month}`;
+    }
+
+    return `${day}/${month}/${year} ${time}`;
   };
 
   const handleInput = () => {
