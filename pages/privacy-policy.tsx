@@ -38,7 +38,7 @@ const PrivacyPolicy = () => {
                                             <style
                                                 dangerouslySetInnerHTML={{
                                                     __html:
-                                                        "[data-custom-class='body'],[data-custom-class='body'] *{background: transparent !important;\n}[data-custom-class='title'],[data-custom-class='title'] *{font-family: Arial !important;\nfont-size: 26px !important;\ncolor: #000000 !important;\n}[data-custom-class='subtitle'],[data-custom-class='subtitle'] *{font-family: Arial !important;\ncolor: #595959 !important;\nfont-size: 14px !important;\n}[data-custom-class='heading_1'],[data-custom-class='heading_1'] *{font-family: Arial !important;\nfont-size: 19px !important;\ncolor: #000000 !important;\n}[data-custom-class='heading_2'],[data-custom-class='heading_2'] *{font-family: Arial !important;\nfont-size: 17px !important;\ncolor: #000000 !important;\n}[data-custom-class='body_text'],[data-custom-class='body_text'] *{color: #595959 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\n}[data-custom-class='link'],[data-custom-class='link'] *{color: #3030F1 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\nword-break: break-word !important;\n}",
+                                                        "[data-custom-class=&apos;body&apos;],[data-custom-class=&apos;body&apos;] *{background: transparent !important;\n}[data-custom-class=&apos;title&apos;],[data-custom-class=&apos;title&apos;] *{font-family: Arial !important;\nfont-size: 26px !important;\ncolor: #000000 !important;\n}[data-custom-class=&apos;subtitle&apos;],[data-custom-class=&apos;subtitle&apos;] *{font-family: Arial !important;\ncolor: #595959 !important;\nfont-size: 14px !important;\n}[data-custom-class=&apos;heading_1&apos;],[data-custom-class=&apos;heading_1&apos;] *{font-family: Arial !important;\nfont-size: 19px !important;\ncolor: #000000 !important;\n}[data-custom-class=&apos;heading_2&apos;],[data-custom-class=&apos;heading_2&apos;] *{font-family: Arial !important;\nfont-size: 17px !important;\ncolor: #000000 !important;\n}[data-custom-class=&apos;body_text&apos;],[data-custom-class=&apos;body_text&apos;] *{color: #595959 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\n}[data-custom-class=&apos;link&apos;],[data-custom-class=&apos;link&apos;] *{color: #3030F1 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\nword-break: break-word !important;\n}",
                                                 }}
                                             />{" "}
                                             <div data-custom-class="body">
@@ -77,19 +77,19 @@ const PrivacyPolicy = () => {
                                                                     <span className="question">AlumTec</span>)
                                                                     <span className="statement-end-if-in-editor" />
                                                                 </span>{" "}
-                                                                (<span className="block-component" />'
-                                                                <strong>we</strong>', '<strong>us</strong>', or '
-                                                                <strong>our</strong>'<span className="else-block" />
+                                                                (<span className="block-component" />&apos;
+                                                                <strong>we</strong>&apos;, &apos;<strong>us</strong>&apos;, or &apos;
+                                                                <strong>our</strong>&apos;<span className="else-block" />
                                                             </span>
                                                             <span data-custom-class="body_text">
                                                                 ), describes how and why we might collect, store,
                                                                 use, and/or share (
-                                                                <span className="block-component" />'
-                                                                <strong>process</strong>'
+                                                                <span className="block-component" />&apos;
+                                                                <strong>process</strong>&apos;
                                                                 <span className="else-block" />) your information
                                                                 when you use our services (
-                                                                <span className="block-component" />'
-                                                                <strong>Services</strong>'
+                                                                <span className="block-component" />&apos;
+                                                                <strong>Services</strong>&apos;
                                                                 <span className="else-block" />
                                                                 ), such as when you:
                                                             </span>
@@ -1612,7 +1612,7 @@ const PrivacyPolicy = () => {
                                                                     social media account. If you choose to register in
                                                                     this way, we will collect the information
                                                                     described in the section called{" "}
-                                                                    <span className="block-component" />'
+                                                                    <span className="block-component" />&apos;
                                                                     <span className="else-block" />
                                                                     <span style={{ fontSize: "15px" }}>
                                                                         <span data-custom-class="body_text">
@@ -1628,7 +1628,7 @@ const PrivacyPolicy = () => {
                                                                             </span>
                                                                         </span>
                                                                     </span>
-                                                                    <span className="block-component" />'
+                                                                    <span className="block-component" />&apos;
                                                                     <span className="else-block" /> below.
                                                                 </span>
                                                             </span>
@@ -1913,7 +1913,7 @@ const PrivacyPolicy = () => {
                                                                         (such as system activity, error reports
                                                                         (sometimes called{" "}
                                                                         <span className="block-component" />
-                                                                        'crash dumps'
+                                                                        &apos;crash dumps&apos;
                                                                         <span className="else-block" />
                                                                         ), and hardware settings).
                                                                         <span style={{ fontSize: "15px" }}>
@@ -2007,7 +2007,7 @@ const PrivacyPolicy = () => {
                                                                 >
                                                                     <span data-custom-class="body_text">
                                                                         <em>Location Data.</em> We collect location data
-                                                                        such as information about your device's
+                                                                        such as information about your device&apos;s
                                                                         location, which can be either precise or
                                                                         imprecise. How much information we collect
                                                                         depends on the type and settings of the device
@@ -2468,7 +2468,7 @@ const PrivacyPolicy = () => {
                                                                                                             marketing emails at any time.
                                                                                                             For more information, see{" "}
                                                                                                             <span className="block-component" />
-                                                                                                            '
+                                                                                                            &apos;
                                                                                                             <span className="else-block" />
                                                                                                         </span>
                                                                                                     </span>
@@ -2510,7 +2510,7 @@ const PrivacyPolicy = () => {
                                                                                                     >
                                                                                                         <span data-custom-class="body_text">
                                                                                                             <span className="block-component" />
-                                                                                                            '
+                                                                                                            &apos;
                                                                                                             <span className="else-block" />{" "}
                                                                                                             below.
                                                                                                         </span>
@@ -2809,7 +2809,7 @@ const PrivacyPolicy = () => {
                                                                                                                                             <strong>
                                                                                                                                                 To save or
                                                                                                                                                 protect an
-                                                                                                                                                individual's
+                                                                                                                                                individual&apos;s
                                                                                                                                                 vital
                                                                                                                                                 interest.
                                                                                                                                             </strong>{" "}
@@ -4728,7 +4728,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                     on your
                                                                                                                                                     device (
                                                                                                                                                     <span className="block-component" />
-                                                                                                                                                    'cache'
+                                                                                                                                                    &apos;cache&apos;
                                                                                                                                                     <span className="else-block" />
                                                                                                                                                     ) your
                                                                                                                                                     location
@@ -6011,7 +6011,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                             the
                                                                                                                                                             termination
                                                                                                                                                             of the
-                                                                                                                                                            user's
+                                                                                                                                                            user&apos;s
                                                                                                                                                             account
                                                                                                                                                             <span className="block-component" />
                                                                                                                                                             <span
@@ -7056,7 +7056,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                             in the
                                                                                                                                                             section{" "}
                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                            '
+                                                                                                                                                            &apos;
                                                                                                                                                             <span className="else-block" />
                                                                                                                                                         </span>
                                                                                                                                                     </span>
@@ -7112,7 +7112,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                     >
                                                                                                                                                         <span data-custom-class="body_text">
                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                            '
+                                                                                                                                                            &apos;
                                                                                                                                                             <span className="else-block" />{" "}
                                                                                                                                                             below.
                                                                                                                                                         </span>
@@ -7516,7 +7516,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                             in the
                                                                                                                                                             section{" "}
                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                            '
+                                                                                                                                                            &apos;
                                                                                                                                                             <span className="else-block" />
                                                                                                                                                         </span>
                                                                                                                                                     </span>
@@ -7572,7 +7572,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                     >
                                                                                                                                                         <span data-custom-class="body_text">
                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                            '
+                                                                                                                                                            &apos;
                                                                                                                                                             <span className="else-block" />{" "}
                                                                                                                                                             below
                                                                                                                                                             <span className="block-component" />{" "}
@@ -7708,9 +7708,9 @@ const PrivacyPolicy = () => {
                                                                                                                                                         <span className="block-component" />{" "}
                                                                                                                                                         replying{" "}
                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                        'STOP'
+                                                                                                                                                        &apos;STOP&apos;
                                                                                                                                                         or
-                                                                                                                                                        'UNSUBSCRIBE'
+                                                                                                                                                        &apos;UNSUBSCRIBE&apos;
                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                         to the
                                                                                                                                                         SMS
@@ -7728,7 +7728,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                         in the
                                                                                                                                                         section{" "}
                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                        '
+                                                                                                                                                        &apos;
                                                                                                                                                         <span className="else-block" />
                                                                                                                                                     </span>
                                                                                                                                                 </span>
@@ -7764,7 +7764,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                 >
                                                                                                                                                     <span data-custom-class="body_text">
                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                        '
+                                                                                                                                                        &apos;
                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                         below.
                                                                                                                                                         You will
@@ -8468,7 +8468,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                             Do-Not-Track
                                                                                                                                                             (
                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                            'DNT'
+                                                                                                                                                            &apos;DNT&apos;
                                                                                                                                                             <span className="else-block" />
                                                                                                                                                             )
                                                                                                                                                             feature
@@ -11662,7 +11662,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                     the
                                                                                                                                                                     section,{" "}
                                                                                                                                                                     <span className="block-component" />
-                                                                                                                                                                    '
+                                                                                                                                                                    &apos;
                                                                                                                                                                     <span className="else-block" />
                                                                                                                                                                 </span>
                                                                                                                                                                 <a
@@ -11693,7 +11693,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                     }}
                                                                                                                                                                 >
                                                                                                                                                                     <span className="block-component" />
-                                                                                                                                                                    '
+                                                                                                                                                                    &apos;
                                                                                                                                                                     <span className="else-block" />
                                                                                                                                                                 </span>
                                                                                                                                                             </div>
@@ -11846,7 +11846,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             the
                                                                                                                                                                             section,{" "}
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            '
+                                                                                                                                                                            &apos;
                                                                                                                                                                             <span className="else-block" />
                                                                                                                                                                         </span>
                                                                                                                                                                     </span>
@@ -11902,7 +11902,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                     >
                                                                                                                                                                         <span data-custom-class="body_text">
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            '
+                                                                                                                                                                            &apos;
                                                                                                                                                                             <span className="else-block" />
                                                                                                                                                                         </span>
                                                                                                                                                                     </span>
@@ -11968,7 +11968,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             to
                                                                                                                                                                             be{" "}
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            'selling'
+                                                                                                                                                                            &apos;selling&apos;
                                                                                                                                                                             <span className="else-block" />{" "}
                                                                                                                                                                             of
                                                                                                                                                                             your
@@ -12177,9 +12177,9 @@ const PrivacyPolicy = () => {
                                                                                                                                                                     as
                                                                                                                                                                     the{" "}
                                                                                                                                                                     <span className="block-component" />
-                                                                                                                                                                    'Shine
+                                                                                                                                                                    &apos;Shine
                                                                                                                                                                     The
-                                                                                                                                                                    Light'
+                                                                                                                                                                    Light&apos;
                                                                                                                                                                     <span className="else-block" />{" "}
                                                                                                                                                                     law
                                                                                                                                                                     permits
@@ -12534,7 +12534,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         defines
                                                                                                                                                                         a{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        'residents'
+                                                                                                                                                                        &apos;residents&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         as:
                                                                                                                                                                     </span>
@@ -12673,7 +12673,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         defined
                                                                                                                                                                         as{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        'non-residents'.
+                                                                                                                                                                        &apos;non-residents&apos;.
                                                                                                                                                                         <span className="else-block" />
                                                                                                                                                                     </span>
                                                                                                                                                                 </span>
@@ -12713,7 +12713,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         definition
                                                                                                                                                                         of{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        'resident'
+                                                                                                                                                                        &apos;resident&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         applies
                                                                                                                                                                         to
@@ -14292,7 +14292,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                     do
                                                                                                                                                                     not
                                                                                                                                                                     process
-                                                                                                                                                                    consumer's
+                                                                                                                                                                    consumer&apos;s
                                                                                                                                                                     sensitive
                                                                                                                                                                     personal
                                                                                                                                                                     information.
@@ -16000,7 +16000,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             effects
                                                                                                                                                                             (
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            'profiling'
+                                                                                                                                                                            &apos;profiling&apos;
                                                                                                                                                                             <span className="else-block" />
                                                                                                                                                                             )
                                                                                                                                                                         </span>
@@ -16577,7 +16577,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             effects
                                                                                                                                                                             (
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            'profiling'
+                                                                                                                                                                            &apos;profiling&apos;
                                                                                                                                                                             <span className="else-block" />
                                                                                                                                                                             )
                                                                                                                                                                         </span>
@@ -17251,7 +17251,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         <span data-custom-class="body_text" />
                                                                                                                                                                     </span>
                                                                                                                                                                     <span data-custom-class="body_text">
-                                                                                                                                                                        'Consumer'
+                                                                                                                                                                        &apos;Consumer&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         means
                                                                                                                                                                         a
@@ -17321,8 +17321,8 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         <span data-custom-class="body_text" />
                                                                                                                                                                     </span>
                                                                                                                                                                     <span data-custom-class="body_text">
-                                                                                                                                                                        'Personal
-                                                                                                                                                                        data'
+                                                                                                                                                                        &apos;Personal
+                                                                                                                                                                        data&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         means
                                                                                                                                                                         any
@@ -17341,8 +17341,8 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         natural
                                                                                                                                                                         person.{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        'Personal
-                                                                                                                                                                        data'
+                                                                                                                                                                        &apos;Personal
+                                                                                                                                                                        data&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         does
                                                                                                                                                                         not
@@ -17388,10 +17388,10 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         <span data-custom-class="body_text" />
                                                                                                                                                                     </span>
                                                                                                                                                                     <span data-custom-class="body_text">
-                                                                                                                                                                        'Sale
+                                                                                                                                                                        &apos;Sale
                                                                                                                                                                         of
                                                                                                                                                                         personal
-                                                                                                                                                                        data'
+                                                                                                                                                                        data&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         means
                                                                                                                                                                         the
@@ -17438,7 +17438,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         definition
                                                                                                                                                                         of{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        'consumer'
+                                                                                                                                                                        &apos;consumer&apos;
                                                                                                                                                                         <span className="else-block" />{" "}
                                                                                                                                                                         applies
                                                                                                                                                                         to
@@ -17778,7 +17778,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             effects
                                                                                                                                                                             (
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            'profiling'
+                                                                                                                                                                            &apos;profiling&apos;
                                                                                                                                                                             <span className="else-block" />
                                                                                                                                                                             )
                                                                                                                                                                         </span>
@@ -18040,7 +18040,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         you
                                                                                                                                                                         and
                                                                                                                                                                         your
-                                                                                                                                                                        consumer's
+                                                                                                                                                                        consumer&apos;s
                                                                                                                                                                         request.
                                                                                                                                                                         If
                                                                                                                                                                         you
@@ -18652,7 +18652,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         set
                                                                                                                                                                         by{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        Australia's
+                                                                                                                                                                        Australia&apos;s
                                                                                                                                                                         Privacy
                                                                                                                                                                         Act
                                                                                                                                                                         1988
@@ -18662,7 +18662,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         <span className="statement-end-if-in-editor" />
                                                                                                                                                                         <span className="block-component" />
                                                                                                                                                                         New
-                                                                                                                                                                        Zealand's
+                                                                                                                                                                        Zealand&apos;s
                                                                                                                                                                         Privacy
                                                                                                                                                                         Act
                                                                                                                                                                         2020
@@ -19011,7 +19011,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         the
                                                                                                                                                                         section{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        '
+                                                                                                                                                                        &apos;
                                                                                                                                                                         <span className="else-block" />
                                                                                                                                                                         <a
                                                                                                                                                                             data-custom-class="link"
@@ -19041,7 +19041,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             </span>
                                                                                                                                                                         </a>
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        '
+                                                                                                                                                                        &apos;
                                                                                                                                                                         <span className="else-block" />
                                                                                                                                                                     </span>
                                                                                                                                                                 </span>
@@ -19135,7 +19135,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         breach
                                                                                                                                                                         of
                                                                                                                                                                         New
-                                                                                                                                                                        Zealand's
+                                                                                                                                                                        Zealand&apos;s
                                                                                                                                                                         Privacy
                                                                                                                                                                         Principles
                                                                                                                                                                         to
@@ -19277,7 +19277,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                         the
                                                                                                                                                                         section{" "}
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        '
+                                                                                                                                                                        &apos;
                                                                                                                                                                         <span className="else-block" />
                                                                                                                                                                     </span>
                                                                                                                                                                 </span>
@@ -19317,7 +19317,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                 >
                                                                                                                                                                     <span data-custom-class="body_text">
                                                                                                                                                                         <span className="block-component" />
-                                                                                                                                                                        '
+                                                                                                                                                                        &apos;
                                                                                                                                                                         <span className="else-block" />
                                                                                                                                                                     </span>
                                                                                                                                                                 </span>
@@ -19733,7 +19733,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                                             an
                                                                                                                                                                             updated{" "}
                                                                                                                                                                             <span className="block-component" />
-                                                                                                                                                                            'Revised'
+                                                                                                                                                                            &apos;Revised&apos;
                                                                                                                                                                             <span className="else-block" />{" "}
                                                                                                                                                                             date
                                                                                                                                                                             and
@@ -20524,7 +20524,7 @@ const PrivacyPolicy = () => {
                                                                                                                                                             was
                                                                                                                                                             created
                                                                                                                                                             using
-                                                                                                                                                            Termly's{" "}
+                                                                                                                                                            Termly&apos;s{" "}
                                                                                                                                                             <a
                                                                                                                                                                 style={{
                                                                                                                                                                     color:
