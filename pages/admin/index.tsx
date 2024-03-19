@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import { useSnackbar } from "notistack";
 import { styled, useTheme } from "@mui/material/styles";
