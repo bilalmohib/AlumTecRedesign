@@ -286,9 +286,15 @@ function AdminScreen() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            AlumTec Admin Panel
-          </Typography>
+          <div className="flex justify-between w-full">
+            <Typography variant="h6" noWrap component="div">
+              AlumTec Admin Panel
+            </Typography>
+
+            <Typography variant="h6" noWrap component="div" className="ml-4 cursor-pointer text-indigo-200 hover:underline" sx={{ flexGrow: 1 }} onClick={() => { router.push("/") }}>
+              Home
+            </Typography>
+          </div>
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
