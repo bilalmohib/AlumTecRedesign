@@ -13,7 +13,7 @@ import { supportList, companyUrlsList } from "./data";
 export const Footer: FC = (): ReactElement => {
   return (
     <div className="w-full min-h-[500px] bg-[#E7EBFB] pt-8 px-[1.5rem] sm:px-[4.8rem]">
-      <h1 className="text-center text-gray-800 text-4xl sm:text-[26px] font-semibold">
+      <h1 className="text-center text-gray-800 text-2xl sm:text-4xl sm:text-[26px] font-semibold">
         Want to start your projects with us?
       </h1>
       <p className="text-center mt-2">
