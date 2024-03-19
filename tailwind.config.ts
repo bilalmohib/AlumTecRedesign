@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export {};
+export { };
 
 module.exports = {
   // important: true,
@@ -31,6 +31,7 @@ module.exports = {
       screens: {
         mlg: "970px",
         ssm: "400px",
+        sssm: "320px"
         // => @media (min-width: 640px) { ... }
       },
       colors: {

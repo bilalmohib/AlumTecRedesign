@@ -88,13 +88,14 @@ export const DesktopNavbar = ({
 
         <NavItemContainer navItems={navItems} router={router} />
 
-        <IconButton
+        {/* <IconButton
           color="inherit"
           aria-label="open drawer"
           edge="start"
           className={styles.menuButton}
           onClick={handleDrawerToggle}
-        >
+        > */}
+        <div className={styles.menuButton}>
           <Image
             className={styles.phone_logo}
             src="/Images/Navbar/phone_logo.jxr"
@@ -103,11 +104,18 @@ export const DesktopNavbar = ({
             width={17}
             height={20}
           />
-          <div>
-            <MenuIcon className={styles.menuButtonIcon} />
-          </div>
-        </IconButton>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+          >
+            <div>
+              <MenuIcon className={styles.menuButtonIcon} />
+            </div>
+          </IconButton>
+        </div>
       </Toolbar>
-    </AppBar>
+    </AppBar >
   );
 };
