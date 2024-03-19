@@ -32,6 +32,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/firebase";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import AdminInquiries from "@/app/pageComponents/Admin/Inquiries/AdminInquiries";
 
 const drawerWidth = 240;
 
@@ -173,16 +174,14 @@ function AdminScreen() {
       case 0:
         return <AdminServices />;
       case 1:
-        return <AdminProjects />;
-      case 2:
         return <AdminBlogs />;
+      case 2:
+        return <AdminInquiries />;
       case 3:
-        return <h1 className="adminHeadingText">Drafts</h1>;
-      case 4:
         return <h1>View Services</h1>;
-      case 5:
+      case 4:
         return <h1>Add Services</h1>;
-      case 6:
+      case 5:
         return <h1>View Services</h1>;
       default:
         return <h1>Select a item from sidebar</h1>;

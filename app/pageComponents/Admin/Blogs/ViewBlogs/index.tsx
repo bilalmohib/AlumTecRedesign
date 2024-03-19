@@ -14,8 +14,8 @@ import {
   setDoc,
   Timestamp,
 } from "firebase/firestore";
-import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 import { Button } from "@mui/material";
+import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 
 const ViewBlogs = () => {
   // For Loading
@@ -87,7 +87,7 @@ const ViewBlogs = () => {
 
   return (
     <div>
-      <h1 className="adminHeadingText">View Blogs</h1>
+      <h1 className="adminHeadingText">View Inquiries</h1>
 
       {blogs.length > 0 ? (
         <div>

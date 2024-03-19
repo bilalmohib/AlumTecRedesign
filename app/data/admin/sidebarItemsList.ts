@@ -1,5 +1,9 @@
 import AddServices from "@/app/pageComponents/Admin/Services/AddServices";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import { MdOutlineMiscellaneousServices } from "react-icons/md";
+import { AiOutlineProject } from "react-icons/ai";
+import { BiSolidBookContent } from "react-icons/bi";
+import { MdContactPhone } from "react-icons/md";
 
 interface SidebarItem {
   label: string;
@@ -10,22 +14,22 @@ interface SidebarItem {
 export const sidebarItemsList: SidebarItem[] = [
   {
     label: "Services",
-    icon: DesignServicesIcon,
+    icon: MdOutlineMiscellaneousServices,
     component: AddServices,
   },
-  {
+  /* {
     label: "Projects",
-    icon: DesignServicesIcon,
+    icon: AiOutlineProject,
     component: AddServices,
-  },
+  }, */
   {
     label: "Blogs",
-    icon: DesignServicesIcon,
+    icon: BiSolidBookContent,
     component: AddServices,
   },
   {
-    label: "Drafts",
-    icon: DesignServicesIcon,
+    label: "Inquiries",
+    icon: MdContactPhone,
     component: AddServices,
   },
 ];
