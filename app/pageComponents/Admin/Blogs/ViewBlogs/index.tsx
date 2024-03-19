@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { Button } from "@mui/material";
 import {
   doc,
   collection,
@@ -14,7 +15,6 @@ import {
   setDoc,
   Timestamp,
 } from "firebase/firestore";
-import { Button } from "@mui/material";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 
 const ViewBlogs = () => {
