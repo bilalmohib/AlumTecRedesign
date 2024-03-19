@@ -5,11 +5,7 @@ const pages: { id: number; slug: string }[] = [
     { id: 4, slug: 'products' },
     { id: 5, slug: 'career' },
     { id: 6, slug: 'contact' },
-    { id: 7, slug: 'blog' },
-    {
-        id: 8,
-        slug: 'BlogDetails/albion-hills-maintenance-(-shop-&-office)@16500-peel-region-rd-50,-caledon-on-/tZ4We3eYvbtDN9JYuEXK'
-    }
+    { id: 7, slug: 'blog' }
 ];
 
 const SITE_URL = 'https://www.alumtec.ca';
