@@ -16,25 +16,26 @@ const SITE_URL = 'https://www.alumtec.ca';
 
 function generateSiteMap(pages: { id: number; slug: string }[]) {
     return `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Manually set the base URL -->
-    <url>
-      <loc>https://www.alumtec.ca</loc>
-    </url>
-    ${pages
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <!-- Manually set the base URL -->
+        <url>
+            <loc>https://www.alumtec.ca</loc>
+        </url>
+        ${pages
             .map(({ slug }) => {
+                const escapedSlug = slug.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
                 return `
-    <url>
-      <loc>${`${SITE_URL}/${slug}`}</loc>
-      <changefreq>weekly</changefreq>
-      <priority>1.0</priority>
-      <lastmod>3/19/2024</lastmod>
-    </url>
-    `;
+        <url>
+            <loc>${`${SITE_URL}/${escapedSlug}`}</loc>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+            <lastmod>2024-03-19</lastmod>
+        </url>
+        `;
             })
             .join('')}
-  </urlset>
-  `;
+    </urlset>
+    `;
 }
 
 function SiteMap() {
