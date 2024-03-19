@@ -5,39 +5,33 @@ const pages: { id: number; slug: string }[] = [
     { id: 4, slug: 'products' },
     { id: 5, slug: 'career' },
     { id: 6, slug: 'contact' },
-    { id: 7, slug: 'blog' },
-    {
-        id: 8,
-        slug: 'BlogDetails/albion-hills-maintenance-(-shop-&-office)@16500-peel-region-rd-50,-caledon-on-/tZ4We3eYvbtDN9JYuEXK'
-    }
+    { id: 7, slug: 'blog' }
 ];
 
 const SITE_URL = 'https://www.alumtec.ca';
 
 function generateSiteMap(pages: { id: number; slug: string }[]) {
     return `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <!-- Manually set the base URL -->
-        <url>
-            <loc>https://www.alumtec.ca</loc>
-        </url>
-        ${pages
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Manually set the base URL -->
+    <url>
+      <loc>https://www.alumtec.ca</loc>
+    </url>
+    ${pages
             .map(({ slug }) => {
-                const escapedSlug = slug.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
                 return `
-        <url>
-            <loc>${`${SITE_URL}/${escapedSlug}`}</loc>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-            <lastmod>2024-03-19</lastmod>
-        </url>
-        `;
+    <url>
+      <loc>${`${SITE_URL}/${slug}`}</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+      <lastmod>3/19/2024</lastmod>
+    </url>
+    `;
             })
             .join('')}
-    </urlset>
-    `;
+  </urlset>
+  `;
 }
-
 
 function SiteMap() {
     // Empty component, as the work is done in getServerSideProps
