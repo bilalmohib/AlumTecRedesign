@@ -16,6 +16,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
+import { Button } from "@mui/material";
 
 const ViewBlogs = () => {
   // For Loading
