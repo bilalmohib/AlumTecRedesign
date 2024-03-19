@@ -11,26 +11,27 @@ const pages: { id: number; slug: string }[] = [
 const SITE_URL = 'https://www.alumtec.ca';
 
 function generateSiteMap(pages: { id: number; slug: string }[]) {
+    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
     return `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Manually set the base URL -->
-    <url>
-      <loc>https://www.alumtec.ca</loc>
-    </url>
-    ${pages
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <!-- Manually set the base URL -->
+        <url>
+            <loc>https://www.alumtec.ca</loc>
+        </url>
+        ${pages
             .map(({ slug }) => {
                 return `
-    <url>
-      <loc>${`${SITE_URL}/${slug}`}</loc>
-      <changefreq>weekly</changefreq>
-      <priority>1.0</priority>
-      <lastmod>3/19/2024</lastmod>
-    </url>
-    `;
+        <url>
+            <loc>${`${SITE_URL}/${slug}`}</loc>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+            <lastmod>${currentDate}</lastmod>
+        </url>
+        `;
             })
             .join('')}
-  </urlset>
-  `;
+    </urlset>
+    `;
 }
 
 function SiteMap() {
