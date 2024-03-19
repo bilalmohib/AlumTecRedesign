@@ -38,6 +38,7 @@ function generateSiteMap(pages: { id: number; slug: string }[]) {
     `;
 }
 
+
 function SiteMap() {
     // Empty component, as the work is done in getServerSideProps
     return null;
