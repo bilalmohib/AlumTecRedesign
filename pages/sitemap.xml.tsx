@@ -12,7 +12,7 @@ const pages: { id: number; slug: string }[] = [
     }
 ];
 
-const SITE_URL = 'https://www.alumtec.ca/';
+const SITE_URL = 'https://www.alumtec.ca';
 
 function generateSiteMap(pages: { id: number; slug: string }[]) {
     return `<?xml version="1.0" encoding="UTF-8"?>
