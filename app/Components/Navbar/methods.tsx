@@ -74,7 +74,7 @@ export const DesktopNavbar = ({
       className={`${styles.navContainer} ${bgWhite ? styles.bgWhite : ""}`}
     >
       <Toolbar className={styles.insideContainer}>
-        <div className={styles.logoContainer}>
+        <div className={`${styles.logoContainer} cursor-pointer`} onClick={() => router.push('/')}>
           <Image
             className={styles.logo}
             src="/Images/Navbar/logo.jxr"

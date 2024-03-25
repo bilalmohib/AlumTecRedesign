@@ -7,7 +7,6 @@ export type BlogDataTypes = {
   createdAt: string;
   content: any;
   tags: string[];
-  authorImage: string;
   authorName: string;
   createdBy: string;
   photoURL: string;

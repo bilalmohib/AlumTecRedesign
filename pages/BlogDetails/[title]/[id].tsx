@@ -135,7 +135,7 @@ const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
               />
               <h3 className="m-0 font-light mt-[5px] ml-3">{blogDetails.authorName}</h3>
               <h3 className="m-0 font-light mt-[5px] ml-3 text-gray-400">
-                {blogDetails.createdAt}
+                {new Date(blogDetails.createdAt).toDateString()}
               </h3>
             </div>
           </div>
@@ -172,7 +172,7 @@ const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
             alt="cover image"
             width={800}
             height={500}
-            className="rounded-md block w-full h-[500px] border border-slate-300 border-solid"
+            className="rounded-md block w-full h-[500px] border border-slate-300 border-solid object-cover"
           />
         </div>
         {/* <div className="mt-4">
@@ -346,7 +346,7 @@ const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
           </p>
         </div> */}
         <div
-          className="mt-4 w-full"
+          className="mt-4 w-full block h-auto"
           dangerouslySetInnerHTML={{ __html: blogDetails?.content }}
         />
         {/* Add divider here */}

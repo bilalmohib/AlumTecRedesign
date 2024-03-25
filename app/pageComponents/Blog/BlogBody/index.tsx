@@ -22,6 +22,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
+import BlogCardSkeleton from "@/app/pageComponents/Blog/BlogBody/BlogCardSkeleton";
 
 const BlogBody = () => {
   const router = useRouter();
@@ -77,32 +78,49 @@ const BlogBody = () => {
     <div>
       <BlogHeader />
       <div className="mt-10">
-        {blogs.map((blogData: BlogDataTypes, index: number) => {
-          return (
-            <div
-              key={index}
-              onClick={() =>
-                router.push({
-                  pathname: `/BlogDetails/${blogData.slug}/${blogData.id}`,
-                })
-              }
-            >
-              <BlogCard {...blogData} />
+        {
+          (!loading && blogs.length != 0) ? (
+            <div>
+              {blogs.map((blogData: BlogDataTypes, index: number) => {
+                return (
+                  <div
+                    key={index}
+                    onClick={() =>
+                      router.push({
+                        pathname: `/BlogDetails/${blogData.slug}/${blogData.id}`,
+                      })
+                    }
+                  >
+                    <BlogCard {...blogData} />
+                  </div>
+                );
+              })}
+
+              <div className="mt-10 mb-8 w-full flex flex-col justify-center items-center hidden">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="font-[Sharp Grotesk] text-lg mt-0 font-normal leading-[77px] rounded-sm bg-[#123E95] hover:bg-[#0b46bb] hover:text-white w-40 h-[50px]"
+                  onClick={() => {
+                    console.log("Button clicked");
+                  }}
+                >
+                  Load More
+                </Button>
+              </div>
             </div>
-          );
-        })}
-      </div>
-      <div className="mt-10 mb-8 w-full flex flex-col justify-center items-center">
-        <Button
-          variant="contained"
-          color="primary"
-          className="font-[Sharp Grotesk] text-lg mt-0 font-normal leading-[77px] rounded-sm bg-[#123E95] hover:bg-[#0b46bb] hover:text-white w-40 h-[50px]"
-          onClick={() => {
-            console.log("Button clicked");
-          }}
-        >
-          Load More
-        </Button>
+          ) : (
+            <>
+              {[1, 2, 3].map((v, i) => {
+                return (
+                  <div key={i}>
+                    <BlogCardSkeleton />
+                  </div>
+                )
+              })}
+            </>
+          )
+        }
       </div>
       {/* Add divider here */}
       <div className="border-t border-gray-300 border-dotted border-b-0 my-10 mx-16"></div>
