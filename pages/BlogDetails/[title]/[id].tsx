@@ -105,11 +105,11 @@ const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
     <div>
       <Head>
         <title>
-          Blog Details | {blogDetails.title} | AlumTec, Glazing solutions are our passion
+          {blogDetails.title}, AlumTec, Glazing solutions are our passion
         </title>
         <meta
           name="description"
-          content={`${blogDetails.title} | A guide to the latest trends in the glazing industry and how AlumTec is leading the way in the Canada`}
+          content={`${blogDetails.title} A guide to the latest trends in the glazing industry and how AlumTec is leading the way in the Canada`}
         />
         <meta
           name="keywords"
