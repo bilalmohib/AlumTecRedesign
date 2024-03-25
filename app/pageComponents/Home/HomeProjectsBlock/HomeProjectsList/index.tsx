@@ -27,7 +27,7 @@ const HomeProductsList = () => {
                 width={372}
                 height={486}
               />
-              <div className="absolute top-[-10px] bottom-[10px] right-0 border-2 border-[#123e95] z-[-1px] w-[270px] h-[92%] pointer-events-none"></div>
+              <div className="absolute top-0 left-0 w-full h-full bg-black flex justify-center opacity-0"></div>
             </div>
           </div>
         ))}

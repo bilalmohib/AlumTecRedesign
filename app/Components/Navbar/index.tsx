@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import { DesktopNavbar } from "./methods";
 import { DesktopNavbarProps, NavbarProps } from "./types";
 import styles from "./style.module.css";
+import ScrollTopProgressBar from "../ScrollTopProgressBar";
 
 const drawerWidth = 240;
 
@@ -142,6 +143,7 @@ function Navbar({ bgWhite }: NavbarProps) {
         handleDrawerToggle={handleDrawerToggle}
         mobileOpen={mobileOpen}
       />
+      <ScrollTopProgressBar />
     </div>
   );
 }
