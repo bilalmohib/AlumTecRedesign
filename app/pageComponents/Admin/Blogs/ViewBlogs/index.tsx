@@ -18,22 +18,14 @@ import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 import { Button } from "@mui/material";
 
 const ViewBlogs = () => {
-  // For Loading
-  const [user, loadingAuth, errorAuth] = useAuthState(auth);
-
   // For Blogs
-  // const e = email;
-  const email = user?.email;
   const router = useRouter();
   /////////////////////////////////////// Database Part ////////////////////////////////////////////////
-  // let q = query(collection(db, "Data", "Blogs", e));
   let q = query(collection(db, "Blogs"));
 
   const [snapshot, loading, error] = useCollection(q, {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-
-  // const [loading, setLoading] = useState(true);
 
   const [blogs, setBlogs] = useState<any>([]);
 
@@ -48,26 +40,9 @@ const ViewBlogs = () => {
 
       localObj = arrBlogsLocal;
 
-      // Now only i need blogs that are created by me means email is equal to signedInUserData.email
-      // or that are shared with me means blog members array contains signedInUserData.email
-
-      // Filter the blogs array and extract only those blogs that are created by me
-      // localObj = localObj.filter((blog: any) => );
-
-      // Filter the blogs array and extract only those blogs that are shared with me
-      // localObj = localObj.filter(
-      //   (blog: any) => blog?.createdBy.toString() == email?.toString()
-      // );
-
       let arrBlogs: any = localObj;
 
       setBlogs(arrBlogs);
-      console.log("Blogs ==> ", blogs);
-      console.log("Created by email ==> ", email);
-      console.log(
-        "Blogs Email ==> ",
-        blogs[0]?.createdBy.toString() == email?.toString()
-      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, snapshot]);
@@ -87,7 +62,7 @@ const ViewBlogs = () => {
 
   return (
     <div>
-      <h1 className="adminHeadingText">View Inquiries</h1>
+      <h1 className="adminHeadingText">View Blogs</h1>
 
       {blogs.length > 0 ? (
         <div>
@@ -112,8 +87,17 @@ const ViewBlogs = () => {
                   variant="contained"
                   color="error"
                   onClick={() => deleteBlog(blog.id)}
+                  className="w-24"
                 >
                   Delete
+                </Button>
+                <Button
+                  variant="contained"
+                  color="warning"
+                  onClick={() => deleteBlog(blog.id)}
+                  className="mt-2 w-24"
+                >
+                  Edit
                 </Button>
               </div>
             </div>

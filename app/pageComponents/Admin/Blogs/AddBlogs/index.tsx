@@ -478,7 +478,7 @@ const AddBlogs = () => {
           content: inputRef.current?.innerHTML,
           uid: user.uid as string,
           userEmail: user.email as string,
-          createdAt: formatDate(new Date()),
+          createdAt: new Date(),
           createdBy: user.email as string,
           photoURL: user.photoURL as string,
           color_code: color_code,
