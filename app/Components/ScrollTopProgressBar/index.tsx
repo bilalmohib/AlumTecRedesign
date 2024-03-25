@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import styles from "./styles.module.css";
-
 const ScrollTopProgressBar = () => {
     const [scrollTop, setScrollTop] = useState(0);
 
