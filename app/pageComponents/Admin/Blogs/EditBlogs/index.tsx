@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Router from "next/router";
 import { storage } from "@/firebase";
-import { Button } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import SVGImage from "@/app/SVGs/SVGImage";
 import InputFileUpload from "@/app/Components/InputFileUpload";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -279,7 +279,7 @@ const EditBlogs = () => {
         const img = document.createElement("img");
         img.src = URL.createObjectURL(file);
         img.id = id;
-        img.className = `w-[99%] mx-auto h-96 blurred-image object-cover hover:scale-90 transition-transform duration-300
+        img.className = `w-full mx-auto h-[450px] blurred-image object-cover hover:scale-90 transition-transform duration-300
         `;
         img.contentEditable = "false";
 
@@ -513,7 +513,7 @@ const EditBlogs = () => {
                     content: inputRef.current?.innerHTML,
                     color_code: color_code,
                     coverImage: coverImage,
-                    updatedAt: new Date()
+                    updatedAt: new Date().toLocaleDateString()
                 };
 
                 // console.log("Blog Data:", blogData);
@@ -586,13 +586,15 @@ const EditBlogs = () => {
             </div>
 
             <div className="flex justify-center items-center mb-4">
-                {!loading && blogs.length > 0 && (
+                {!loading && blogs.length > 0 ? (
                     <ComboBoxAutoComplete
                         value={currentSelectedBlog}
                         setValue={setCurrentSelectedBlog}
                         label="Select Blog to Edit"
                         dropdownData={blogs}
                     />
+                ) : (
+                    <Skeleton variant="rectangular" className="w-full rounded-md" height={50} />
                 )}
             </div>
 

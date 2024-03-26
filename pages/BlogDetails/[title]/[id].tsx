@@ -28,6 +28,8 @@ import {
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
 import Blog from "@/pages/blog";
 import { ButtonBase } from "@mui/material";
+import { formatDateFromFirebaseTimestamp } from "@/app/utils/commonFunctions";
+import FormattedDateFromTimeStamp from "@/app/Components/FormattedDateFromTimeStamp";
 
 interface BlogDetailsInterface {
   blogDetails: BlogDataTypes;
@@ -135,6 +137,7 @@ const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
               />
               <h3 className="m-0 font-light mt-[5px] ml-3">{blogDetails.authorName}</h3>
               <h3 className="m-0 font-light mt-[5px] ml-3 text-gray-400">
+                {/*  <FormattedDateFromTimeStamp timeStamp={blogDetails.createdAt} /> */}
                 {new Date(blogDetails.createdAt).toDateString()}
               </h3>
             </div>
@@ -379,7 +382,8 @@ const BlogDetails = ({ blogDetails, blogs }: BlogDetailsInterface) => {
                         Company News
                       </h3>
                       <h4 className="text-base my-0 mt-[2px] font-light text-gray-600 ">
-                        {new Date(item?.createdAt).toDateString()}
+                        {/*   <FormattedDateFromTimeStamp timeStamp={item.createdAt} /> */}
+                        {new Date(item.createdAt).toDateString()}
                       </h4>
                     </div>
                     <h2 className="text-3xl text-[#37474F] font-light my-0">

@@ -248,7 +248,7 @@ const AddBlogs = () => {
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     img.id = id;
-    img.className = `w-[99%] mx-auto h-96 blurred-image object-cover hover:scale-90 transition-transform duration-300
+    img.className = `w-full mx-auto h-[450px] blurred-image object-cover hover:scale-90 transition-transform duration-300
     `;
     img.contentEditable = "false";
 
@@ -480,7 +480,7 @@ const AddBlogs = () => {
           content: inputRef.current?.innerHTML,
           uid: user.uid as string,
           userEmail: user.email as string,
-          createdAt: new Date(),
+          createdAt: new Date().toLocaleDateString(),
           createdBy: user.email as string,
           photoURL: user.photoURL as string,
           color_code: color_code,

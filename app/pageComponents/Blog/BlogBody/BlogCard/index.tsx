@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BlogDataTypes } from "../types";
+import FormattedDateFromTimeStamp from "@/app/Components/FormattedDateFromTimeStamp";
 
 const BlogCard = (props: BlogDataTypes) => {
   return (
@@ -38,6 +39,7 @@ const BlogCard = (props: BlogDataTypes) => {
           </div>
           <h1 className="text-2xl font-semibold mt-5 mb-0 truncate capitalize">{props.title}</h1>
           <p className="text-base font-light mt-3 mb-0 text-gray-600">
+            {/* <FormattedDateFromTimeStamp timeStamp={props.createdAt} /> */}
             {new Date(props.createdAt).toDateString()}
           </p>
           {/* <p className="text-base font-light mt-3 mb-0">{props.description}</p> */}
