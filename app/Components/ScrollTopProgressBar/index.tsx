@@ -23,6 +23,10 @@ const ScrollTopProgressBar = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    useEffect(() => {
+        console.log("scrollTop ==> ", scrollTop)
+    }, [scrollTop])
+
     return (
         <div className="bg-transparent h-1 ssm:h-2 fixed top-[100px] ssm:top-[105px] left-0 z-50 w-full">
             <div
