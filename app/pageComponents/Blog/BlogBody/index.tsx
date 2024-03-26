@@ -79,22 +79,32 @@ const BlogBody = () => {
       <BlogHeader />
       <div className="mt-10">
         {
-          (!loading && blogs.length != 0) ? (
+          (!loading) ? (
             <div>
-              {blogs.map((blogData: BlogDataTypes, index: number) => {
-                return (
-                  <div
-                    key={index}
-                    onClick={() =>
-                      router.push({
-                        pathname: `/BlogDetails/${blogData.slug}/${blogData.id}`,
-                      })
-                    }
-                  >
-                    <BlogCard {...blogData} />
-                  </div>
-                );
-              })}
+              {(blogs.length != 0) ? (
+                <>
+                  {blogs.map((blogData: BlogDataTypes, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() =>
+                          router.push({
+                            pathname: `/BlogDetails/${blogData.slug}/${blogData.id}`,
+                          })
+                        }
+                      >
+                        <BlogCard {...blogData} />
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <div className="flex justify-center items-center h-96">
+                  <h2 className="text-center text-xl sm:text-2xl px-12 sm:px-auto">
+                    No blogs published yet. Please check back later. 😊
+                  </h2>
+                </div>
+              )}
 
               <div className="mt-10 mb-8 w-full flex flex-col justify-center items-center hidden">
                 <Button
