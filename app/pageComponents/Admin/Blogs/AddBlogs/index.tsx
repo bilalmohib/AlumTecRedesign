@@ -248,10 +248,12 @@ const AddBlogs = () => {
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     img.id = id;
-    img.className = "w-[99%] mx-auto h-auto blurred-image"; // Apply a class for styling
+    img.className = `w-full mx-auto h-[450px] blurred-image object-cover hover:scale-90 transition-transform duration-300
+    `;
     img.contentEditable = "false";
 
-    // Append the image to the container
+    // Append the loader and image to the container
+    container.appendChild(loader);
     container.appendChild(img);
 
     if (inputRef.current) {
@@ -478,7 +480,7 @@ const AddBlogs = () => {
           content: inputRef.current?.innerHTML,
           uid: user.uid as string,
           userEmail: user.email as string,
-          createdAt: new Date(),
+          createdAt: new Date().toLocaleDateString(),
           createdBy: user.email as string,
           photoURL: user.photoURL as string,
           color_code: color_code,
@@ -641,7 +643,7 @@ const AddBlogs = () => {
       </div>
 
       <section className="w-[720px] mx-auto mt-16">
-        {coverImage !== "" || selectedFile !== null ? (
+        {coverImage !== "" ? (
           <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
             <Image
               src={coverImage}

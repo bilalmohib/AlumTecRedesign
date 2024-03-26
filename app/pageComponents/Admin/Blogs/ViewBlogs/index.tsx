@@ -15,7 +15,9 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { BlogDataTypes } from "@/app/pageComponents/Blog/BlogBody/types";
+import { formatDateFromFirebaseTimestamp } from "@/app/utils/commonFunctions";
 import { Button } from "@mui/material";
+import FormattedDateFromTimeStamp from "@/app/Components/FormattedDateFromTimeStamp";
 
 const ViewBlogs = () => {
   // For Blogs
@@ -42,6 +44,8 @@ const ViewBlogs = () => {
 
       let arrBlogs: any = localObj;
 
+      console.log("Blogs Created At", arrBlogs[0].createdAt);
+
       setBlogs(arrBlogs);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +71,11 @@ const ViewBlogs = () => {
       {blogs.length > 0 ? (
         <div>
           {blogs?.map((blog: BlogDataTypes) => (
-            <div className="flex justify-between border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4">
+            <div className="flex justify-between border gap-2 border-slate-200 hover:bg-slate-200 cursor-pointer border-solid rounded-lg px-4 mt-4"
+              onClick={() => {
+                router.push(`/BlogDetails/${blog.slug}/${blog.id}`);
+              }}
+            >
               <div>
                 <h1 className="text-2xl font-bold text-slate-800">
                   <b className="text-indigo-600 underline">Blog Title:</b>{" "}
@@ -79,7 +87,8 @@ const ViewBlogs = () => {
                 </p>
                 <p className="text-md text-slate-800">
                   <b className="text-purple-500 italic">Date posted:</b>{" "}
-                  {blog?.createdAt}
+                  {/* <FormattedDateFromTimeStamp timeStamp={blog.createdAt} /> */}
+                  {new Date(blog.createdAt).toDateString()}
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center">
@@ -93,11 +102,13 @@ const ViewBlogs = () => {
                 </Button>
                 <Button
                   variant="contained"
-                  color="warning"
-                  onClick={() => deleteBlog(blog.id)}
+                  color="primary"
+                  onClick={() => {
+                    router.push(`/BlogDetails/${blog.slug}/${blog.id}`);
+                  }}
                   className="mt-2 w-24"
                 >
-                  Edit
+                  View
                 </Button>
               </div>
             </div>

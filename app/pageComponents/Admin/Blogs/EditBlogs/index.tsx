@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Router from "next/router";
 import { storage } from "@/firebase";
-import { Button } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import SVGImage from "@/app/SVGs/SVGImage";
 import InputFileUpload from "@/app/Components/InputFileUpload";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -29,6 +29,8 @@ import ComboBoxAutoComplete from "@/app/Components/ComboBoxAutoComplete";
 
 const EditBlogs = () => {
     const [scrolled, setScrolled] = useState(false);
+
+    const [currentSelectedBlog, setCurrentSelectedBlog] = React.useState<BlogDataTypes | null>(null);
 
     let q = query(collection(db, "Blogs"));
 
@@ -68,6 +70,25 @@ const EditBlogs = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        if (!loading && snapshot) {
+            let localObj: any;
+
+            let arrBlogsLocal = snapshot?.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+            }));
+
+            localObj = arrBlogsLocal;
+
+            let arrBlogs: any = localObj;
+
+            setBlogs(arrBlogs);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loading, snapshot]);
+    // FOR GETTING BLOGS
 
     const storageRef = ref(
         storage,
@@ -258,7 +279,8 @@ const EditBlogs = () => {
         const img = document.createElement("img");
         img.src = URL.createObjectURL(file);
         img.id = id;
-        img.className = "w-[99%] mx-auto h-auto blurred-image"; // Apply a class for styling
+        img.className = `w-full mx-auto h-[450px] blurred-image object-cover hover:scale-90 transition-transform duration-300
+        `;
         img.contentEditable = "false";
 
         // Append the image to the container
@@ -423,13 +445,18 @@ const EditBlogs = () => {
         handleInput();
     }, []);
 
+    useEffect(() => {
+        if (currentSelectedBlog) {
+            setTitle(currentSelectedBlog.title);
+            // @ts-ignore
+            inputRef.current.innerHTML = currentSelectedBlog.content;
+            setCoverImage(currentSelectedBlog.coverImage);
+        }
+    }, [currentSelectedBlog])
+
     const handleBlogSubmit = async () => {
         if (title.trim() === "") {
             // setErrorTitle("Please enter a title");
-        }
-
-        if (selectedFile === null) {
-            // setErrorImage("Please select an image");
         }
 
         if (inputRef.current?.innerHTML === "") {
@@ -438,14 +465,13 @@ const EditBlogs = () => {
 
         if (
             title.trim() === "" &&
-            selectedFile === null &&
             inputRef.current?.innerHTML === "" &&
             coverImage === ""
         ) {
             // setErrorTitle("Please enter a title");
             // setErrorDescription("Please enter a description");
             // setErrorImage("Please select an image");
-            enqueueSnackbar("Please fill all the fields to submit the blog.", {
+            enqueueSnackbar("Please fill all the fields to save the blog.", {
                 variant: "warning",
                 autoHideDuration: 4000,
                 anchorOrigin: {
@@ -458,14 +484,13 @@ const EditBlogs = () => {
 
         if (
             title.trim() !== "" &&
-            selectedFile !== null &&
             inputRef.current?.innerHTML !== "" &&
             coverImage !== ""
         ) {
             // console.log("All fields are filled");
             // alert("All fields are filled");
 
-            enqueueSnackbar("Submitting Blog...", {
+            enqueueSnackbar("Saving Blog...", {
                 variant: "info",
                 autoHideDuration: 4000,
                 anchorOrigin: {
@@ -486,59 +511,44 @@ const EditBlogs = () => {
                     title: title,
                     slug: convertToSlug(title),
                     content: inputRef.current?.innerHTML,
-                    uid: user.uid as string,
-                    userEmail: user.email as string,
-                    createdAt: new Date(),
-                    createdBy: user.email as string,
-                    photoURL: user.photoURL as string,
                     color_code: color_code,
                     coverImage: coverImage,
-                    authorName: user.displayName as string,
+                    updatedAt: new Date().toLocaleDateString()
                 };
 
                 // console.log("Blog Data:", blogData);
-                addDoc(collection(db, `Blogs`), blogData)
-                    .then(() => {
-                        console.log("Blog submitted");
-                        const { pathname } = Router;
-                        // if (pathname == "/createProject") {
-                        // Router.push(`/dashboard/${signedInUserData.email}`);
-                        // }
-                        enqueueSnackbar("Blog submitted successfully.", {
-                            variant: "success",
-                            autoHideDuration: 4000,
-                            anchorOrigin: {
-                                vertical: "bottom",
-                                horizontal: "right",
-                            },
+                if (currentSelectedBlog !== null) {
+                    setDoc(doc(db, "Blogs", currentSelectedBlog.id), blogData, { merge: true })
+                        .then(() => {
+                            console.log("Blog Updated Successfully");
+                            enqueueSnackbar("Blog Updated successfully.", {
+                                variant: "success",
+                                autoHideDuration: 4000,
+                                anchorOrigin: {
+                                    vertical: "bottom",
+                                    horizontal: "right",
+                                },
+                            });
+                        })
+                        .catch((err) => {
+                            console.warn(err);
+                            // alert(`Error while submitting blog: ${err.message}`);
+                            enqueueSnackbar("Error while saving the blog.", {
+                                variant: "error",
+                                autoHideDuration: 4000,
+                                anchorOrigin: {
+                                    vertical: "bottom",
+                                    horizontal: "right",
+                                },
+                            });
                         });
-
-                        // Clear the form
-                        setTitle("");
-                        // @ts-ignore
-                        inputRef.current.innerHTML = <p>Blog Content</p>;
-                        setCoverImage("");
-                        setSelectedFile(null);
-                    })
-                    .catch((err) => {
-                        console.warn(err);
-                        // alert(`Error while submitting blog: ${err.message}`);
-                        enqueueSnackbar("Error while submitting blog.", {
-                            variant: "error",
-                            autoHideDuration: 4000,
-                            anchorOrigin: {
-                                vertical: "bottom",
-                                horizontal: "right",
-                            },
-                        });
-                    });
-                //
+                }
                 ////////////////////////////// For New Version of Firebase(V9) //////////////////////////////
 
                 //Now sending the data for notifications
             } else {
                 // alert("Please sign in to save project to cloud.");
-                enqueueSnackbar("Please sign in to save project to cloud.", {
+                enqueueSnackbar("Please sign in to save blog to cloud.", {
                     variant: "error",
                     autoHideDuration: 4000,
                     anchorOrigin: {
@@ -549,7 +559,7 @@ const EditBlogs = () => {
             }
         } else {
             // console.log("All fields are not filled");
-            enqueueSnackbar("Please fill all the fields to submit the blog.", {
+            enqueueSnackbar("Please fill all the fields to save the blog.", {
                 variant: "warning",
                 autoHideDuration: 4000,
                 anchorOrigin: {
@@ -566,22 +576,29 @@ const EditBlogs = () => {
             <div>
                 <Button
                     variant="contained"
-                    color="primary"
+                    color="success"
                     fullWidth
                     onClick={handleBlogSubmit}
                     className={`fixed ${scrolled ? "top-20" : "top-[59vh]"} z-50 w-9/12`}
                 >
-                    Submit Blog
+                    Save Blog
                 </Button>
             </div>
 
             <div className="flex justify-center items-center mb-4">
-                <ComboBoxAutoComplete
-                    label="Select Blog to Edit"
-                />
+                {!loading && blogs.length > 0 ? (
+                    <ComboBoxAutoComplete
+                        value={currentSelectedBlog}
+                        setValue={setCurrentSelectedBlog}
+                        label="Select Blog to Edit"
+                        dropdownData={blogs}
+                    />
+                ) : (
+                    <Skeleton variant="rectangular" className="w-full rounded-md" height={50} />
+                )}
             </div>
 
-            <div className="bg-[#f4f2ee] w-fit mx-auto gap-3 p-2 border border-gray-600 border-solid rounded-md mb-8 flex justify-evenly">
+            <div className={`fixed ${scrolled ? "top-32" : "top-[49vh]"} left-auto right-auto z-50 bg-[#f4f2ee] w-fit gap-3 p-2 border border-gray-600 border-solid rounded-md  mb-8 flex justify-evenly`}>
                 <Button
                     className="bg-teal-600 text-white px-4 py-2 rounded-md"
                     variant="contained"
